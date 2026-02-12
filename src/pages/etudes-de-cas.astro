@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Études de cas — OPUS Technology";
+const description = "Du concret, du vérifiable : contexte, décisions, livrables, résultats.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="surface pad-lg">
+    <div class="kicker">Études de cas</div>
+    <h1 class="h2" style="font-size:44px;">Du concret. Du vérifiable.</h1>
+    <p class="lead">
+      Nous publions ici des cas anonymisés : contexte, décisions, livrables, résultats. Pas de discours.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="grid-3">
+      <div class="surface pad-md">
+        <div class="kicker">À venir</div>
+        <h3 class="card-title">Modernisation de plateformes</h3>
+        <p class="card-text">Trajectoire, intégrations, sécurité, mise en production et exploitation.</p>
+        <div class="card-tags"><span class="tag">Architecture</span><span class="tag">Cloud</span><span class="tag">Sécurité</span></div>
+      </div>
+
+      <div class="surface pad-md">
+        <div class="kicker">À venir</div>
+        <h3 class="card-title">Automatisation opérationnelle</h3>
+        <p class="card-text">Standardisation, fiabilité, réduction des délais, mesure de performance.</p>
+        <div class="card-tags"><span class="tag">Processus</span><span class="tag">Qualité</span><span class="tag">Ops</span></div>
+      </div>
+
+      <div class="surface pad-md">
+        <div class="kicker">À venir</div>
+        <h3 class="card-title">IA appliquée (gouvernée)</h3>
+        <p class="card-text">Cas d’usage contrôlables : cadrage, données, auditabilité, adoption.</p>
+        <div class="card-tags"><span class="tag">RAG</span><span class="tag">Conformité</span><span class="tag">Sécurité</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-band surface pad-md">
+      <div>
+        <h3>Besoin d’un exemple dans ton contexte ?</h3>
+        <p>Envoie 2–3 lignes (objectif, contraintes, délais). On répond avec un cadrage clair et une proposition de next steps.</p>
+      </div>
+      <a class="btn btn-primary" href="/contact">Envoyer un brief</a>
+    </div>
+  </section>
+</BaseLayout>

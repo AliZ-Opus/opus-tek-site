@@ -1,0 +1,265 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "OPUS Technology — Systèmes structurants, exécution maîtrisée";
+const description =
+  "OPUS met en production des transformations critiques — plateformes, data, automatisation et IA gouvernée — avec gouvernance, sécurité, DevOps et qualité intégrées.";
+
+const pills = [
+  "Transformation stratégique",
+  "Data & automatisation",
+  "IA appliquée (gouvernée)",
+  "Cloud • intégration • sécurité",
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- HERO -->
+  <section class="surface hero">
+    <div class="pills">
+      {pills.map((t) => (
+        <span class="pill">{t}</span>
+      ))}
+    </div>
+
+    <div class="hero-grid">
+      <!-- LEFT -->
+      <div>
+        <h1 class="hero-title">
+          Systèmes structurants.
+          <span class="accent"> Exécution maîtrisée.</span>
+        </h1>
+
+        <p class="hero-text">
+          OPUS conçoit et met en production des transformations technologiques critiques — plateformes,
+          données, automatisation et IA — avec une approche orientée gouvernance, sécurité et qualité de
+          livraison. Le résultat : des solutions opérables, durables, et maîtrisées dans le temps.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="/contact">Parler à un expert</a>
+          <a class="btn btn-secondary" href="/methode">Voir notre approche</a>
+        </div>
+
+        <div class="metrics">
+          <div class="metric">
+            <div class="label">Expérience</div>
+            <div class="value">16+</div>
+            <div class="desc">Ans en contextes gouvernés (sécurité, conformité).</div>
+          </div>
+
+          <div class="metric">
+            <div class="label">Projets livrés</div>
+            <div class="value">250+</div>
+            <div class="desc">Plateformes, intégrations, automatisation, data & IA.</div>
+          </div>
+
+          <div class="metric">
+            <div class="label">Présence</div>
+            <div class="value">3</div>
+            <div class="desc">Amérique du Nord • Afrique • Amérique latine.</div>
+          </div>
+
+          <div class="metric">
+            <div class="label">Langues</div>
+            <div class="value">5</div>
+            <div class="desc">FR • EN • AR • ES • PT — communication fluide.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <aside class="hero-right">
+        <div class="surface pad-md">
+          <div class="panel-title">Ce que vous obtenez</div>
+          <ul class="bullets">
+            <li><span class="dot"></span><span><strong>Clarté</strong> — une vision cible compréhensible, des priorités, des décisions.</span></li>
+            <li><span class="dot"></span><span><strong>Maîtrise</strong> — gouvernance, sécurité, conformité et risques intégrés.</span></li>
+            <li><span class="dot"></span><span><strong>Livraison</strong> — industrialisation, déploiements maîtrisés, qualité mesurable.</span></li>
+            <li><span class="dot"></span><span><strong>Exploitation</strong> — observabilité, documentation utile, continuité de service.</span></li>
+          </ul>
+        </div>
+
+        <div class="exec-note">
+          <div class="panel-title">Brief exécutif</div>
+          <p>
+            OPUS intervient quand la transformation devient structurante : <strong>décider</strong>,
+            <strong>sécuriser</strong>, <strong>livrer</strong> — puis <strong>tenir en production</strong>.
+            Calme, rigoureux, documenté.
+          </p>
+          <div class="exec-tags">
+            <span class="tag">Gouvernance</span>
+            <span class="tag">DevOps</span>
+            <span class="tag">Sécurité</span>
+            <span class="tag">Qualité</span>
+            <span class="tag">Production</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- SECTION: PROMISE -->
+  <section class="section">
+    <div class="section-head">
+      <div class="kicker">Ce que le client voit</div>
+      <h2 class="h2">Une transformation qui se tient.</h2>
+      <p class="lead">
+        Une exécution qui rassure : décisions explicites, contrôle réel, et un système qui reste opérable
+        quand le projet devient “le quotidien”.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="surface pad-md">
+        <h3 class="card-title">Clarté</h3>
+        <p class="card-text">Vision cible lisible, priorités, trajectoire, responsabilités. Moins d’ambiguïté, plus d’alignement.</p>
+        <div class="card-tags">
+          <span class="tag">Vision</span><span class="tag">Risques</span><span class="tag">Trajectoire</span>
+        </div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">Maîtrise</h3>
+        <p class="card-text">Gouvernance intégrée : sécurité, conformité, contrôle des coûts et qualité. Conçu pour résister au réel.</p>
+        <div class="card-tags">
+          <span class="tag">Sécurité</span><span class="tag">Conformité</span><span class="tag">Qualité</span>
+        </div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">Résultats</h3>
+        <p class="card-text">Déploiements maîtrisés, documentation utile, exploitation facilitée. La production n’est pas un après-coup.</p>
+        <div class="card-tags">
+          <span class="tag">Production</span><span class="tag">Observabilité</span><span class="tag">Durabilité</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- SECTION: CRÉDIBILITÉ -->
+  <section class="section">
+    <div class="section-head">
+      <div class="kicker">Crédibilité</div>
+      <h2 class="h2">Exécution en contextes exigeants.</h2>
+      <p class="lead">
+        OPUS intervient quand les décisions engagent : sécurité, conformité, intégrations critiques,
+        cadence de livraison et maintien en production. Pas de démo. Du durable.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="surface pad-md">
+        <h3 class="card-title">Secteurs couverts</h3>
+        <p class="card-text">
+          Services numériques, opérations, plateformes d’entreprise, données et automatisation.
+          Exécution structurée, standards réutilisables.
+        </p>
+        <div class="card-tags">
+          <span class="tag">Plateformes</span><span class="tag">Ops</span><span class="tag">Data</span>
+        </div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">Types d’engagement</h3>
+        <p class="card-text">
+          Cadrage court, trajectoire de transformation, delivery gouverné, industrialisation DevOps,
+          stabilisation production.
+        </p>
+        <div class="card-tags">
+          <span class="tag">Cadrage</span><span class="tag">Delivery</span><span class="tag">Run</span>
+        </div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">Standard & gouvernance</h3>
+        <p class="card-text">
+          Exigences claires : sécurité, conformité, traçabilité, qualité. Les livrables restent utilisables
+          après le projet.
+        </p>
+        <div class="card-tags">
+          <span class="tag">Sécurité</span><span class="tag">Conformité</span><span class="tag">Traçabilité</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="surface pad-md">
+      <div class="kicker">Clients (anonymisés)</div>
+      <p class="lead" style="margin-top:10px;">
+        Par confidentialité, nous présentons les références sous forme de catégories. Sur demande,
+        nous partageons des éléments vérifiables dans un cadre approprié (NDA si requis).
+      </p>
+
+      <div class="logos">
+        <div class="logo">Institution publique</div>
+        <div class="logo">Télécom / Services</div>
+        <div class="logo">Groupe industriel</div>
+        <div class="logo">Services financiers</div>
+        <div class="logo">Santé / Services</div>
+        <div class="logo">Éducation</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION: CAPABILITIES -->
+  <section class="section">
+    <div class="section-head">
+      <div class="kicker">Expertises</div>
+      <h2 class="h2">Quatre capacités. Une seule exigence : tenir en production.</h2>
+      <p class="lead">
+        Nous intervenons quand les choix deviennent structurants : moderniser, automatiser, exploiter la donnée,
+        déployer l’IA — sans perdre la maîtrise (gouvernance, sécurité, conformité, qualité).
+      </p>
+    </div>
+
+    <div class="grid-4">
+      <div class="surface pad-md">
+        <h3 class="card-title">Architecture & intégration</h3>
+        <p class="card-text">Vision cible, cohérence d’ensemble, trajectoires de modernisation. Intégrations maîtrisées et gouvernance des interfaces.</p>
+        <div class="card-tags">
+          <span class="tag">Architecture</span><span class="tag">Trajectoire</span><span class="tag">Intégration</span>
+        </div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">Automatisation</h3>
+        <p class="card-text">Processus fiables, orchestrés, mesurables. Réduction des délais et des erreurs, standardisation sans rigidité.</p>
+        <div class="card-tags">
+          <span class="tag">Processus</span><span class="tag">Fiabilité</span><span class="tag">Standardisation</span>
+        </div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">Data</h3>
+        <p class="card-text">Données cadrées, qualité mesurable, accès maîtrisé. Un socle pour piloter, automatiser, auditer et démontrer la valeur.</p>
+        <div class="card-tags">
+          <span class="tag">Gouvernance</span><span class="tag">Qualité</span><span class="tag">Traçabilité</span>
+        </div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">IA appliquée (gouvernée)</h3>
+        <p class="card-text">Cas d’usage concrets et contrôlables : assistants, recherche augmentée, automatisation. Conçu pour être auditable, sécurisé, adoptable.</p>
+        <div class="card-tags">
+          <span class="tag">Assistants</span><span class="tag">RAG</span><span class="tag">Auditabilité</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-band surface pad-md">
+      <div>
+        <h3>Dis-nous ton contexte. On revient avec un plan clair.</h3>
+        <p>Deux ou trois lignes suffisent : objectif, contraintes, délais. Réponse cadrée, orientée décision.</p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn btn-primary" href="/contact">Entrer en discussion</a>
+        <a class="btn btn-secondary" href="/contact">Envoyer un brief</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

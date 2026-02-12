@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const title = "Étude de cas — Modèle (OPUS)";
+const description = "Modèle OPUS : Contexte → Décisions → Livrables → Résultats (structure vérifiable).";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="surface pad-lg">
+    <div class="kicker">Étude de cas</div>
+    <h1 class="h2" style="font-size:44px;">Titre du cas (anonymisé)</h1>
+    <p class="lead">
+      Résumé en 2 lignes : objectif, contraintes majeures (sécurité, conformité, intégrations) et périmètre.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="grid-3">
+      <div class="surface pad-md">
+        <div class="kicker">Contexte</div>
+        <p class="card-text">
+          Situation initiale, douleur métier, contraintes, dépendances, enjeux de gouvernance.
+        </p>
+        <div class="card-tags"><span class="tag">Contraintes</span><span class="tag">Risques</span><span class="tag">Dépendances</span></div>
+      </div>
+      <div class="surface pad-md">
+        <div class="kicker">Décisions</div>
+        <p class="card-text">
+          Décisions structurantes : architecture, data, sécurité, DevOps, exploitation.
+        </p>
+        <div class="card-tags"><span class="tag">Architecture</span><span class="tag">Sécurité</span><span class="tag">DevOps</span></div>
+      </div>
+      <div class="surface pad-md">
+        <div class="kicker">Résultats</div>
+        <p class="card-text">
+          Résultats observables : délais, stabilité, qualité, adoption, opérabilité.
+        </p>
+        <div class="card-tags"><span class="tag">Qualité</span><span class="tag">Run</span><span class="tag">Mesure</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="h2" style="font-size:30px;">Contexte</h2>
+    <ul class="bullets">
+      <li><span class="dot"></span><span>Problème initial (1 phrase claire)</span></li>
+      <li><span class="dot"></span><span>Contraintes : sécurité / conformité / délais / dépendances</span></li>
+      <li><span class="dot"></span><span>Risque principal et pourquoi il est critique</span></li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <h2 class="h2" style="font-size:30px;">Décisions structurantes</h2>
+    <div class="grid-3">
+      <div class="surface pad-md">
+        <h3 class="card-title">Architecture</h3>
+        <p class="card-text">Décisions de structure : intégrations, standards, patterns.</p>
+      </div>
+      <div class="surface pad-md">
+        <h3 class="card-title">Sécurité & conformité</h3>
+        <p class="card-text">Règles, contrôles, auditabilité, accès, traçabilité.</p>
+      </div>
+      <div class="surface pad-md">
+        <h3 class="card-title">Delivery & production</h3>
+        <p class="card-text">Cadence, CI/CD, tests, observabilité, readiness.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2 class="h2" style="font-size:30px;">Livrables</h2>
+    <ul class="bullets">
+      <li><span class="dot"></span><span>Dossier d’architecture (vision + décisions)</span></li>
+      <li><span class="dot"></span><span>Backlog structuré + jalons + critères de qualité</span></li>
+      <li><span class="dot"></span><span>Pipelines CI/CD + stratégie de déploiement</span></li>
+      <li><span class="dot"></span><span>Guides d’exploitation + observabilité</span></li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <h2 class="h2" style="font-size:30px;">Résultats</h2>
+    <div class="grid-4">
+      <div class="surface pad-md">
+        <div class="kicker">Délai</div>
+        <p class="card-text">Ex : -30% sur le temps de traitement.</p>
+      </div>
+      <div class="surface pad-md">
+        <div class="kicker">Qualité</div>
+        <p class="card-text">Ex : baisse des incidents / régressions.</p>
+      </div>
+      <div class="surface pad-md">
+        <div class="kicker">Opérabilité</div>
+        <p class="card-text">Ex : runbooks + monitoring + ownership.</p>
+      </div>
+      <div class="surface pad-md">
+        <div class="kicker">Conformité</div>
+        <p class="card-text">Ex : auditabilité, contrôles, traçabilité.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-band surface pad-md">
+      <div>
+        <h3>Tu veux un exemple adapté à ton contexte ?</h3>
+        <p>Envoie 2–3 lignes. On répond avec un cadrage clair et une structure de livrables vérifiables.</p>
+      </div>
+      <a class="btn btn-accent" href="/contact">Envoyer un brief</a>
+    </div>
+  </section>
+</BaseLayout>

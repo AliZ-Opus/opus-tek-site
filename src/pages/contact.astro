@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Contact — OPUS Technology";
+const description = "Décris ton contexte. On revient avec un plan clair et des next steps.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="surface pad-lg">
+    <div class="kicker">Contact</div>
+    <h1 class="h2" style="font-size:44px;">Dis-nous ton contexte. On revient avec un plan clair.</h1>
+    <p class="lead">
+      Deux ou trois lignes suffisent : objectif, contraintes, délais. Réponse cadrée, orientée décision.
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="grid-3">
+      <div class="surface pad-md">
+        <div class="kicker">1) Objectif</div>
+        <p class="card-text"><strong>Ce que tu veux atteindre</strong> (résultat attendu, métrique si possible).</p>
+      </div>
+      <div class="surface pad-md">
+        <div class="kicker">2) Contraintes</div>
+        <p class="card-text"><strong>Sécurité, conformité, gouvernance</strong>, intégrations, délais.</p>
+      </div>
+      <div class="surface pad-md">
+        <div class="kicker">3) Attendu</div>
+        <p class="card-text"><strong>Plan clair</strong> + trajectoire + livrables vérifiables.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-band surface pad-md">
+      <div>
+        <h3>Choisis ton format</h3>
+        <p>Un message simple suffit. On s’adapte ensuite au niveau de gouvernance requis.</p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="btn btn-primary" href="mailto:contact@opus-tek.ca">Écrire maintenant</a>
+        <a class="btn btn-secondary" href="tel:+14187179653">Appeler (+1 418 717 9653)</a>
+        <a class="btn btn-secondary" href="/methode">Voir notre méthode</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Expertises — OPUS Technology";
+const description = "Architecture, automatisation, data, IA gouvernée — avec gouvernance, sécurité et DevOps.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="surface pad-lg">
+    <div class="kicker">Expertises</div>
+    <h1 class="h2" style="font-size:44px;">Quatre capacités. Une seule exigence : tenir en production.</h1>
+    <p class="lead">
+      Nous intervenons quand les choix deviennent structurants : moderniser, automatiser, exploiter la donnée,
+      déployer l’IA — sans perdre la maîtrise (gouvernance, sécurité, conformité, qualité).
+    </p>
+
+    <div class="divider"></div>
+
+    <div class="grid-4">
+      <div class="surface pad-md">
+        <h3 class="card-title">Architecture & intégration</h3>
+        <p class="card-text">Vision cible, cohérence, trajectoire. Intégrations maîtrisées (API, événements) et gouvernance des interfaces.</p>
+        <div class="card-tags"><span class="tag">Architecture</span><span class="tag">Intégration</span><span class="tag">Standards</span></div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">Automatisation</h3>
+        <p class="card-text">Orchestration de processus, fiabilité, mesure. Standardisation pragmatique, réduction des erreurs et délais.</p>
+        <div class="card-tags"><span class="tag">Processus</span><span class="tag">Fiabilité</span><span class="tag">Mesure</span></div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">Data</h3>
+        <p class="card-text">Gouvernance, qualité, accès. Un socle pour piloter, auditer, et rendre les décisions vérifiables.</p>
+        <div class="card-tags"><span class="tag">Gouvernance</span><span class="tag">Qualité</span><span class="tag">Traçabilité</span></div>
+      </div>
+
+      <div class="surface pad-md">
+        <h3 class="card-title">IA appliquée (gouvernée)</h3>
+        <p class="card-text">Assistants et cas d’usage contrôlables : auditabilité, sécurité, adoption. Une IA opérable, pas une démo.</p>
+        <div class="card-tags"><span class="tag">Assistants</span><span class="tag">RAG</span><span class="tag">Auditabilité</span></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-band surface pad-md">
+      <div>
+        <h3>Besoin d’un cadrage rapide ?</h3>
+        <p>Décris ton contexte. On propose une trajectoire, des livrables, et des next steps.</p>
+      </div>
+      <a class="btn btn-accent" href="/contact">Parler à un expert</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,213 @@
+---
+import "../styles/global.css";
+
+const { title = "OPUS Technology", description } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const nav = [
+  { href: "/expertises", label: "Expertises" },
+  { href: "/methode", label: "Méthode" },
+  { href: "/etudes-de-cas", label: "Études de cas" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/contact", label: "Contact" },
+];
+
+const isActive = (href) => {
+  if (href === "/") return currentPath === "/";
+  return currentPath.startsWith(href);
+};
+
+const metaDescription =
+  description ??
+  "OPUS Technology — transformation, automatisation, data & IA gouvernée. Gouvernance, sécurité, DevOps, livraison maîtrisée. Des systèmes opérables et durables.";
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="icon" href="/favicon.svg" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:image" content="/og/opus-og.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <div class="header-inner">
+          <a class="brand" href="/" aria-label="OPUS Technology — Accueil">
+            <img class="brand-logo" src="/brand/opus-logo-mark.svg" alt="OPUS" />
+            <span class="brand-text">
+              <span class="brand-name">OPUS Technology</span>
+              <span class="brand-sub">Transformation • Automatisation • IA gouvernée</span>
+            </span>
+          </a>
+
+          <!-- Desktop nav (inchangé) -->
+          <nav class="nav" aria-label="Navigation principale">
+            {nav.map((item) => (
+              <a
+                href={item.href}
+                class={`nav-link ${isActive(item.href) ? "is-active" : ""}`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          <div class="header-cta">
+            <a href="/contact" class="btn btn-accent">Parler à un expert</a>
+
+            <!-- Mobile toggle -->
+            <button
+              class="nav-toggle"
+              type="button"
+              aria-label="Ouvrir le menu"
+              aria-controls="nav-mobile"
+              aria-expanded="false"
+              data-nav-toggle
+            >
+              <span class="nav-toggle-lines" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile drawer -->
+      <div class="nav-overlay" data-nav-overlay></div>
+      <div class="nav-drawer" id="nav-mobile" aria-label="Menu mobile">
+        <div class="nav-drawer-head">
+          <div class="nav-drawer-brand">
+            <img class="brand-logo" src="/brand/opus-logo-mark.svg" alt="OPUS" />
+            <div>
+              <div class="nav-drawer-title">OPUS Technology</div>
+              <div class="nav-drawer-sub">Exécution gouvernée • Production</div>
+            </div>
+          </div>
+
+          <button class="nav-close" type="button" aria-label="Fermer le menu" data-nav-close>
+            ✕
+          </button>
+        </div>
+
+        <div class="nav-drawer-links">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              class={`nav-drawer-link ${isActive(item.href) ? "is-active" : ""}`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+
+        <div class="nav-drawer-cta">
+          <a href="/contact" class="btn btn-accent" style="width:100%; justify-content:center;">
+            Démarrer une discussion
+          </a>
+          <a href="mailto:contact@opus-tek.ca" class="btn btn-secondary" style="width:100%; justify-content:center;">
+            Écrire maintenant
+          </a>
+        </div>
+      </div>
+
+      <script is:inline>
+        const root = document.documentElement;
+        const btn = document.querySelector("[data-nav-toggle]");
+        const overlay = document.querySelector("[data-nav-overlay]");
+        const closeBtn = document.querySelector("[data-nav-close]");
+        const setOpen = (open) => {
+          root.dataset.nav = open ? "open" : "closed";
+          btn?.setAttribute("aria-expanded", open ? "true" : "false");
+        };
+        btn?.addEventListener("click", () => setOpen(root.dataset.nav !== "open"));
+        overlay?.addEventListener("click", () => setOpen(false));
+        closeBtn?.addEventListener("click", () => setOpen(false));
+        window.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+        setOpen(false);
+      </script>
+    </header>
+
+    <main id="contenu" class="site-main">
+      <div class="wrap">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <img class="brand-logo brand-logo--sm" src="/brand/opus-logo-mark.svg" alt="OPUS" />
+            <div>
+              <div class="footer-title">OPUS Technology</div>
+              <div class="footer-sub">Architecture stratégique • Exécution gouvernée • IA opérable</div>
+            </div>
+          </div>
+
+          <p class="footer-text">
+            Nous mettons en production des transformations critiques : plateformes, données,
+            automatisation et IA — avec gouvernance, sécurité, DevOps et qualité intégrées.
+          </p>
+
+          <div class="footer-tags">
+            <span class="tag">Gouvernance</span>
+            <span class="tag">Sécurité</span>
+            <span class="tag">DevOps</span>
+            <span class="tag">Qualité</span>
+            <span class="tag">Production</span>
+          </div>
+        </div>
+
+        <div class="footer-grid">
+          <div>
+            <div class="footer-col-title">Navigation</div>
+            <div class="footer-links">
+              <a href="/">Accueil</a>
+              <a href="/expertises">Expertises</a>
+              <a href="/methode">Méthode</a>
+              <a href="/etudes-de-cas">Études de cas</a>
+              <a href="/a-propos">À propos</a>
+              <a href="/contact">Contact</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="footer-col-title">Coordonnées</div>
+            <div class="footer-links">
+              <a href="mailto:contact@opus-tek.ca">contact@opus-tek.ca</a>
+              <a href="tel:+14187179653">+1 418 717 9653</a>
+              <a href="tel:+21698519880">+216 98 519 880</a>
+              <div class="muted">Pôle de Compétitivité de Sousse — Novation City (Tunisie)</div>
+            </div>
+          </div>
+
+          <div class="footer-cta">
+            <div class="footer-col-title">Prêt à avancer ?</div>
+            <p class="footer-cta-text">Décris ton contexte. On revient avec un plan clair et des next steps.</p>
+            <a href="/contact" class="btn btn-accent">Démarrer une discussion</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>© {new Date().getFullYear()} OPUS Technology. Tous droits réservés.</div>
+          <div class="muted">IA responsable • Sécurité • Conformité</div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
