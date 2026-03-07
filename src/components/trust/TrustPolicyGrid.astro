@@ -1,0 +1,16 @@
+---
+const cards = [
+  { title: 'Sécurité intégrée', text: 'Exigences, durcissement, contrôles et validations intégrés au delivery; pas reportés en fin de parcours.' },
+  { title: 'Conformité pragmatique', text: 'Traçabilité des décisions, responsabilités explicites et livrables auditables alignés au contexte client.' },
+  { title: 'Qualité & gouvernance', text: 'Gates utiles, critères d’acceptation et mécanismes d’escalade pour éviter les dérives silencieuses.' },
+  { title: 'Confidentialité & collaboration', text: 'Cadre de collaboration, limites de diffusion, handover et continuité opérationnelle clairement définis.' },
+];
+---
+<div class="trust-cards-2x2" aria-label="Piliers de confiance">
+  {cards.map((c) => (
+    <article class="trust-card">
+      <h3>{c.title}</h3>
+      <p>{c.text}</p>
+    </article>
+  ))}
+</div>

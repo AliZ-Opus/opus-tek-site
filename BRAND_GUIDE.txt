@@ -1,0 +1,27 @@
+OPUS — Mini Brand Guide (v1)
+Generated: 2026-02-12
+
+Brand architecture
+- Primary: OPUS
+- Descriptor: TECHNOLOGIES INC
+
+Tone
+- Confiance • Vision • Innovation • Élégance
+- Sobriété premium (pas flashy)
+
+Colors
+- Navy (Primary): #0E1A2B
+- Premium White:  #E8EDF5
+- Signature Gray: #9AA3B2
+- Black (mono):   #111111
+
+Do / Don't
+DO:
+- Use flat versions (SVG)
+- Keep clear space around logo (≥ height of the “O”)
+- Prefer navy/white backgrounds for premium look
+
+DON'T:
+- No gradients / no 3D / no shadows
+- No stretching or skewing
+- No extra accent colors (especially yellow)

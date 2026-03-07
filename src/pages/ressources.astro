@@ -1,0 +1,241 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import heroImage from "../assets/hero/opus-ressources.png";
+
+const pageTitle = "Ressources — OPUS Technology";
+const pageDescription =
+  "Documenter l’exécution pour valider la décision. Retrouvez nos études de cas, nos repères de delivery et nos réponses aux questions critiques.";
+
+const caseStudies = [
+  {
+    label: "ÉTUDE DE CAS",
+    title: "Ciblage IA",
+    body:
+      "Comment structurer un cadrage d’intelligence artificielle sans tomber dans la démonstration vague : signaux, gouvernance, valeur et trajectoire d’exécution.",
+    href: "/ressources/ciblage-ia",
+  },
+  {
+    label: "ÉTUDE DE CAS",
+    title: "Calcul Intensif",
+    body:
+      "Une lecture opérationnelle des besoins haute capacité : architecture, performance, résilience, coûts et critères de décision avant accélération.",
+    href: "/ressources/calcul-intensif",
+  },
+  {
+    label: "ÉTUDE DE CAS",
+    title: "Ops Conformité",
+    body:
+      "Comment articuler delivery, traçabilité, confidentialité et contrôle pour soutenir des contextes sensibles sans freiner l’exécution.",
+    href: "/ressources/ops-conformite",
+  },
+];
+
+const faqs = [
+  {
+    question: "Que trouve-t-on dans les ressources OPUS ?",
+    answer:
+      "Les ressources OPUS regroupent des études de cas, des repères de delivery, des cadres de lecture et des réponses aux questions qui reviennent dans les mandats exigeants. L’objectif n’est pas d’accumuler du contenu, mais d’exposer des éléments réellement utiles à la décision et à l’exécution.",
+  },
+  {
+    question: "Ces contenus sont-ils marketing ou opérationnels ?",
+    answer:
+      "La posture recherchée est expert-to-expert. Les contenus doivent rester structurés, concrets, documentaires et crédibles. Ils servent à clarifier une logique d’intervention, un modèle de delivery ou un cadre de gouvernance, non à multiplier des promesses génériques.",
+  },
+  {
+    question: "Pourquoi documenter l’exécution ?",
+    answer:
+      "Parce qu’une décision sérieuse a besoin de preuves, de repères et d’une lecture claire des implications. Documenter l’exécution permet de réduire le flou, de rendre les choix plus défendables et d’offrir une base plus stable pour la suite du travail.",
+  },
+  {
+    question: "À qui s’adressent ces ressources ?",
+    answer:
+      "Aux décideurs, responsables de plateformes, architectes, partenaires, gestionnaires et équipes qui doivent comprendre rapidement une posture, un modèle de travail ou un type de capacité avant d’aller plus loin.",
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section aria-label="Ressources OPUS" class="relative isolate overflow-clip bg-white">
+      <div class="mx-auto w-full grid min-h-[80svh] max-h-[760px] max-w-[1680px] grid-cols-1 items-center px-4 py-10 md:px-8 lg:grid-cols-[40%_60%] xl:grid-cols-[40%_60%] xl:px-10">
+        <div class="relative z-20 flex min-w-0 items-center">
+          <div class="relative w-full max-w-[800px] py-8 lg:py-12 lg:pr-12 xl:pr-24">
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-0 -left-8 right-[-38%] z-0"
+              style="
+                background: linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0) 100%);
+                -webkit-mask-image: linear-gradient(to right, black 42%, transparent 100%);
+                mask-image: linear-gradient(to right, black 42%, transparent 100%);
+                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+                -webkit-mask-size: 100% 100%;
+                mask-size: 100% 100%;
+              "
+            ></div>
+
+            <div class="relative z-10">
+              <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500 sm:text-xs">
+                RESSOURCES
+              </p>
+
+              <h1 class="max-w-[18ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
+                Documenter l’exécution pour valider la décision.
+              </h1>
+
+              <p class="mt-6 max-w-[60ch] text-base leading-8 text-neutral-700 md:text-[1.05rem]">
+                Retrouvez nos études de cas, nos repères de delivery et nos réponses aux questions critiques.
+              </p>
+
+              <div class="mt-7 h-[2px] w-24 bg-opus-red"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative mt-6 h-full min-h-[400px] sm:min-h-[520px] lg:min-h-[560px] xl:mt-0 xl:min-h-[640px]">
+          <Image
+            src={heroImage}
+            alt="Visuel documentaire illustrant les ressources OPUS"
+            widths={[960, 1280, 1600, 1920]}
+            sizes="(max-width: 1023px) 100vw, 60vw"
+            format="avif"
+            quality={92}
+            loading="eager"
+            fetchpriority="high"
+            class="absolute inset-0 h-full w-full object-cover object-center"
+            style="opacity: 1 !important;"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="relative z-30 -mt-overlap-force">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="w-full border border-neutral-200 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
+          <div class="w-full px-6 py-6 md:px-7 md:py-7">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+              CASE STUDIES
+            </p>
+
+            <h2 class="mt-4 max-w-[18ch] text-[clamp(1.9rem,3.8vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+              Trois lectures concrètes pour rendre la valeur plus lisible.
+            </h2>
+
+            <p class="mt-5 max-w-[70ch] text-base leading-8 text-neutral-700">
+              Chaque étude expose une logique d’intervention, un contexte et une manière de structurer la décision avant l’accélération.
+            </p>
+
+            <div class="mt-10 w-full grid grid-cols-1 gap-6 md:grid-cols-3">
+              {caseStudies.map((item) => (
+                <article class="flex h-full flex-col border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-7">
+                  <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-opus-red">
+                    {item.label}
+                  </p>
+
+                  <div class="mt-3 h-[1.75px] w-12 bg-opus-red"></div>
+
+                  <h3 class="mt-4 text-[1.02rem] font-semibold leading-6 tracking-[-0.01em] text-opus-dark">
+                    {item.title}
+                  </h3>
+
+                  <p class="mt-3 flex-1 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+                    {item.body}
+                  </p>
+
+                  <div class="mt-6">
+                    <a
+                      href={item.href}
+                      class="inline-flex min-h-11 items-center justify-center border border-opus-dark bg-opus-dark px-5 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+                    >
+                      Lire l’étude →
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-16 md:py-20">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="w-full border border-neutral-200 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+          <div class="w-full grid grid-cols-1 gap-8 p-6 md:p-8 lg:grid-cols-[1.1fr_.9fr] xl:p-10">
+            <div class="max-w-[62ch]">
+              <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+                REPÈRES STRATÉGIQUES
+              </p>
+
+              <h2 class="mt-4 text-[clamp(1.8rem,3vw,3rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+                Des contenus conçus pour clarifier les trajectoires de décision.
+              </h2>
+
+              <p class="mt-5 text-base leading-8 text-neutral-700">
+                Les repères OPUS structurent les enjeux avant le delivery : ils servent à aligner les parties prenantes, nommer les risques et rendre la trajectoire plus défendable.
+              </p>
+            </div>
+
+            <article class="flex h-full flex-col border border-neutral-200 bg-neutral-50 p-6 md:p-7">
+              <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center border border-opus-red/20 bg-white px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-opus-red">
+                  PDF - 12 pages
+                </span>
+              </div>
+
+              <h3 class="mt-5 text-[1.08rem] font-semibold leading-6 text-opus-dark">
+                L'IA en entreprise : Passer de l'expérimentation à l'architecture cible.
+              </h3>
+
+              <p class="mt-3 flex-1 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+                Un livre blanc de référence pour relier cadrage, gouvernance, données, sécurité et exécution dans une trajectoire IA crédible.
+              </p>
+
+              <div class="mt-6">
+                <a
+                  href="/ressources/repere-ia-architecture-cible.pdf"
+                  class="inline-flex min-h-11 items-center justify-center border border-opus-dark bg-opus-dark px-5 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+                >
+                  Télécharger le repère →
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-neutral-50 py-16 md:py-20">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="max-w-[920px]">
+          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+            FAQ
+          </p>
+
+          <h2 class="mt-4 text-[clamp(1.9rem,3.8vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+            Réponses aux questions critiques.
+          </h2>
+
+          <p class="mt-5 max-w-[68ch] text-base leading-8 text-neutral-700">
+            Une lecture claire des intentions, des usages et de la valeur documentaire des ressources OPUS.
+          </p>
+        </div>
+
+        <div class="mt-10 w-full grid grid-cols-1 gap-4">
+          {faqs.map((item) => (
+            <article class="border border-neutral-200 bg-white p-6 shadow-[0_6px_20px_rgba(0,0,0,0.03)] md:p-7">
+              <h3 class="text-[1rem] font-semibold leading-6 text-opus-dark">
+                {item.question}
+              </h3>
+
+              <p class="mt-3 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+                {item.answer}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

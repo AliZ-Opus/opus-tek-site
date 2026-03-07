@@ -1,0 +1,336 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import S1Underline from "../components/nav/S1Underline.astro";
+import TrustPillarSection from "../components/TrustPillarSection.astro";
+import heroImage from "../assets/hero/opus-confiance.png";
+
+const pageTitle = "Confiance — Confidentialité, IP, gouvernance et facturation";
+const pageDescription =
+  "La confiance chez OPUS repose sur une discipline d’exécution claire : confidentialité, propriété intellectuelle, gouvernance et facturation lisible.";
+
+const pillars = [
+  { label: "Confidentialité", href: "#confidentialite" },
+  { label: "IP", href: "#ip" },
+  { label: "Gouvernance", href: "#gouvernance" },
+  { label: "Facturation", href: "#facturation" },
+];
+
+const sections = [
+  {
+    id: "confidentialite",
+    eyebrow: "TRUST HUB",
+    title: "Confidentialité",
+    intro:
+      "La confidentialité n’est pas un slogan. Elle structure la manière dont nous organisons les échanges, limitons l’exposition de l’information, contrôlons les accès et protégeons les éléments sensibles tout au long du cycle de collaboration.",
+    cards: [
+      {
+        label: "POSITION",
+        title: "La confidentialité comme discipline opérationnelle",
+        body:
+          "OPUS traite la confidentialité comme une discipline de travail concrète, non comme une formule contractuelle abstraite. Les informations client, les documents sensibles, les décisions internes et les éléments techniques ne circulent pas librement par défaut. Nous appliquons un principe de sobriété d’accès, de compartimentation et d’utilité réelle : seules les personnes qui doivent intervenir sur un sujet ont accès aux éléments nécessaires à son exécution.",
+      },
+      {
+        label: "HOW WE OPERATE",
+        title: "Des échanges structurés, limités et traçables",
+        body:
+          "Nous organisons les échanges, les artefacts et les espaces de collaboration de manière à réduire l’exposition inutile. Les documents sont classés selon leur utilité, les canaux sont clarifiés, et les accès sont pensés pour éviter la dispersion. Cette méthode réduit le bruit, améliore la maîtrise de l’information et protège les contextes de travail sensibles, notamment lorsqu’il existe plusieurs intervenants, partenaires ou flux parallèles.",
+      },
+      {
+        label: "WHAT YOU GET",
+        title: "Un cadre de collaboration plus propre et plus sûr",
+        body:
+          "Le client bénéficie d’un mode de collaboration plus rassurant, plus net et plus professionnel. Les informations sont moins dispersées, les responsabilités sont plus compréhensibles et les risques liés à la diffusion non contrôlée diminuent. Cette posture est particulièrement importante dans les contextes où l’architecture, les données, la gouvernance ou les choix technologiques ont une valeur stratégique ou organisationnelle élevée.",
+      },
+      {
+        label: "FAQ",
+        title: "Ce qui est partagé, où, avec qui",
+        body:
+          "La question centrale n’est pas seulement “est-ce confidentiel ?”, mais aussi “qui a besoin de voir quoi, à quel moment, et dans quel cadre ?”. OPUS clarifie ces paramètres au début de la collaboration et les maintient dans le temps. L’objectif est simple : limiter l’exposition inutile sans ralentir l’exécution, et rendre les échanges plus robustes sans les rendre lourds.",
+      },
+    ],
+  },
+  {
+    id: "ip",
+    eyebrow: "TRUST HUB",
+    title: "IP",
+    intro:
+      "La propriété intellectuelle doit être compréhensible, explicite et compatible avec la réalité du travail livré. OPUS distingue ce qui relève des livrables client, des artefacts de mission, des méthodes de travail, des composants réutilisables et des éléments préexistants.",
+    cards: [
+      {
+        label: "POSITION",
+        title: "Une propriété intellectuelle clarifiée dès le départ",
+        body:
+          "La propriété intellectuelle doit être compréhensible, explicite et compatible avec la réalité du travail livré. OPUS distingue ce qui relève des livrables client, des artefacts de mission, des méthodes de travail, des composants réutilisables et des éléments préexistants. Cette clarification protège les deux parties et évite les malentendus sur les droits d’usage, la réutilisation, la transférabilité et la portée réelle des livrables.",
+      },
+      {
+        label: "HOW WE OPERATE",
+        title: "Une logique de livrables, d’usage et de cadre",
+        body:
+          "Nous structurons les éléments produits selon leur nature : documents, cadrages, composants, contenus, architecture, prototypes, éléments graphiques ou code. Ce qui est remis, ce qui est spécifique au client, ce qui est réutilisable et ce qui relève du savoir-faire propre d’OPUS doit être distingué proprement. Cette discipline évite les zones grises et facilite la contractualisation, l’exploitation des livrables et la continuité du travail.",
+      },
+      {
+        label: "WHAT YOU GET",
+        title: "Des droits plus lisibles et un usage plus sécurisant",
+        body:
+          "Le client obtient une meilleure lisibilité sur ce qu’il reçoit réellement, sur ce qu’il peut exploiter et sur ce qui relève d’un cadre d’utilisation défini. Cette approche réduit les ambiguïtés, protège l’investissement réalisé et facilite la poursuite du projet avec d’autres parties prenantes si nécessaire. Elle renforce également la crédibilité d’ensemble du modèle de collaboration.",
+      },
+      {
+        label: "FAQ",
+        title: "À qui appartient quoi, et dans quelle mesure",
+        body:
+          "La bonne question n’est pas seulement “qui détient la propriété ?”, mais aussi “quels sont les droits d’usage, de modification, de transfert et de continuité ?”. OPUS vise une réponse claire, proportionnée et adaptée à la nature réelle du mandat. La clarté sur ces points réduit les tensions contractuelles futures et protège la valeur créée pendant la mission.",
+      },
+    ],
+  },
+  {
+    id: "gouvernance",
+    eyebrow: "TRUST HUB",
+    title: "Gouvernance",
+    intro:
+      "OPUS considère la gouvernance comme un levier d’exécution, pas comme une couche administrative ajoutée après coup. Lorsqu’un projet implique plusieurs décisions, plusieurs parties prenantes ou plusieurs objets techniques, l’absence de cadre crée rapidement du flou, de la friction et des incohérences.",
+    cards: [
+      {
+        label: "POSITION",
+        title: "La gouvernance comme condition de qualité",
+        body:
+          "OPUS considère la gouvernance comme un levier d’exécution, pas comme une couche administrative ajoutée après coup. Lorsqu’un projet implique plusieurs décisions, plusieurs parties prenantes ou plusieurs objets techniques, l’absence de cadre crée rapidement du flou, de la friction et des incohérences. Une gouvernance légère mais structurée permet au contraire de sécuriser les arbitrages, la qualité et la continuité.",
+      },
+      {
+        label: "HOW WE OPERATE",
+        title: "Décisions, rôles, validations et traçabilité",
+        body:
+          "Nous cherchons à clarifier qui décide, qui valide, qui exécute, qui contribue et comment l’information circule. Cette logique s’applique aux orientations, aux changements, aux priorités, aux livrables et aux points de contrôle. Le but n’est pas de ralentir le travail, mais de rendre l’exécution plus compréhensible, plus durable et plus robuste, surtout lorsque les contextes deviennent plus complexes ou évolutifs.",
+      },
+      {
+        label: "WHAT YOU GET",
+        title: "Un modèle de travail plus stable et plus crédible",
+        body:
+          "Le client obtient une exécution plus lisible, des arbitrages mieux cadrés, des responsabilités plus visibles et une meilleure continuité entre les échanges et les livrables. Cela diminue les zones de confusion, améliore la qualité des décisions et réduit les risques de rework. En pratique, la gouvernance bien faite donne plus de confiance, plus de cohérence et plus de contrôle sans alourdir inutilement le projet.",
+      },
+      {
+        label: "FAQ",
+        title: "Qui décide, qui valide, et comment les changements sont gérés",
+        body:
+          "Un projet sérieux ne repose pas uniquement sur la compétence technique ; il repose aussi sur la lisibilité du fonctionnement. Qui peut arbitrer ? Qui confirme ? Comment une évolution est-elle acceptée ? Qu’est-ce qui est considéré comme validé ? OPUS cherche à rendre ces points explicites afin d’éviter les ambiguïtés de responsabilité et de sécuriser les avancées au fil du mandat.",
+      },
+    ],
+  },
+  {
+    id: "facturation",
+    eyebrow: "TRUST HUB",
+    title: "Facturation",
+    intro:
+      "La facturation doit être compréhensible, prévisible et cohérente avec le type d’engagement retenu. OPUS privilégie une logique claire sur les modalités, le rythme, la base de calcul et le lien entre le travail réalisé et la valeur produite.",
+    cards: [
+      {
+        label: "POSITION",
+        title: "Une facturation claire, alignée sur la valeur livrée",
+        body:
+          "La facturation doit être compréhensible, prévisible et cohérente avec le type d’engagement retenu. OPUS privilégie une logique claire sur les modalités, le rythme, la base de calcul et le lien entre le travail réalisé et la valeur produite. Le but n’est pas seulement d’émettre une facture correcte, mais de maintenir une relation de confiance où le cadre économique est perçu comme lisible et justifiable.",
+      },
+      {
+        label: "HOW WE OPERATE",
+        title: "Des modalités explicites et un rythme assumé",
+        body:
+          "Nous clarifions le mode d’engagement dès le départ : forfait, accompagnement ciblé, bloc d’intervention, phase de cadrage ou exécution continue selon le contexte. Les points de référence doivent être identifiés : ce qui déclenche la facturation, ce qui constitue un livrable, ce qui relève d’un ajustement, et ce qui nécessite un recadrage. Cette approche réduit les incompréhensions et protège la qualité de la relation.",
+      },
+      {
+        label: "WHAT YOU GET",
+        title: "Plus de lisibilité, moins de friction financière",
+        body:
+          "Le client bénéficie d’un cadre de facturation plus net, plus professionnel et plus facile à suivre. Il devient plus simple de comprendre ce qui est facturé, pourquoi, à quel rythme et selon quelle logique. Cette transparence réduit les tensions inutiles, améliore la perception de maîtrise et soutient une relation plus mature, notamment dans les mandats complexes ou les trajectoires par étapes.",
+      },
+      {
+        label: "FAQ",
+        title: "Ce qui est inclus, ce qui change, et comment cela se justifie",
+        body:
+          "Les questions de facturation portent souvent moins sur le montant que sur la compréhension du cadre. Qu’est-ce qui est inclus ? Qu’est-ce qui déclenche un ajustement ? Comment un changement d’orientation est-il traité ? OPUS vise une réponse claire, argumentable et cohérente avec le mandat réel, afin que la dimension financière reste un support à l’exécution, non une source de friction.",
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section aria-label="Confiance OPUS" class="relative isolate overflow-clip bg-white">
+      <div class="mx-auto w-full grid min-h-[80svh] max-h-[760px] max-w-[1680px] grid-cols-1 items-center px-4 py-10 md:px-8 lg:grid-cols-[40%_60%] xl:grid-cols-[40%_60%] xl:px-10">
+        <div class="relative z-20 flex min-w-0 items-center">
+          <div class="relative w-full max-w-[800px] py-8 lg:py-12 lg:pr-12 xl:pr-24">
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-0 -left-8 right-[-38%] z-0"
+              style="
+                background: linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0) 100%);
+                -webkit-mask-image: linear-gradient(to right, black 42%, transparent 100%);
+                mask-image: linear-gradient(to right, black 42%, transparent 100%);
+                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+                -webkit-mask-size: 100% 100%;
+                mask-size: 100% 100%;
+              "
+            ></div>
+
+            <div class="relative z-10">
+              <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+                TRUST HUB
+              </p>
+
+              <h1 class="max-w-[18ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
+                La confiance est une discipline d’exécution.
+              </h1>
+
+              <p class="mt-6 max-w-[60ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+                Confidentialité, propriété intellectuelle, gouvernance et facturation : quatre piliers structurés pour rendre le cadre de collaboration clair, crédible et immédiatement lisible.
+              </p>
+
+              <div class="mt-7 h-[2px] w-24 bg-opus-red"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative mt-6 h-full min-h-[400px] sm:min-h-[520px] lg:min-h-[560px] xl:mt-0 xl:min-h-[640px]">
+          <Image
+            src={heroImage}
+            alt="Visuel architectural illustrant la confiance, la gouvernance et la discipline d’exécution"
+            widths={[960, 1280, 1600, 1920]}
+            sizes="(max-width: 1023px) 100vw, 60vw"
+            format="avif"
+            quality={92}
+            loading="eager"
+            fetchpriority="high"
+            class="absolute inset-0 h-full w-full object-cover object-center"
+            style="opacity: 1 !important;"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="relative z-30 -mt-overlap-force">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="w-full border border-neutral-200 bg-white shadow-[0_16px_50px_rgba(0,0,0,0.07)]">
+          <div class="px-6 py-6 md:px-7 md:py-7">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+              NAVIGATION
+            </p>
+
+            <div class="mt-6">
+              <S1Underline selector='[data-s1-item]' active='[aria-current="page"]'>
+                <nav aria-label="Navigation Trust Hub" class="flex flex-wrap items-center gap-x-8 gap-y-3">
+                  {pillars.map((item, index) => (
+                    <a
+                      href={item.href}
+                      data-s1-item
+                      aria-current={index === 0 ? "page" : undefined}
+                      class:list={[
+                        "inline-flex min-h-10 items-center pb-3 text-[0.82rem] font-medium uppercase tracking-[0.18em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]",
+                        index === 0 ? "text-opus-dark" : "text-neutral-500 hover:text-opus-dark",
+                      ]}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
+              </S1Underline>
+            </div>
+
+            <p class="mt-6 max-w-[72ch] text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+              Le contenu principal n’est jamais masqué. Chaque pilier expose immédiatement la position, la manière d’opérer, ce que le client obtient et les réponses aux questions structurantes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {sections.map((section) => (
+      <TrustPillarSection
+        id={section.id}
+        eyebrow={section.eyebrow}
+        title={section.title}
+        intro={section.intro}
+        cards={section.cards}
+      />
+    ))}
+
+    <section class="border-t border-neutral-200 bg-white py-16 md:py-20">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="max-w-[920px]">
+          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+            NEXT STEP
+          </p>
+
+          <h2 class="mt-4 text-[clamp(1.9rem,3.8vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+            Un cadre de collaboration lisible renforce chaque décision importante.
+          </h2>
+
+          <p class="mt-5 max-w-[66ch] text-base leading-8 text-neutral-700">
+            OPUS ne traite pas la confiance comme un vernis. Elle est rendue visible dans la manière de partager l’information, de clarifier les droits, d’organiser les validations et de structurer le cadre économique.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              href="/contact"
+              class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+            >
+              Parler à OPUS →
+            </a>
+
+            <a
+              href="/services"
+              class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+            >
+              Explorer les services →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  function initTrustNav() {
+    const links = Array.from(document.querySelectorAll('[data-s1-item]'));
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+
+    if (!links.length || !sections.length) return;
+    if (document.documentElement.dataset.trustNavReady === "true") return;
+    document.documentElement.dataset.trustNavReady = "true";
+
+    const setActive = (id) => {
+      links.forEach((link) => {
+        const href = link.getAttribute("href");
+        if (href === `#${id}`) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target?.id) setActive(visible.target.id);
+      },
+      {
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: [0.2, 0.35, 0.5],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        const href = link.getAttribute("href") || "";
+        const id = href.replace("#", "");
+        if (id) setActive(id);
+      });
+    });
+  }
+
+  initTrustNav();
+  document.addEventListener("astro:page-load", initTrustNav);
+</script>

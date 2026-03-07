@@ -1,0 +1,16 @@
+---
+// Generic icon renderer for Hub Services / Trust / etc.
+// Uses SVG files from /public/icons/services/*.svg
+// The parent container MUST constrain sizing (w-12 h-12 md:w-16 md:h-16).
+const { name = 'icon-architecture', title = '' } = Astro.props;
+const src = `/icons/services/${name}.svg`;
+---
+<img
+  src={src}
+  alt={title}
+  width="64"
+  height="64"
+  loading="lazy"
+  decoding="async"
+  style="width:100%;height:100%;object-fit:contain;display:block"
+/>

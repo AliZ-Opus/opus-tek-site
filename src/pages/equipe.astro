@@ -1,0 +1,159 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import heroImage from "../assets/hero/opus-equipe.png";
+
+const pageTitle = "Équipe — OPUS Technology";
+const pageDescription =
+  "L’expertise senior n’est pas un slogan, c’est notre modèle de livraison. Découvrez l’équipe OPUS à travers une lecture structurée : vision, rôle et engagement.";
+
+const teamMembers = [
+  {
+    kicker: "PRÉSIDENT",
+    name: "Président",
+    vision:
+      "Faire d’OPUS une structure capable de combiner rigueur architecturale, proximité décisionnelle et capacité réelle d’exécution dans des contextes exigeants.",
+    role:
+      "Porter la vision, structurer le positionnement, sécuriser les trajectoires d’affaires et assurer l’alignement entre les engagements pris et les capacités réellement livrées.",
+    commitment:
+      "Garantir une posture senior, un discours crédible et des décisions qui restent compatibles avec la réalité opérationnelle du delivery.",
+  },
+  {
+    kicker: "DÉVELOPPEUR D’AFFAIRES",
+    name: "Développeur d’affaires",
+    vision:
+      "Créer des relations d’affaires fondées sur la clarté, la confiance et une compréhension fine des enjeux réels des organisations, au-delà des promesses génériques.",
+    role:
+      "Qualifier les besoins, cadrer les attentes, clarifier la valeur recherchée et créer le lien entre les priorités du client et le modèle d’intervention OPUS.",
+    commitment:
+      "Éviter les ambiguïtés commerciales, protéger la qualité de la relation et faire en sorte que chaque échange mène vers une trajectoire de collaboration solide.",
+  },
+  {
+    kicker: "RESPONSABLE SITE",
+    name: "Responsable site",
+    vision:
+      "Faire du site OPUS un espace de preuve, de lisibilité et de crédibilité, où chaque page soutient la posture expert-to-expert de l’organisation.",
+    role:
+      "Maintenir la cohérence éditoriale, la qualité visuelle, la structure du parcours et la clarté des points d’entrée entre contenu, offres, confiance et conversion.",
+    commitment:
+      "Préserver une expérience premium, stable et structurée, où le design soutient la décision au lieu de distraire l’utilisateur.",
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section aria-label="Équipe OPUS" class="relative isolate overflow-clip bg-white">
+      <div class="mx-auto w-full grid min-h-[80svh] max-h-[760px] max-w-[1680px] grid-cols-1 items-center px-4 py-10 md:px-8 lg:grid-cols-[40%_60%] xl:grid-cols-[40%_60%] xl:px-10">
+        <div class="relative z-20 flex min-w-0 items-center">
+          <div class="relative w-full max-w-[800px] py-8 lg:py-12 lg:pr-12 xl:pr-24">
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-0 -left-8 right-[-38%] z-0"
+              style="
+                background: linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0) 100%);
+                -webkit-mask-image: linear-gradient(to right, black 42%, transparent 100%);
+                mask-image: linear-gradient(to right, black 42%, transparent 100%);
+                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+                -webkit-mask-size: 100% 100%;
+                mask-size: 100% 100%;
+              "
+            ></div>
+
+            <div class="relative z-10">
+              <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500 sm:text-xs">
+                ÉQUIPE
+              </p>
+
+              <h1 class="max-w-[20ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
+                L’expertise senior n’est pas un slogan, c’est notre modèle de livraison.
+              </h1>
+
+              <p class="mt-6 max-w-[60ch] text-base leading-8 text-neutral-700 md:text-[1.05rem]">
+                OPUS s’appuie sur une logique simple : des rôles lisibles, une responsabilité assumée et une posture
+                d’exécution qui reste crédible du premier échange jusqu’au delivery.
+              </p>
+
+              <div class="mt-7 h-[2px] w-24 bg-opus-red"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative mt-6 h-full min-h-[400px] sm:min-h-[520px] lg:min-h-[560px] xl:mt-0 xl:min-h-[640px]">
+          <Image
+            src={heroImage}
+            alt="Visuel architectural illustrant l’équipe et le modèle de livraison OPUS"
+            widths={[960, 1280, 1600, 1920]}
+            sizes="(max-width: 1023px) 100vw, 60vw"
+            format="avif"
+            quality={92}
+            loading="eager"
+            fetchpriority="high"
+            class="absolute inset-0 h-full w-full object-cover object-center"
+            style="opacity: 1 !important;"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="relative z-30 -mt-overlap-force">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="w-full border border-neutral-200 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
+          <div class="w-full px-6 py-6 md:px-7 md:py-7">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+              STORYTELLING
+            </p>
+
+            <h2 class="mt-4 max-w-[18ch] text-[clamp(1.9rem,3.8vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+              Une lecture humaine, mais structurée.
+            </h2>
+
+            <p class="mt-5 max-w-[72ch] text-base leading-8 text-neutral-700">
+              Chaque rôle existe pour soutenir la même promesse : une exécution claire, gouvernée et défendable.
+            </p>
+
+            <div class="mt-10 w-full grid grid-cols-1 gap-6 lg:grid-cols-3">
+              {teamMembers.map((member) => (
+                <article class="flex h-full flex-col border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)] md:p-7">
+                  <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-opus-red">
+                    {member.kicker}
+                  </p>
+
+                  <div class="mt-3 h-[1.75px] w-12 bg-opus-red"></div>
+
+                  <h3 class="mt-4 text-[1.08rem] font-semibold leading-6 text-opus-dark">
+                    {member.name}
+                  </h3>
+
+                  <div class="mt-6 space-y-5">
+                    <div>
+                      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                        La Vision
+                      </p>
+                      <p class="mt-2 text-sm leading-7 text-neutral-700">{member.vision}</p>
+                    </div>
+
+                    <div>
+                      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                        Le Rôle
+                      </p>
+                      <p class="mt-2 text-sm leading-7 text-neutral-700">{member.role}</p>
+                    </div>
+
+                    <div>
+                      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                        L’Engagement
+                      </p>
+                      <p class="mt-2 text-sm leading-7 text-neutral-700">{member.commitment}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

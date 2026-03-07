@@ -1,0 +1,15 @@
+# Default: store as LF in repo
+* text=auto eol=lf
+
+# Keep Windows scripts consistent if you ever add them
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# SVG and web assets as LF
+*.svg text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.astro text eol=lf
+*.json text eol=lf
+*.md text eol=lf

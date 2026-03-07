@@ -1,0 +1,43 @@
+---
+interface Props {
+  eyebrow?: string;
+  title?: string;
+  body?: string;
+  meta?: string[];
+}
+
+const {
+  eyebrow = "DOCUMENTED EXECUTION",
+  title = "Architecture, intégration et IA appliquée.",
+  body = "Une approche documentaire et opérationnelle pour transformer des besoins complexes en résultats traçables, gouvernés et exécutables.",
+  meta = ["Verified delivery model", "Hybrid teams Québec–Tunisie", "Focused on enterprise-grade outcomes"],
+} = Astro.props;
+---
+
+<aside
+  aria-label="Carte documentaire"
+  class="border border-white/40 bg-white/60 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.16)] backdrop-blur-md supports-[backdrop-filter]:bg-white/50 md:p-5"
+>
+  <p class="text-[0.65rem] font-semibold uppercase tracking-[0.26em] text-neutral-500">
+    {eyebrow}
+  </p>
+
+  <div class="mt-3 h-[1.75px] w-14 bg-opus-red"></div>
+
+  <h2 class="mt-4 text-[0.98rem] font-semibold leading-6 tracking-[-0.01em] text-opus-dark md:text-[1.02rem]">
+    {title}
+  </h2>
+
+  <p class="mt-3 text-sm leading-6 text-neutral-700">
+    {body}
+  </p>
+
+  <ul class="mt-4 space-y-2">
+    {meta.map((item) => (
+      <li class="flex items-start gap-2 text-[0.78rem] leading-5 text-neutral-700">
+        <span class="mt-[0.45rem] inline-block h-[2px] w-3 shrink-0 bg-opus-red"></span>
+        <span>{item}</span>
+      </li>
+    ))}
+  </ul>
+</aside>

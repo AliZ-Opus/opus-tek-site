@@ -1,0 +1,247 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import heroImage from "../assets/hero/opus-phoenixx-opus.png";
+
+const pageTitle = "Phoenixx ↔ OPUS — Modèle opératoire et ancrage canadien";
+const pageDescription =
+  "Découvrez le modèle Phoenixx ↔ OPUS : une fondation canadienne solide, une exécution technologique agile et une gouvernance structurée.";
+
+const proofItems = [
+  {
+    label: "Established in Canada",
+    text: "Un ancrage canadien clair pour soutenir la relation d’affaires, la continuité et la crédibilité du cadre commercial.",
+  },
+  {
+    label: "Structured Governance",
+    text: "Un mode de fonctionnement lisible, documenté et aligné sur des contextes exigeants, sans ambiguïté sur les rôles.",
+  },
+];
+
+const proofNodes = [
+  {
+    label: "Established in Canada",
+    text: "Présence et cadre d’affaires établis côté canadien.",
+  },
+  {
+    label: "Structured Governance",
+    text: "Mode opératoire clair, traçable et encadré.",
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section aria-label="Phoenixx et OPUS" class="relative isolate overflow-clip bg-white">
+      <div class="mx-auto w-full grid min-h-[80svh] max-h-[760px] max-w-[1680px] grid-cols-1 items-center px-4 py-10 md:px-8 lg:grid-cols-[40%_60%] xl:grid-cols-[40%_60%] xl:px-10">
+        <div class="relative z-20 flex min-w-0 items-center">
+          <div class="relative w-full max-w-[800px] py-8 lg:py-12 lg:pr-12 xl:pr-24">
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-y-0 -left-8 right-[-38%] z-0"
+              style="
+                background: linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0) 100%);
+                -webkit-mask-image: linear-gradient(to right, black 42%, transparent 100%);
+                mask-image: linear-gradient(to right, black 42%, transparent 100%);
+                -webkit-mask-repeat: no-repeat;
+                mask-repeat: no-repeat;
+                -webkit-mask-size: 100% 100%;
+                mask-size: 100% 100%;
+              "
+            ></div>
+
+            <div class="relative z-10">
+              <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+                PHOENIXX ↔ OPUS
+              </p>
+
+              <h1 class="max-w-[18ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
+                OPUS mène l’exécution. Phoenixx renforce la fondation.
+              </h1>
+
+              <p class="mt-6 max-w-[60ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+                Cette page présente un modèle simple et crédible : OPUS agit comme unité d’exécution spécialisée,
+                tandis que Phoenixx apporte l’ancrage canadien, la structure d’affaires et le cadre de continuité
+                qui renforcent la confiance.
+              </p>
+
+              <div class="mt-7 h-[2px] w-24 bg-opus-red"></div>
+
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="/contact"
+                  class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+                >
+                  Parler à OPUS →
+                </a>
+
+                <a
+                  href="https://phoenixx.ca/"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+                >
+                  Découvrir Phoenixx →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative mt-6 h-full min-h-[400px] sm:min-h-[520px] lg:min-h-[560px] xl:mt-0 xl:min-h-[640px]">
+          <Image
+            src={heroImage}
+            alt="Visuel architectural illustrant le modèle Phoenixx et OPUS"
+            widths={[960, 1280, 1600, 1920]}
+            sizes="(max-width: 1023px) 100vw, 60vw"
+            format="avif"
+            quality={92}
+            loading="eager"
+            fetchpriority="high"
+            class="absolute inset-0 h-full w-full object-cover object-center"
+            style="opacity: 1 !important;"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="relative z-30 -mt-overlap-force">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="w-full border border-neutral-200 bg-white shadow-[0_16px_50px_rgba(0,0,0,0.07)]">
+          <div class="w-full grid grid-cols-1 divide-y divide-neutral-200 md:grid-cols-2 md:divide-x md:divide-y-0">
+            {proofItems.map((item) => (
+              <article class="p-6 md:p-7">
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+                  {item.label}
+                </p>
+
+                <div class="mt-3 h-[2px] w-12 bg-opus-red"></div>
+
+                <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+                  {item.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative bg-white py-16 md:py-24">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="max-w-[920px]">
+          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+            OPERATING MODEL
+          </p>
+
+          <h2 class="mt-4 text-[clamp(2rem,4vw,3.8rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+            L’agilité d’exécution, soutenue par une fondation canadienne solide.
+          </h2>
+
+          <p class="mt-5 max-w-[68ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+            Le modèle Phoenixx ↔ OPUS sépare clairement le rôle de soutien structurel du rôle de delivery.
+            Cette clarté renforce la confiance, la lisibilité commerciale et la capacité d’exécution.
+          </p>
+        </div>
+
+        <div class="mt-14 w-full grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_140px_1fr]">
+          <article class="border border-neutral-200 bg-neutral-50 p-7 shadow-[0_12px_36px_rgba(0,0,0,0.04)] md:p-8">
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+              CANADIAN BACKING
+            </p>
+
+            <div class="mt-3 h-[1.75px] w-12 bg-opus-red"></div>
+
+            <h3 class="mt-4 text-[1.2rem] font-semibold leading-7 text-opus-dark">
+              Phoenixx
+            </h3>
+
+            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+              Fondation canadienne, cadre commercial, continuité de relation, structure de gouvernance
+              et ancrage marché.
+            </p>
+          </article>
+
+          <div class="relative flex h-24 items-center justify-center lg:h-full">
+            <div class="absolute left-0 right-0 top-1/2 hidden h-px -translate-y-1/2 bg-neutral-300 lg:block"></div>
+            <div class="absolute bottom-0 left-1/2 top-0 w-px -translate-x-1/2 bg-neutral-300 lg:hidden"></div>
+
+            <div class="relative z-10 flex items-center justify-center">
+              <span class="block h-3.5 w-3.5 rounded-full bg-opus-red"></span>
+            </div>
+          </div>
+
+          <article class="border border-opus-dark/15 bg-white p-7 shadow-lg md:p-8">
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+              EXECUTION LEAD
+            </p>
+
+            <div class="mt-3 h-[1.75px] w-12 bg-opus-red"></div>
+
+            <h3 class="mt-4 text-[1.2rem] font-semibold leading-7 text-opus-dark">
+              OPUS Technology
+            </h3>
+
+            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+              Unité d’exécution agile, expertise technologique, delivery ciblé, intégration,
+              architecture et capacité d’accélération.
+            </p>
+          </article>
+        </div>
+
+        <div class="mt-10 w-full grid grid-cols-1 gap-4 md:grid-cols-2 max-w-[900px]">
+          {proofNodes.map((node) => (
+            <aside class="border border-neutral-200 bg-white/85 px-5 py-4 shadow-[0_8px_24px_rgba(0,0,0,0.04)] backdrop-blur-sm">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+                {node.label}
+              </p>
+
+              <div class="mt-2 h-[2px] w-10 bg-opus-red"></div>
+
+              <p class="mt-3 text-sm leading-6 text-neutral-700">
+                {node.text}
+              </p>
+            </aside>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-neutral-200 bg-white py-16 md:py-20">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="max-w-[920px]">
+          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+            NEXT STEP
+          </p>
+
+          <h2 class="mt-4 text-[clamp(1.9rem,3.8vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+            Avancer avec un modèle clair, crédible et orienté exécution.
+          </h2>
+
+          <p class="mt-5 max-w-[65ch] text-base leading-8 text-neutral-700">
+            OPUS intervient comme unité d’exécution et de structuration technologique. Phoenixx apporte
+            l’assise canadienne, le cadre relationnel et la continuité d’affaires qui renforcent le modèle.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href="/contact"
+              class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+            >
+              Parler à OPUS →
+            </a>
+
+            <a
+              href="https://phoenixx.ca/"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+            >
+              Découvrir Phoenixx →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

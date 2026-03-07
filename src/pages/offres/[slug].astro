@@ -1,0 +1,17 @@
+---
+export const prerender = true;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import OfferTemplate from '../../components/offers/OfferTemplate.astro';
+import { offers } from '../../data/offers';
+
+export function getStaticPaths() {
+  return offers.map((offer) => ({ params: { slug: offer.slug }, props: { offer } }));
+}
+
+const { offer } = Astro.props;
+---
+<BaseLayout title={`${offer.title} — OPUS Technology`} description={offer.tagline}>
+  <main id="main" class="site-main">
+    <OfferTemplate offer={offer} />
+  </main>
+</BaseLayout>

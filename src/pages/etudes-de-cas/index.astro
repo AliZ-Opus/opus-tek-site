@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const cases = [
+  {
+    href: "/etudes-de-cas/appels-offres-ia",
+    kicker: "ÉTUDE DE CAS",
+    title: "Ciblage intelligent des appels d’offres par IA",
+    text: "Automatisation de la recherche, analyse et priorisation des AO selon probabilité de succès, avec explication des facteurs.",
+    tags: ["IA", "Automatisation", "Appels d’offres"],
+  },
+  {
+    href: "/etudes-de-cas/nostra",
+    kicker: "ÉTUDE DE CAS",
+    title: "Optimisation de la décision financière via calcul intensif",
+    text: "Plateforme de calcul massif exécutée de nuit, résultats exploitables dès le matin. Volumétrie et performance à grande échelle.",
+    tags: ["Calcul intensif", "Data", "Finance"],
+  },
+  {
+    href: "/etudes-de-cas/nexaid",
+    kicker: "ÉTUDE DE CAS",
+    title: "Optimisation des opérations par IA (contexte réglementé)",
+    text: "Diagnostic des frictions et déploiement de solutions IA intégrées aux outils existants, adoption rapide et transfert de connaissances.",
+    tags: ["IA", "Ops", "Conformité"],
+  },
+];
+---
+
+<BaseLayout
+  title="Études de cas — OPUS Technology"
+  description="Études de cas OPUS : preuves terrain, résultats mesurables, contextes exigeants (IA, données, automatisation)."
+  ogImage="/og/opus-hero-cgi.png"
+>
+  <main id="main" class="site-main">
+    <section class="split-hero" aria-label="Études de cas - en-tête">
+      <div class="wrap">
+        <div class="split-hero-inner">
+          <div>
+            <a class="split-hero-link" href="/ressources">← Ressources</a>
+            <h1 class="split-hero-h1">Études de cas</h1>
+            <p class="split-hero-lead">
+              Des exemples concrets (présentés de manière synthétique) pour illustrer nos approches de
+              <strong> cadrage</strong>, <strong>delivery</strong> et <strong>exécution</strong>.
+            </p>
+
+            <div class="hero-cta" style="margin-top:18px;">
+              <a class="btn btn-primary" href="/contact">Soumettre un besoin →</a>
+              <a class="btn btn-secondary" href="/services">Voir nos services →</a>
+            </div>
+          </div>
+
+          <div class="split-hero-media" aria-hidden="true">
+            <img src="/og/opus-hero-cgi.png" alt="" loading="eager" decoding="async" />
+            <div class="split-hero-badge"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" aria-label="Liste des études de cas">
+      <div class="wrap">
+        <div class="page-inner" style="padding-top:42px;">
+          <h2 class="section-title">Explore all case studies</h2>
+
+          <div class="case-grid" role="list">
+            {cases.map((c) => (
+              <a class="case-card" href={c.href} role="listitem" aria-label={`${c.title} — ouvrir`}>
+                <p class="case-card-kicker">{c.kicker}</p>
+                <h3 class="case-card-title">{c.title}</h3>
+                <p class="case-card-text">{c.text}</p>
+
+                <div class="case-tags" aria-hidden="true">
+                  {c.tags.map((t) => <span class="case-tag">{t}</span>)}
+                </div>
+
+                <div class="case-cta" aria-hidden="true">Lire l’étude de cas</div>
+              </a>
+            ))}
+          </div>
+
+          <div class="breadcrumb">
+            <a href="/">Accueil</a> <span>→</span> <span>Études de cas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

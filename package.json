@@ -1,0 +1,29 @@
+{
+  "name": "opus-tek-poc",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.17.1",
+    "resend": "^6.9.3",
+    "tailwindcss": "^4.1.18"
+  },
+  "engines": {
+    "node": ">=20.19.0 <21"
+  },
+  "devDependencies": {
+    "@astrojs/vercel": "^8.2.11"
+  },
+  "volta": {
+    "node": "20.19.0"
+  },
+  "overrides": {
+    "path-to-regexp": "^6.2.3"
+  }
+}

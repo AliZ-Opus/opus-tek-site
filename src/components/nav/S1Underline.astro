@@ -1,0 +1,98 @@
+---
+interface Props {
+  selector?: string;
+  active?: string;
+}
+
+const {
+  selector = '[data-s1-item]',
+  active = '[aria-current="page"]',
+} = Astro.props;
+---
+
+<div
+  class="relative inline-flex"
+  data-s1-root
+  data-s1-selector={selector}
+  data-s1-active={active}
+>
+  <slot />
+
+  <span
+    aria-hidden="true"
+    data-s1-cursor
+    class="pointer-events-none absolute bottom-0 left-0 bg-opus-red opacity-0"
+    style="height: var(--s1); width: 0; transform: translateX(0); transition: all 300ms ease-out;"
+  ></span>
+</div>
+
+<script>
+  function initS1(root) {
+    if (!root) return;
+
+    const selector = root.dataset.s1Selector || '[data-s1-item]';
+    const activeSelector = root.dataset.s1Active || '[aria-current="page"]';
+    const cursor = root.querySelector('[data-s1-cursor]');
+    if (!cursor) return;
+
+    const items = Array.from(root.querySelectorAll(selector)).filter((el) => el instanceof HTMLElement);
+    if (!items.length) {
+      cursor.style.opacity = '0';
+      cursor.style.width = '0px';
+      return;
+    }
+
+    const getAnchorItem = () => {
+      const activeItem = root.querySelector(activeSelector);
+      if (activeItem instanceof HTMLElement) return activeItem;
+      return items[0];
+    };
+
+    const placeCursor = (target) => {
+      if (!(target instanceof HTMLElement)) return;
+      const rootRect = root.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const left = targetRect.left - rootRect.left + root.scrollLeft;
+      const width = targetRect.width;
+      cursor.style.left = `${left}px`;
+      cursor.style.width = `${width}px`;
+      cursor.style.opacity = '1';
+    };
+
+    const resetCursor = () => placeCursor(getAnchorItem());
+    let rafId = 0;
+    const schedulePlace = (target) => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => placeCursor(target));
+    };
+
+    items.forEach((item) => {
+      item.addEventListener('mouseenter', () => schedulePlace(item));
+      item.addEventListener('focus', () => schedulePlace(item));
+    });
+
+    root.addEventListener('mouseleave', resetCursor);
+    root.addEventListener('focusout', () => {
+      requestAnimationFrame(() => {
+        const focused = document.activeElement;
+        if (!root.contains(focused)) resetCursor();
+      });
+    });
+
+    const resizeObserver = new ResizeObserver(() => resetCursor());
+    resizeObserver.observe(root);
+    items.forEach((item) => resizeObserver.observe(item));
+    resetCursor();
+  }
+
+  function bootS1() {
+    document.querySelectorAll('[data-s1-root]').forEach((root) => {
+      if (root.dataset.s1Ready === 'true') return;
+      root.dataset.s1Ready = 'true';
+      initS1(root);
+    });
+  }
+
+  bootS1();
+  document.addEventListener('astro:page-load', bootS1);
+</script>

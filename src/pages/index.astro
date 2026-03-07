@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import HomeProofStrip from "../components/HomeProofStrip.astro";
+import HomeServicesHub from "../components/HomeServicesHub.astro";
+import MicroBand from "../components/MicroBand.astro";
+import bandServices from "../assets/bands/opus-band-services.png";
+import bandTrust from "../assets/bands/opus-band-trust.png";
+const pageTitle = "OPUS Technology — Architecture, IA, intégration et exécution";
+const pageDescription = "OPUS Technology accompagne les organisations dans l’architecture, l’intégration, les plateformes et l’intelligence artificielle, avec une approche rigoureuse, documentaire et orientée exécution.";
+---
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <Hero />
+    <section aria-label="Preuves et réassurance" class="relative z-30 -mt-overlap-force"><div class="mx-auto max-w-[1680px] px-4 md:px-8 xl:px-10"><HomeProofStrip /></div></section>
+    <HomeServicesHub />
+    <MicroBand src={bandServices} alt="Séparateur panoramique CGI OPUS services" height={500} slogan="La théorie ne vaut rien sans l’exécution." />
+    <section class="pb-20 pt-16 md:pb-24 md:pt-20">
+  <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+    <div class="w-full grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_.95fr]">
+      <div>
+        <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+          OPUS TECHNOLOGY
+        </p>
+
+        <h2 class="mt-5 max-w-[14ch] text-[clamp(2rem,4vw,3.6rem)] font-semibold leading-[0.98] tracking-[-0.035em] text-opus-dark">
+          Une exécution technologique qui inspire confiance.
+        </h2>
+      </div>
+
+      <div class="max-w-[70ch]">
+        <p class="text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+          OPUS structure des services, des solutions et des capacités d’exécution pour des contextes où la rigueur
+          n’est pas une option. Le site doit traduire cette posture immédiatement : clarté, profondeur, netteté visuelle
+          et autorité documentaire.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="/services"
+            class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+          >
+            Explorer les services →
+          </a>
+
+          <a
+            href="/phoenixx-opus"
+            class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+          >
+            Voir le modèle Phoenixx + OPUS →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <MicroBand src={bandTrust} alt="Séparateur panoramique CGI OPUS confiance" height={500} slogan="Des résultats documentés, une confiance vérifiée." />
+  </main>
+</BaseLayout>

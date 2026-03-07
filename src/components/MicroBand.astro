@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  height?: number;
+  priority?: boolean;
+  slogan?: string;
+  class?: string;
+}
+
+const { src, alt, height = 500, priority = false, slogan, class: className = "" } = Astro.props;
+---
+
+<section aria-label={alt} class={`relative isolate overflow-hidden bg-white ${className}`} style={`height:${height}px;`}>
+  <div aria-hidden="true" class="absolute inset-0" style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: 100% 100%; mask-size: 100% 100%;">
+    <div class="hidden h-full w-full md:block [background-attachment:fixed]">
+      <Image src={src} alt={alt} widths={[1280,1600,1920,2560]} sizes="100vw" format="avif" quality={90} loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high':'auto'} class="h-full w-full object-cover object-center" style="opacity: 1 !important; mix-blend-mode: luminosity;" />
+    </div>
+    <div class="absolute inset-0 md:hidden">
+      <Image src={src} alt={alt} widths={[750,1080,1280]} sizes="100vw" format="avif" quality={88} loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high':'auto'} class="h-full w-full object-cover object-center" style="opacity: 1 !important; mix-blend-mode: luminosity;" />
+    </div>
+  </div>
+
+  {(slogan || Astro.slots.has("default")) && (
+    <div class="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 text-center">
+      {slogan ? (
+        <p class="max-w-[16ch] text-[clamp(2rem,5vw,4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.22), 0 10px 28px rgba(0,0,0,0.16);">{slogan}</p>
+      ) : (
+        <div class="max-w-[16ch] text-[clamp(2rem,5vw,4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-white" style="text-shadow: 0 2px 10px rgba(0,0,0,0.22), 0 10px 28px rgba(0,0,0,0.16);"><slot /></div>
+      )}
+    </div>
+  )}
+</section>
