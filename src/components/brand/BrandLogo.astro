@@ -1,0 +1,29 @@
+---
+interface Props {
+  theme?: "light" | "dark";
+  className?: string;
+  alt?: string;
+}
+
+const {
+  theme = "dark",
+  className = "",
+  alt = "OPUS Technology",
+} = Astro.props;
+
+const src =
+  theme === "light"
+    ? "/assets/brand/logo-light.svg"
+    : "/assets/brand/logo-dark.svg";
+---
+
+<img
+  src={src}
+  alt={alt}
+  loading="eager"
+  decoding="async"
+  class:list={[
+    "block h-auto w-auto max-w-full select-none",
+    className,
+  ]}
+/>

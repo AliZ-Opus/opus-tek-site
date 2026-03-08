@@ -1,116 +1,17 @@
 ---
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PolicyCard from "../components/PolicyCard.astro";
-import heroImage from "../assets/hero/opus-offres.png";
+import HomeServicesHub from "../components/HomeServicesHub.astro";
+import heroImage from "../assets/hero/opus-services.png";
 
-const pageTitle = "Offres — OPUS Technology";
+const pageTitle = "Services — OPUS Technology";
 const pageDescription =
-  "Trois offres, un même principe : structurer avant d’accélérer. Découvrez les offres OPUS en architecture, ingénierie et intelligence.";
-
-const offers = [
-  {
-    label: "01",
-    title: "Architecture",
-    body:
-      "Cadrer les fondations, sécuriser les choix structurants et rendre les trajectoires technologiques lisibles avant toute accélération.",
-  },
-  {
-    label: "02",
-    title: "Ingénierie",
-    body:
-      "Transformer une vision validée en dispositifs concrets, intégrés et livrables, avec une discipline d’exécution claire.",
-  },
-  {
-    label: "03",
-    title: "Intelligence",
-    body:
-      "Mettre les données, les signaux et l’IA au service de décisions plus nettes, d’une gouvernance plus forte et d’une exécution plus pertinente.",
-  },
-];
-
-const offerDetails = [
-  {
-    eyebrow: "ARCHITECTURE",
-    intro:
-      "L’offre Architecture clarifie les fondations avant d’engager des efforts de construction ou d’implémentation.",
-    cards: [
-      {
-        label: "Position",
-        title: "Décider avec structure",
-        body:
-          "Nous cadrons les capacités, les intégrations, les contraintes et les arbitrages pour éviter les décisions prises trop tôt ou sur des bases incomplètes.",
-      },
-      {
-        label: "How we operate",
-        title: "Cadrage, alignement, preuves",
-        body:
-          "Architecture de solution, architecture d’intégration, gouvernance, sécurité et lisibilité des responsabilités sont traitées comme un tout cohérent.",
-      },
-      {
-        label: "What you get",
-        title: "Un socle plus robuste",
-        body:
-          "Le client obtient des orientations plus défendables, un périmètre mieux maîtrisé et une base plus crédible pour la suite du delivery.",
-      },
-    ],
-  },
-  {
-    eyebrow: "INGÉNIERIE",
-    intro:
-      "L’offre Ingénierie transforme les choix validés en capacités concrètes, intégrées et exploitables.",
-    cards: [
-      {
-        label: "Position",
-        title: "Livrer avec contrôle",
-        body:
-          "Nous privilégions une exécution disciplinée, lisible et gouvernée, pour éviter les implémentations dispersées ou difficilement maintenables.",
-      },
-      {
-        label: "How we operate",
-        title: "Intégration, automatisation, delivery",
-        body:
-          "Les chaînes de livraison, les flux, l’automatisation et les capacités de portail ou d’orchestration sont assemblés dans un cadre opérationnel clair.",
-      },
-      {
-        label: "What you get",
-        title: "Des capacités activables",
-        body:
-          "Le client bénéficie d’un delivery plus propre, plus vérifiable et plus simple à faire évoluer dans le temps.",
-      },
-    ],
-  },
-  {
-    eyebrow: "INTELLIGENCE",
-    intro:
-      "L’offre Intelligence vise à relier données, gouvernance et IA à des décisions réellement exploitables.",
-    cards: [
-      {
-        label: "Position",
-        title: "Décider avec signaux fiables",
-        body:
-          "Nous cherchons à rendre les données et l’IA utiles à l’arbitrage, plutôt que de multiplier des promesses déconnectées de l’exécution.",
-      },
-      {
-        label: "How we operate",
-        title: "Données, mesure, IA appliquée",
-        body:
-          "Stratégie de données, gouvernance, instrumentation, cas d’usage IA et lecture des résultats sont structurés de manière progressive et crédible.",
-      },
-      {
-        label: "What you get",
-        title: "Plus de clarté, moins de promesses vagues",
-        body:
-          "Le client obtient un cadre concret pour transformer des signaux et des capacités intelligentes en décisions et en résultats observables.",
-      },
-    ],
-  },
-];
+  "Naviguer par domaines, décider avec preuves, livrer avec contrôle. Explorez les domaines de services OPUS : architecture, ingénierie et intelligence.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main id="main-content" class="bg-white">
-    <section aria-label="Offres OPUS" class="relative isolate overflow-clip bg-white">
+    <section aria-label="Services OPUS" class="relative isolate overflow-clip bg-white">
       <div class="mx-auto w-full grid min-h-[80svh] max-h-[760px] max-w-[1680px] grid-cols-1 items-center px-4 py-10 md:px-8 lg:grid-cols-[40%_60%] xl:grid-cols-[40%_60%] xl:px-10">
         <div class="relative z-20 flex min-w-0 items-center">
           <div class="relative w-full max-w-[800px] py-8 lg:py-12 lg:pr-12 xl:pr-24">
@@ -130,15 +31,17 @@ const offerDetails = [
 
             <div class="relative z-10">
               <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500 sm:text-xs">
-                OFFRES • ARCHITECTURE FIRST
+                SERVICES
               </p>
 
-              <h1 class="max-w-[20ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
-                Trois offres, un même principe : structurer avant d’accélérer.
+              <h1 class="max-w-[26ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
+                Naviguer par domaines, décider avec preuves, livrer avec contrôle.
               </h1>
 
-              <p class="mt-6 max-w-[62ch] text-base leading-8 text-neutral-700 md:text-[1.05rem]">
-                La structure 3/6/9 sert de garde-fou : 3 domaines, 6 piliers de delivery, 9 points de preuve pour éviter les promesses vagues.
+              <p class="mt-6 max-w-[60ch] text-base leading-8 text-neutral-700 md:text-[1.05rem]">
+                OPUS structure ses services pour rendre les capacités lisibles, les décisions plus claires
+                et l’exécution plus maîtrisée. L’objectif n’est pas d’ajouter du bruit, mais d’offrir un
+                cadre simple, crédible et immédiatement exploitable.
               </p>
 
               <div class="mt-7 h-[2px] w-24 bg-opus-red"></div>
@@ -149,7 +52,7 @@ const offerDetails = [
         <div class="relative mt-6 h-full min-h-[400px] sm:min-h-[520px] lg:min-h-[560px] xl:mt-0 xl:min-h-[640px]">
           <Image
             src={heroImage}
-            alt="Visuel architectural illustrant les offres OPUS"
+            alt="Visuel architectural illustrant les domaines de services OPUS"
             widths={[960, 1280, 1600, 1920]}
             sizes="(max-width: 1023px) 100vw, 60vw"
             format="avif"
@@ -163,74 +66,8 @@ const offerDetails = [
       </div>
     </section>
 
-    <section class="relative z-30 -mt-overlap-force">
-      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
-        <div class="w-full border border-neutral-200 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
-          <div class="w-full grid grid-cols-1 divide-y divide-neutral-200 md:grid-cols-3 md:divide-x md:divide-y-0">
-            {offers.map((offer) => (
-              <article class="p-6 md:p-7">
-                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
-                  {offer.label}
-                </p>
-
-                <div class="mt-3 h-[2px] w-12 bg-opus-red"></div>
-
-                <h2 class="mt-4 text-[1.05rem] font-semibold leading-6 text-opus-dark">
-                  {offer.title}
-                </h2>
-
-                <p class="mt-3 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-                  {offer.body}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-white pb-20 pt-16 md:pb-24 md:pt-20">
-      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
-        <div class="max-w-[920px]">
-          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
-            OFFERS FRAMEWORK
-          </p>
-
-          <h2 class="mt-4 text-[clamp(1.9rem,3.8vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
-            Une structure d’offres pensée pour réduire le flou et renforcer la décision.
-          </h2>
-
-          <p class="mt-5 max-w-[72ch] text-base leading-8 text-neutral-700">
-            Les offres OPUS ne sont pas des promesses marketing isolées. Elles constituent une lecture structurée des interventions possibles, avec un point d’entrée clair, une logique d’exécution cohérente et des résultats plus faciles à documenter.
-          </p>
-        </div>
-
-        <div class="mt-12 space-y-14">
-          {offerDetails.map((group) => (
-            <section class="border-t border-neutral-200 pt-12">
-              <div class="max-w-[920px]">
-                <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
-                  {group.eyebrow}
-                </p>
-
-                <p class="mt-4 max-w-[70ch] text-base leading-8 text-neutral-700">
-                  {group.intro}
-                </p>
-              </div>
-
-              <div class="mt-8 w-full grid grid-cols-1 gap-6 md:grid-cols-3">
-                {group.cards.map((card) => (
-                  <PolicyCard
-                    label={card.label}
-                    title={card.title}
-                    body={card.body}
-                  />
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
-      </div>
-    </section>
+    <div class="relative z-30 -mt-overlap-force">
+      <HomeServicesHub />
+    </div>
   </main>
 </BaseLayout>

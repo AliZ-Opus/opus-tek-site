@@ -3,6 +3,7 @@ import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
 import S1Underline from "../components/nav/S1Underline.astro";
 import Cursor from "../components/Cursor.astro";
+import BrandLogo from "../components/brand/BrandLogo.astro";
 
 interface NavItem {
   label: string;
@@ -52,16 +53,6 @@ const isActive = (href: string) => {
 const resolvedOgImage = ogImage.startsWith("http")
   ? ogImage
   : new URL(ogImage, Astro.site ?? Astro.url).href;
-
-const faviconSvg = `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#050505"/>
-  <path d="M32 14c11.046 0 20 8.954 20 20s-8.954 20-20 20-20-8.954-20-20 8.954-20 20-20Zm0 6c-7.732 0-14 6.268-14 14s6.268 14 14 14 14-6.268 14-14-6.268-14-14-14Z" fill="#FFFFFF"/>
-  <circle cx="48" cy="16" r="4" fill="#FF0000"/>
-</svg>
-`.trim();
-
-const faviconHref = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(faviconSvg)}`;
 ---
 
 <!doctype html>
@@ -79,7 +70,7 @@ const faviconHref = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(favic
     <meta name="robots" content="index,follow" />
 
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href={faviconHref} />
+    <link rel="icon" type="image/svg+xml" href="/assets/brand/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta property="og:type" content="website" />
@@ -95,6 +86,59 @@ const faviconHref = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(favic
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={resolvedOgImage} />
+
+    <style is:global>
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 400ms;
+        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      ::view-transition-old(root) {
+        animation-name: opus-fade-out;
+      }
+
+      ::view-transition-new(root) {
+        animation-name: opus-fade-in;
+      }
+
+      @keyframes opus-fade-out {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+
+      @keyframes opus-fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+          transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+        will-change: opacity, transform;
+      }
+
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+          animation-duration: 1ms;
+        }
+
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
   </head>
 
   <body class="min-h-full bg-white font-[Inter,sans-serif] text-opus-dark antialiased">
@@ -108,59 +152,64 @@ const faviconHref = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(favic
     </a>
 
     <header class="sticky top-0 z-[100] border-b border-black/6 bg-white/78 backdrop-blur-md supports-[backdrop-filter]:bg-white/72">
-      <div class="mx-auto w-full max-w-[1680px] flex items-center justify-between gap-6 px-4 py-4 md:px-8 xl:px-10">
-        <a
-          href="/"
-          class="inline-flex shrink-0 items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
-          aria-label="Accueil OPUS Technology"
-        >
-          <span class="inline-flex items-center text-[0.95rem] font-semibold uppercase tracking-[0.28em] text-opus-dark">
-            <span>OPUS</span>
-            <span class="mx-2 inline-block h-[0.52rem] w-[0.52rem] rounded-full bg-opus-red"></span>
-            <span class="text-neutral-500">Technology</span>
-          </span>
-        </a>
+      <div class="mx-auto w-full max-w-[1680px] px-4 py-4 md:px-8 xl:px-10">
+        <div class="grid w-full grid-cols-1 items-center gap-6 xl:grid-cols-[40%_60%]">
+          <div class="flex min-w-0 items-center justify-between gap-6">
+            <a
+              href="/"
+              class="inline-flex min-w-0 items-center hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+              aria-label="Accueil OPUS Technology"
+            >
+              <BrandLogo
+  theme="light"
+  className="h-14 w-auto md:h-16 lg:h-[72px]"
+/>
+            </a>
 
-        <div class="hidden min-w-0 flex-1 items-center justify-center xl:flex">
-          <S1Underline selector='[data-s1-item]' active='[aria-current="page"]'>
-            <nav aria-label="Navigation principale" class="flex min-w-0 items-center gap-7">
-              {navItems.map((item) => (
-                <a
-                  href={item.href}
-                  data-s1-item
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  class:list={[
-                    "inline-flex min-h-10 items-center pb-3 text-[0.77rem] font-medium uppercase tracking-[0.16em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]",
-                    isActive(item.href)
-                      ? "text-opus-dark"
-                      : "text-neutral-500 hover:text-opus-dark",
-                  ]}
-                >
-                  {item.label}
-                </a>
-              ))}
-            </nav>
-          </S1Underline>
+            <button
+              type="button"
+              aria-expanded="false"
+              aria-controls="mobile-drawer"
+              data-mobile-menu-toggle
+              class="inline-flex min-h-11 min-w-11 items-center justify-center border border-neutral-200 bg-white px-4 text-sm font-medium text-opus-dark transition hover:border-opus-dark xl:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+            >
+              Menu
+            </button>
+          </div>
+
+          <div class="hidden min-w-0 items-center justify-between gap-6 xl:flex">
+            <div class="min-w-0 flex-1">
+              <S1Underline selector='[data-s1-item]' active='[aria-current="page"]'>
+                <nav aria-label="Navigation principale" class="flex min-w-0 items-center gap-7">
+                  {navItems.map((item) => (
+                    <a
+                      href={item.href}
+                      data-s1-item
+                      aria-current={isActive(item.href) ? "page" : undefined}
+                      class:list={[
+                        "inline-flex min-h-10 items-center pb-3 text-[0.77rem] font-medium uppercase tracking-[0.16em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]",
+                        isActive(item.href)
+                          ? "text-opus-dark"
+                          : "text-neutral-500 hover:text-opus-dark",
+                      ]}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
+              </S1Underline>
+            </div>
+
+            <div class="shrink-0">
+              <a
+                href="/contact"
+                class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-5 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+              >
+                Soumettre un besoin →
+              </a>
+            </div>
+          </div>
         </div>
-
-        <div class="hidden shrink-0 items-center gap-3 xl:flex">
-          <a
-            href="/contact"
-            class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-5 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
-          >
-            Soumettre un besoin →
-          </a>
-        </div>
-
-        <button
-          type="button"
-          aria-expanded="false"
-          aria-controls="mobile-drawer"
-          data-mobile-menu-toggle
-          class="inline-flex min-h-11 min-w-11 items-center justify-center border border-neutral-200 bg-white px-4 text-sm font-medium text-opus-dark transition hover:border-opus-dark xl:hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
-        >
-          Menu
-        </button>
       </div>
 
       <div
@@ -207,11 +256,16 @@ const faviconHref = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(favic
 
       <div class="mx-auto w-full max-w-[1680px] grid grid-cols-1 gap-10 px-4 py-12 md:px-8 md:py-14 lg:grid-cols-[1.15fr_.9fr_.95fr] xl:px-10">
         <div class="max-w-[56ch]">
-          <div class="inline-flex items-center text-[0.92rem] font-semibold uppercase tracking-[0.28em] text-opus-dark">
-            <span>OPUS</span>
-            <span class="mx-2 inline-block h-[0.5rem] w-[0.5rem] rounded-full bg-opus-red"></span>
-            <span class="text-neutral-500">Technology</span>
-          </div>
+          <a
+            href="/"
+            class="inline-flex items-center hover:opacity-80 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+            aria-label="Accueil OPUS Technology"
+          >
+            <BrandLogo
+              theme="light"
+              className="h-8 w-auto"
+            />
+          </a>
 
           <p class="mt-5 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
             Exécution claire. Gouvernance lisible.
