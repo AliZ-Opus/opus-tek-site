@@ -1,0 +1,12 @@
+---
+// Large immersive band separator with centered slogan.
+// Usage: <BandSlogan src="/assets/opus-band1-vfinal.png" slogan="..." />
+const { src, slogan, class: className = "" } = Astro.props;
+---
+
+<section class={"band-slogan " + className} style={`--band-src: url('${src}')`} aria-label={slogan}>
+  <div class="band-slogan__overlay" aria-hidden="true"></div>
+  <div class="band-slogan__inner">
+    <p class="band-slogan__text">{slogan}</p>
+  </div>
+</section>

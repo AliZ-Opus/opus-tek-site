@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const pageTitle = "Nostra — Étude de cas — OPUS Technology";
+const pageDescription =
+  "Comment OPUS a transformé une masse de calcul critique en capacité d’exécution crédible, stable et gouvernée.";
+
+const kpis = [
+  { value: "+30k", label: "Données par entreprise" },
+  { value: "+400 M", label: "Calculs de nuit" },
+  { value: "+80 %", label: "Taux de succès" },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section class="bg-white py-24 md:py-28">
+      <div class="mx-auto w-full max-w-[900px] px-4 md:px-8">
+        <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+          ÉTUDE DE CAS
+        </p>
+
+        <h1 class="mt-5 text-4xl font-black tracking-tight text-opus-dark md:text-5xl">
+          Nostra — Transformer la masse de calcul en capacité d’exécution crédible
+        </h1>
+
+        <p class="mt-8 text-[1rem] leading-[1.8] text-neutral-700">
+          Nostra devait absorber une volumétrie de calcul et de traitement très importante, sans perdre en stabilité,
+          en lisibilité ni en gouvernance opérationnelle.
+        </p>
+
+        <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {kpis.map((kpi) => (
+            <article class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+                Verified
+              </p>
+              <p class="mt-4 text-[clamp(1.8rem,3vw,2.4rem)] font-semibold leading-none tracking-[-0.04em] text-opus-red">
+                {kpi.value}
+              </p>
+              <p class="mt-3 text-sm leading-6 text-neutral-700">
+                {kpi.label}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-14 overflow-x-auto">
+          <table class="w-full border border-neutral-200 text-left">
+            <thead>
+              <tr class="bg-neutral-100">
+                <th class="p-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-600">
+                  Avant OPUS
+                </th>
+                <th class="border-l border-neutral-200 p-4 text-sm font-semibold uppercase tracking-[0.18em] text-opus-dark">
+                  Après OPUS
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-neutral-200">
+                <td class="p-4 leading-[1.8] text-neutral-700">
+                  Systèmes sous pression et difficulté à soutenir durablement la montée en charge.
+                </td>
+                <td class="border-l border-neutral-200 p-4 font-medium leading-[1.8] text-opus-dark">
+                  Architecture plus cohérente, plus stable et mieux adaptée aux volumes critiques.
+                </td>
+              </tr>
+              <tr class="border-t border-neutral-200">
+                <td class="p-4 leading-[1.8] text-neutral-700">
+                  Faible lisibilité sur les flux critiques et sur la qualité réelle d’exécution.
+                </td>
+                <td class="border-l border-neutral-200 p-4 font-medium leading-[1.8] text-opus-dark">
+                  Traitement structuré à grande échelle avec lecture plus claire des mécanismes sensibles.
+                </td>
+              </tr>
+              <tr class="border-t border-neutral-200">
+                <td class="p-4 leading-[1.8] text-neutral-700">
+                  Exploitation lourde, peu résiliente et difficile à gouverner.
+                </td>
+                <td class="border-l border-neutral-200 p-4 font-medium leading-[1.8] text-opus-dark">
+                  Continuité opérationnelle renforcée et meilleure capacité à absorber les volumes.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-14">
+          <h2 class="text-2xl font-semibold tracking-tight text-opus-dark">
+            Levier technique
+          </h2>
+
+          <p class="mt-5 leading-[1.8] text-neutral-700">
+            OPUS a traité le problème comme un enjeu d’architecture d’exécution, et non comme une simple question
+            de puissance brute. L’approche a consisté à structurer les traitements, séquencer les mécanismes critiques,
+            clarifier les dépendances et stabiliser la logique opérationnelle sous forte charge.
+          </p>
+
+          <p class="mt-5 leading-[1.8] text-neutral-700">
+            Le résultat a été une capacité renforcée à soutenir la croissance des volumes tout en maintenant une lecture
+            plus crédible de la performance et de la continuité.
+          </p>
+        </div>
+
+        <div class="mt-16 h-28 w-[2px] bg-opus-red"></div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

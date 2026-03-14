@@ -1,0 +1,66 @@
+---
+const proofNodes = [
+  'Décisions explicites',
+  'Backlog priorisé',
+  'Interfaces tracées',
+  'Gates qualité',
+  'Readiness env',
+  'Contrôles sécurité',
+  'Métriques vérifiées',
+  'Handover exploitable',
+  'Escalade claire',
+];
+---
+<section class="home-proof-rail" aria-label="Rail de preuves et crédibilité">
+  <div class="wrap">
+    <div class="home-proof-rail__head">
+      <div>
+        <div class="page-kicker" style="margin:0;">PROOF RAIL • 3 / 6 / 9</div>
+        <h2 class="home-proof-rail__title">Des preuves visibles pour soutenir le Hub Services.</h2>
+        <p class="home-proof-rail__lead">Le rail de preuves renforce la lecture du hub : quelques signaux forts, puis une grille de preuves scan-first. Les chiffres portent le rouge; le reste reste sobre.</p>
+      </div>
+      <div class="home-proof-rail__stats" aria-label="KPI de structure">
+        <div class="rail-stat"><span class="num">3</span><span class="txt">domaines</span></div>
+        <div class="rail-stat"><span class="num">6</span><span class="txt">piliers</span></div>
+        <div class="rail-stat"><span class="num">9</span><span class="txt">preuves</span></div>
+      </div>
+    </div>
+
+    <div class="home-proof-rail__grid" role="list">
+      {proofNodes.map((node, i) => (
+        <article class="proof-node-card" role="listitem">
+          <div class="proof-node-card__idx">0{i + 1}</div>
+          <h3>{node}</h3>
+          <p>Élément de crédibilité lié au delivery, à la gouvernance ou à la qualité — consultable dans les pages Offres / Confiance.</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-proof-rail{background:#fff;padding:64px 0;border-top:1px solid rgba(var(--line),1);}
+  .home-proof-rail__head{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end;}
+  .home-proof-rail__title{margin:10px 0 0;font-family:ui-serif,Georgia,serif;font-size:clamp(26px,2.6vw,34px);line-height:1.12;letter-spacing:-.02em;}
+  .home-proof-rail__lead{margin:10px 0 0;color:rgba(var(--ink),.84);line-height:1.75;max-width:78ch;}
+  .home-proof-rail__stats{display:flex;gap:16px;align-items:flex-end;justify-content:flex-end;}
+  .rail-stat{display:grid;gap:2px;justify-items:end;}
+  .rail-stat .num{font-weight:950;font-size:22px;color:rgba(var(--red),1);line-height:1;}
+  .rail-stat .txt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(var(--ink),.92);font-weight:900;}
+
+  .home-proof-rail__grid{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+  .proof-node-card{background:#fbfbfc;border:1px solid rgba(var(--line),1);border-radius:16px;padding:14px 14px 12px;min-width:0;}
+  .proof-node-card__idx{font-weight:950;color:rgba(var(--red),1);letter-spacing:.06em;font-size:12px;}
+  .proof-node-card h3{margin:8px 0 0;font-size:15px;line-height:1.25;letter-spacing:-.01em;}
+  .proof-node-card p{margin:8px 0 0;color:rgba(var(--ink),.78);font-size:13.5px;line-height:1.6;}
+
+  @media (max-width: 980px){
+    .home-proof-rail__head{grid-template-columns:1fr;}
+    .home-proof-rail__stats{justify-content:flex-start;}
+    .home-proof-rail__grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  @media (max-width: 640px){
+    .home-proof-rail{padding:54px 0;}
+    .home-proof-rail__grid{grid-template-columns:1fr;}
+  }
+</style>

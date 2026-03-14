@@ -1,3 +1,16 @@
 {
-  "framework": "astro"
+  "framework": "astro",
+  "redirects": [
+    { "source": "/etudes-de-cas", "destination": "/ressources", "permanent": true },
+    { "source": "/etudes-de-cas/:path*", "destination": "/ressources", "permanent": true },
+    { "source": "/solutions", "destination": "/services", "permanent": true },
+    { "source": "/partenaires", "destination": "/phoenixx-opus", "permanent": true },
+    { "source": "/expertises", "destination": "/services", "permanent": true },
+    { "source": "/marches", "destination": "/services", "permanent": true },
+    { "source": "/methode", "destination": "/phoenixx-opus", "permanent": true },
+    { "source": "/livraison", "destination": "/phoenixx-opus", "permanent": true },
+    { "source": "/faq", "destination": "/confiance", "permanent": true },
+    { "source": "/a-propos", "destination": "/phoenixx-opus", "permanent": true },
+    { "source": "/carrieres", "destination": "/contact", "permanent": true }
+  ]
 }

@@ -1,0 +1,125 @@
+---
+const pillars = [
+  {
+    label: "PILIER 01",
+    eyebrow: "Cloud & Identity Governance",
+    title: "Transformer l’infrastructure en fondation gouvernée.",
+    body:
+      "Nous structurons la fondation cloud et identitaire pour rendre l’accélération numérique gouvernable. Landing Zones, Entra ID, Identity Governance, Power Platform et Dynamics 365 deviennent des leviers de cohérence, de conformité et d’automatisation, pas une accumulation d’outils.",
+    tags: ["Landing Zones", "Entra ID", "Identity Governance", "Dynamics 365", "Power Platform"],
+  },
+  {
+    label: "PILIER 02",
+    eyebrow: "Workflow & Service Operations",
+    title: "Fluidifier l’exécution pour libérer la décision.",
+    body:
+      "Nous standardisons les parcours de service et renforçons la lisibilité opérationnelle pour réduire la friction, accélérer les traitements et rendre l’exécution plus prévisible. CMDB, CSDM, ITOM et pratiques DevSecOps servent ici à soutenir une capacité de livraison fiable à grande échelle.",
+    tags: ["ServiceNow", "CMDB", "CSDM", "ITOM", "DevSecOps"],
+  },
+  {
+    label: "PILIER 03",
+    eyebrow: "Decision Intelligence & Applied AI",
+    title: "Faire de l’IA un levier de précision, pas un effet d’annonce.",
+    body:
+      "Nous intégrons l’IA dans un cadre gouverné, documenté et utile au travail réel. RAG, copilotes métiers et human-in-the-loop servent à améliorer la qualité des réponses, la rapidité d’analyse et la précision décisionnelle, sans sacrifier la maîtrise du risque.",
+    tags: ["RAG", "Azure OpenAI", "Copilotes métiers", "Human-in-the-loop", "AI Governance"],
+  },
+  {
+    label: "PILIER 04",
+    eyebrow: "Integration & System Architecture",
+    title: "Connecter les silos pour rendre l’organisation lisible, résiliente et pilotable.",
+    body:
+      "Nous concevons des architectures d’intégration capables d’unifier des plateformes hétérogènes, d’orchestrer les flux critiques et de rendre les données exploitables en temps réel. APIs, messageries, événements, observabilité et traçabilité deviennent les mécanismes d’une exécution cohérente et durable.",
+    tags: ["API Management", "Service Bus", "Event Grid", "Observabilité", "Traçabilité"],
+  },
+];
+---
+
+<section class="bg-white py-20 md:py-24">
+  <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[40%_60%] lg:gap-12">
+      <div class="max-w-[720px]">
+        <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+          L’ARCHITECTURE D’EXÉCUTION
+        </p>
+
+        <h2 class="mt-4 max-w-[18ch] text-[clamp(1.9rem,3.8vw,3.4rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+          Les plateformes ne créent pas la valeur seules.
+        </h2>
+
+        <p class="mt-5 max-w-[66ch] text-base leading-8 text-neutral-700">
+          Ce qui compte, c’est l’architecture qui les gouverne, les relie et les transforme en système de décision.
+        </p>
+
+        <div class="mt-8 space-y-4 border border-neutral-200 bg-neutral-50 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+            Lecture opératoire
+          </p>
+
+          <div class="space-y-3 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+            <p>
+              <span class="font-semibold tracking-wide text-opus-dark">Microsoft</span>
+              fournit le socle plateforme, identité, données, IA et intégration.
+            </p>
+
+            <p>
+              <span class="font-semibold tracking-wide text-opus-dark">ServiceNow</span>
+              orchestre les services, les workflows et les opérations.
+            </p>
+
+            <p>
+              <span class="font-semibold tracking-wide text-opus-red">OPUS</span>
+              assemble l’ensemble comme système cohérent, gouverné et exploitable.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid w-full grid-cols-1 gap-6 lg:grid-cols-2">
+        {pillars.map((pillar) => (
+          <article class="group border border-neutral-200 bg-white p-6 transition duration-300 ease-out hover:-translate-y-[3px] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500 transition-colors duration-300 group-hover:text-opus-red">
+                  {pillar.label}
+                </p>
+
+                <div class="mt-3 h-[1.75px] w-12 bg-opus-red"></div>
+              </div>
+
+              <div aria-hidden="true" class="mt-1 shrink-0 text-neutral-300">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8">
+                  <path d="M4 12h6"></path>
+                  <path d="M14 12h6"></path>
+                  <path d="M12 4v6"></path>
+                  <path d="M12 14v6"></path>
+                  <circle cx="12" cy="12" r="2.5"></circle>
+                </svg>
+              </div>
+            </div>
+
+            <p class="mt-5 text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-neutral-500">
+              {pillar.eyebrow}
+            </p>
+
+            <h3 class="mt-3 text-[1.2rem] font-semibold leading-7 tracking-[-0.02em] text-opus-dark">
+              {pillar.title}
+            </h3>
+
+            <p class="mt-5 flex-1 text-sm leading-[1.8] text-neutral-700 md:text-[0.98rem]">
+              {pillar.body}
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              {pillar.tags.map((tag) => (
+                <span class="inline-flex items-center border border-neutral-200 bg-white px-3 py-2 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-neutral-600">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const pageTitle = "MegaWatt — Étude de cas — OPUS Technology";
+const pageDescription =
+  "Comment OPUS a structuré la performance énergétique comme un actif pilotable, avec des résultats mesurables et une exécution documentée.";
+
+const kpis = [
+  { value: "12 h/semaine", label: "Temps récupéré" },
+  { value: "+30 %", label: "Gain opérationnel" },
+  { value: "≈ 50 k$", label: "Valeur directe" },
+  { value: "> 1 M$", label: "Impact potentiel" },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section class="bg-white py-24 md:py-28">
+      <div class="mx-auto w-full max-w-[900px] px-4 md:px-8">
+        <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+          ÉTUDE DE CAS
+        </p>
+
+        <h1 class="mt-5 text-4xl font-black tracking-tight text-opus-dark md:text-5xl">
+          MegaWatt — Structurer la performance énergétique comme un actif pilotable
+        </h1>
+
+        <p class="mt-8 text-[1rem] leading-[1.8] text-neutral-700">
+          MegaWatt devait améliorer la maîtrise de ses opérations énergétiques, réduire les pertes invisibles
+          et transformer un pilotage fragmenté en système de décision réellement exploitable.
+        </p>
+
+        <div class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {kpis.map((kpi) => (
+            <article class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+                Verified
+              </p>
+              <p class="mt-4 text-[clamp(1.8rem,3vw,2.4rem)] font-semibold leading-none tracking-[-0.04em] text-opus-red">
+                {kpi.value}
+              </p>
+              <p class="mt-3 text-sm leading-6 text-neutral-700">
+                {kpi.label}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-14 overflow-x-auto">
+          <table class="w-full border border-neutral-200 text-left">
+            <thead>
+              <tr class="bg-neutral-100">
+                <th class="p-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-600">
+                  Avant OPUS
+                </th>
+                <th class="border-l border-neutral-200 p-4 text-sm font-semibold uppercase tracking-[0.18em] text-opus-dark">
+                  Après OPUS
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-neutral-200">
+                <td class="p-4 leading-[1.8] text-neutral-700">
+                  Lecture partielle des données énergétiques et faible visibilité sur les écarts.
+                </td>
+                <td class="border-l border-neutral-200 p-4 font-medium leading-[1.8] text-opus-dark">
+                  Architecture de pilotage clarifiée avec exploitation plus structurée des signaux.
+                </td>
+              </tr>
+              <tr class="border-t border-neutral-200">
+                <td class="p-4 leading-[1.8] text-neutral-700">
+                  Logique majoritairement réactive et décisions difficiles à défendre.
+                </td>
+                <td class="border-l border-neutral-200 p-4 font-medium leading-[1.8] text-opus-dark">
+                  Décisions énergétiques plus rapides, plus lisibles et plus défendables.
+                </td>
+              </tr>
+              <tr class="border-t border-neutral-200">
+                <td class="p-4 leading-[1.8] text-neutral-700">
+                  Arbitrages dispersés entre plusieurs points de lecture.
+                </td>
+                <td class="border-l border-neutral-200 p-4 font-medium leading-[1.8] text-opus-dark">
+                  Meilleure consolidation des informations et lecture plus propre des pertes.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-14">
+          <h2 class="text-2xl font-semibold tracking-tight text-opus-dark">
+            Levier technique
+          </h2>
+
+          <p class="mt-5 leading-[1.8] text-neutral-700">
+            OPUS a repositionné le sujet comme un enjeu d’architecture décisionnelle et non comme une simple
+            optimisation ponctuelle. L’intervention a consisté à structurer la collecte, qualifier les signaux,
+            consolider les points de lecture utiles et restituer une base d’arbitrage exploitable pour les équipes.
+          </p>
+
+          <p class="mt-5 leading-[1.8] text-neutral-700">
+            Cette approche a permis de faire passer la performance énergétique d’un objet subi à un actif pilotable,
+            avec une lecture plus nette des écarts, des pertes et des leviers d’amélioration.
+          </p>
+        </div>
+
+        <div class="mt-16 h-28 w-[2px] bg-opus-red"></div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

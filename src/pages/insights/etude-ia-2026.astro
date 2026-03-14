@@ -1,0 +1,592 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MicroBand from "../../components/MicroBand.astro";
+import bandTrust from "../../assets/bands/opus-band-trust.png";
+
+const pageTitle = "Observatoire des Compétences IA 2026 — Étude de marché";
+const pageDescription =
+  "Étude de marché sur l’éducation globale en IA, les MBA internationaux, les certifications professionnelles et les stages au Canada.";
+
+const steps = [
+  {
+    id: "identity",
+    title: "Profil du répondant",
+    fields: [
+      {
+        name: "first_name",
+        label: "Prénom",
+        type: "text",
+        placeholder: "Ton prénom",
+        required: true,
+      },
+      {
+        name: "last_name",
+        label: "Nom",
+        type: "text",
+        placeholder: "Ton nom",
+        required: true,
+      },
+      {
+        name: "email",
+        label: "Email",
+        type: "email",
+        placeholder: "nom@exemple.com",
+        required: true,
+      },
+      {
+        name: "phone",
+        label: "Téléphone",
+        type: "text",
+        placeholder: "+1 ... / +55 ... / +216 ...",
+        required: false,
+      },
+      {
+        name: "country",
+        label: "Pays",
+        type: "text",
+        placeholder: "Canada, Brésil, Tunisie...",
+        required: true,
+      },
+      {
+        name: "city",
+        label: "Ville",
+        type: "text",
+        placeholder: "Ta ville",
+        required: false,
+      },
+      {
+        name: "university",
+        label: "Université / établissement actuel",
+        type: "text",
+        placeholder: "Nom de ton université ou école",
+        required: true,
+      },
+      {
+        name: "study_year",
+        label: "Année d’études / niveau actuel",
+        type: "radio",
+        required: true,
+        options: [
+          "1re année",
+          "2e année",
+          "3e année",
+          "4e année",
+          "Master / MBA",
+          "Diplômé(e)",
+          "Professionnel(le) en activité",
+        ],
+      },
+      {
+        name: "profile_type",
+        label: "Profil principal",
+        type: "radio",
+        required: true,
+        options: ["Étudiant(e)", "Professionnel(le)", "Décideur", "Autre"],
+      },
+    ],
+  },
+  {
+    id: "global",
+    title: "Intérêt et demande globale",
+    fields: [
+      {
+        name: "interest_global",
+        label: "Quel est ton niveau d’intérêt global pour une plateforme de formation en IA / Data ?",
+        type: "radio",
+        required: true,
+        options: ["Aucun", "Faible", "Moyen", "Élevé", "Très élevé"],
+      },
+      {
+        name: "opening_intent",
+        label: "Si cette plateforme ouvrait prochainement, serais-tu :",
+        type: "radio",
+        required: true,
+        options: ["Prêt(e) à t’inscrire", "Intéressé(e) mais hésitant(e)", "Pas intéressé(e)"],
+      },
+    ],
+  },
+  {
+    id: "offer",
+    title: "Intérêt par type d’offre",
+    fields: [
+      {
+        name: "offer_preference",
+        label: "Parmi les options suivantes, laquelle t’intéresse le plus ?",
+        type: "radio",
+        required: true,
+        options: [
+          "MBA international (diplôme universitaire)",
+          "Académie professionnelle (certification seulement)",
+          "Les deux",
+          "Aucune",
+        ],
+      },
+      {
+        name: "single_offer_choice",
+        label: "Si tu devais choisir une seule option, laquelle ?",
+        type: "radio",
+        required: true,
+        options: ["MBA uniquement", "Académie / certification uniquement"],
+      },
+    ],
+  },
+  {
+    id: "mba",
+    title: "MBA international (Brésil)",
+    fields: [
+      {
+        name: "mba_brazil_fit",
+        label: "Le fait que le MBA soit un diplôme délivré par une grande université brésilienne reconnue te convient-il ?",
+        type: "radio",
+        required: true,
+        options: [
+          "Oui, totalement",
+          "Oui, si la reconnaissance internationale est claire",
+          "Mitigé(e), besoin de plus d’informations",
+          "Non",
+        ],
+      },
+      {
+        name: "international_factor",
+        label: "Le caractère international du diplôme est-il un facteur important pour toi ?",
+        type: "radio",
+        required: true,
+        options: ["Pas important", "Important", "Très important"],
+      },
+    ],
+  },
+  {
+    id: "internship",
+    title: "Stage international (Canada)",
+    fields: [
+      {
+        name: "canada_stage_attractiveness",
+        label: "L’ajout d’un stage pratico-pratique avec une entreprise canadienne rend-il le programme plus attractif ?",
+        type: "scale5",
+        required: true,
+      },
+      {
+        name: "stage_interest",
+        label: "Serais-tu intéressé(e) par :",
+        type: "radio",
+        required: true,
+        options: ["MBA + stage international", "MBA sans stage", "Stage seulement (sans MBA)", "Aucun"],
+      },
+    ],
+  },
+  {
+    id: "pricing",
+    title: "Prix et disposition à payer",
+    fields: [
+      {
+        name: "mba_price",
+        label: "Pour un MBA international en ligne avec stage, quel prix te semblerait raisonnable ?",
+        type: "radio",
+        required: true,
+        options: ["Moins de 2 000 $", "2 000 $ – 3 500 $", "3 500 $ – 5 000 $", "Plus de 5 000 $"],
+      },
+      {
+        name: "academy_price",
+        label: "Pour une académie certifiante (sans diplôme), quel prix te semblerait acceptable ?",
+        type: "radio",
+        required: true,
+        options: ["Moins de 1 000 $", "1 000 $ – 3 000 $", "3 000 $ – 5 000 $"],
+      },
+    ],
+  },
+  {
+    id: "financing",
+    title: "Financement",
+    fields: [
+      {
+        name: "financing_need",
+        label: "Le paiement échelonné / financement serait-il nécessaire pour toi ?",
+        type: "radio",
+        required: true,
+        options: ["Oui, indispensable", "Oui, important", "Non"],
+      },
+      {
+        name: "financing_duration",
+        label: "Si un financement est offert, quelle durée serait acceptable ?",
+        type: "radio",
+        required: true,
+        options: ["3 à 6 mois", "6 à 12 mois", "12 à 24 mois"],
+      },
+    ],
+  },
+  {
+    id: "intent",
+    title: "Intention réelle",
+    fields: [
+      {
+        name: "enrollment_intent",
+        label: "Si l’offre correspond à tes attentes (contenu, reconnaissance, prix), quel serait ton niveau d’intérêt pour t’inscrire ?",
+        type: "scale10",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "programs",
+    title: "Programmes recherchés",
+    fields: [
+      {
+        name: "program_types",
+        label: "Quels types de programmes t’intéressent le plus ?",
+        type: "textarea",
+        placeholder: "Indique les deux MBA qui t’attirent le plus, puis classe les 5 cours les plus intéressants.",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "barriers",
+    title: "Freins à l’inscription",
+    fields: [
+      {
+        name: "main_barrier",
+        label: "Quel est le principal frein qui pourrait t’empêcher de t’inscrire ?",
+        type: "radio",
+        required: true,
+        options: ["Prix", "Reconnaissance du diplôme", "Temps / charge de travail", "Niveau technique requis", "Autre"],
+      },
+      {
+        name: "comments",
+        label: "As-tu des commentaires, suggestions ou attentes particulières concernant ce type de formation ?",
+        type: "textarea",
+        placeholder: "Commentaires libres",
+        required: false,
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section class="relative border-b border-neutral-200 bg-white py-16 md:py-20">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="max-w-[760px]">
+          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+            INSIGHTS
+          </p>
+
+          <h1 class="mt-5 max-w-[12ch] text-[clamp(2.4rem,4.6vw,4.8rem)] font-black leading-[0.94] tracking-[-0.04em] text-opus-dark">
+            Observatoire des Compétences IA 2026
+          </h1>
+
+          <p class="mt-6 max-w-[64ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+            Cette étude de marché évalue l’intérêt pour une plateforme de formation en intelligence artificielle et data,
+            combinant MBA internationaux, certifications professionnelles et stages au Canada.
+            En participant, tu contribues à un observatoire sérieux sur l’éducation globale en IA.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <MicroBand
+      src={bandTrust}
+      alt="Research lab band"
+      height={360}
+      slogan="Une étude de terrain pour comprendre l’éducation IA de demain."
+    />
+
+    <section class="bg-white py-16 md:py-20">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="mx-auto max-w-[550px]">
+          <div class="mb-10">
+            <div class="h-[2px] w-full overflow-hidden bg-neutral-200">
+              <div id="survey-progress-bar" class="h-full w-0 bg-opus-red transition-all duration-300"></div>
+            </div>
+            <p id="survey-progress-text" class="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+              Section 1 / {steps.length}
+            </p>
+          </div>
+
+          <div id="survey-error" class="mb-6 hidden border border-[rgba(255,0,0,.2)] bg-[rgba(255,0,0,.04)] px-4 py-3 text-sm text-opus-dark">
+            Merci de compléter les champs requis avant de continuer.
+          </div>
+
+          <form id="survey-form" class="space-y-8">
+            {steps.map((step, index) => (
+              <section
+                class:list={["survey-step space-y-8", index === 0 ? "" : "hidden"]}
+                data-step-index={index}
+              >
+                <header class="space-y-4">
+                  <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+                    SECTION {index + 1}
+                  </p>
+
+                  <h2 class="text-[clamp(1.8rem,3vw,2.8rem)] font-black leading-[0.96] tracking-[-0.03em] text-opus-dark">
+                    {step.title}
+                  </h2>
+                </header>
+
+                <div class="space-y-8">
+                  {step.fields.map((field) => (
+                    <fieldset
+                      class="space-y-4 border-t border-neutral-200 pt-6"
+                      data-required={field.required ? "true" : "false"}
+                      data-field-name={field.name}
+                    >
+                      <legend class="text-base font-semibold leading-7 text-opus-dark">
+                        {field.label}
+                        {field.required && <span class="ml-1 text-opus-red">*</span>}
+                      </legend>
+
+                      {field.type === "radio" && (
+                        <div class="space-y-3">
+                          {field.options?.map((option) => (
+                            <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 transition hover:border-opus-dark/30">
+                              <input
+                                type="radio"
+                                name={field.name}
+                                value={option}
+                                class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]"
+                              />
+                              <span class="text-sm leading-7 text-neutral-700">{option}</span>
+                            </label>
+                          ))}
+                        </div>
+                      )}
+
+                      {field.type === "scale5" && (
+                        <div class="grid grid-cols-5 gap-2">
+                          {[1, 2, 3, 4, 5].map((value) => (
+                            <label class="flex cursor-pointer flex-col items-center gap-3 border border-neutral-200 bg-white px-3 py-4 text-center transition hover:border-opus-dark/30">
+                              <input
+                                type="radio"
+                                name={field.name}
+                                value={value}
+                                class="h-4 w-4 accent-[var(--color-opus-red)]"
+                              />
+                              <span class="text-sm font-medium text-opus-dark">{value}</span>
+                            </label>
+                          ))}
+                        </div>
+                      )}
+
+                      {field.type === "scale10" && (
+                        <div class="grid grid-cols-5 gap-2 sm:grid-cols-10">
+                          {[1,2,3,4,5,6,7,8,9,10].map((value) => (
+                            <label class="flex cursor-pointer flex-col items-center gap-3 border border-neutral-200 bg-white px-2 py-4 text-center transition hover:border-opus-dark/30">
+                              <input
+                                type="radio"
+                                name={field.name}
+                                value={value}
+                                class="h-4 w-4 accent-[var(--color-opus-red)]"
+                              />
+                              <span class="text-sm font-medium text-opus-dark">{value}</span>
+                            </label>
+                          ))}
+                        </div>
+                      )}
+
+                      {field.type === "textarea" && (
+                        <textarea
+                          name={field.name}
+                          placeholder={field.placeholder}
+                          rows={5}
+                          class="min-h-[140px] w-full border border-neutral-200 px-4 py-4 text-sm leading-7 text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-dark"
+                        ></textarea>
+                      )}
+
+                      {field.type === "email" && (
+                        <input
+                          type="email"
+                          name={field.name}
+                          placeholder={field.placeholder}
+                          class="min-h-12 w-full border border-neutral-200 px-4 text-sm text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-dark"
+                        />
+                      )}
+
+                      {field.type === "text" && (
+                        <input
+                          type="text"
+                          name={field.name}
+                          placeholder={field.placeholder}
+                          class="min-h-12 w-full border border-neutral-200 px-4 text-sm text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-dark"
+                        />
+                      )}
+                    </fieldset>
+                  ))}
+                </div>
+
+                <div class="flex flex-col gap-3 pt-4 sm:flex-row sm:justify-between">
+                  <button
+                    type="button"
+                    class:list={[
+                      "survey-prev inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark",
+                      index === 0 ? "invisible" : "",
+                    ]}
+                  >
+                    Retour
+                  </button>
+
+                  {index < steps.length - 1 ? (
+                    <button
+                      type="button"
+                      class="survey-next inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black"
+                    >
+                      Continuer →
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black"
+                    >
+                      Envoyer l’étude →
+                    </button>
+                  )}
+                </div>
+              </section>
+            ))}
+          </form>
+
+          <div id="survey-success" class="hidden border border-neutral-200 bg-white p-6 shadow-sm">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
+              STUDY RECORDED
+            </p>
+            <h2 class="mt-4 text-[1.6rem] font-black leading-tight text-opus-dark">
+              Merci pour ta contribution.
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-neutral-700">
+              Tes réponses ont été enregistrées. Tu recevras la synthèse exclusive si ton email a été fourni.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script is:inline>
+      (() => {
+        const form = document.getElementById("survey-form");
+        const stepPanels = Array.from(document.querySelectorAll(".survey-step"));
+        const progressBar = document.getElementById("survey-progress-bar");
+        const progressText = document.getElementById("survey-progress-text");
+        const successBox = document.getElementById("survey-success");
+        const errorBox = document.getElementById("survey-error");
+
+        if (!(form instanceof HTMLFormElement) || stepPanels.length === 0) return;
+
+        let currentStep = 0;
+
+        function updateStep() {
+          stepPanels.forEach((panel, panelIndex) => {
+            panel.classList.toggle("hidden", panelIndex !== currentStep);
+          });
+
+          const ratio = ((currentStep + 1) / stepPanels.length) * 100;
+
+          if (progressBar instanceof HTMLElement) progressBar.style.width = `${ratio}%`;
+          if (progressText instanceof HTMLElement) progressText.textContent = `Section ${currentStep + 1} / ${stepPanels.length}`;
+          if (errorBox instanceof HTMLElement) errorBox.classList.add("hidden");
+
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        function markInvalid(group, invalid) {
+          group.classList.remove("border-opus-red");
+          if (invalid) group.classList.add("border-opus-red");
+        }
+
+        function validateCurrentStep() {
+          const panel = stepPanels[currentStep];
+          if (!(panel instanceof HTMLElement)) return true;
+
+          let valid = true;
+          const fieldsets = Array.from(panel.querySelectorAll("fieldset"));
+
+          fieldsets.forEach((group) => {
+            const required = group.getAttribute("data-required") === "true";
+            if (!required) {
+              markInvalid(group, false);
+              return;
+            }
+
+            const radios = Array.from(group.querySelectorAll('input[type="radio"]'));
+            const email = group.querySelector('input[type="email"]');
+            const text = group.querySelector('input[type="text"]');
+            const textarea = group.querySelector("textarea");
+
+            let invalid = false;
+
+            if (radios.length > 0) {
+              const checked = group.querySelector('input[type="radio"]:checked');
+              invalid = !checked;
+            } else if (email instanceof HTMLInputElement) {
+              invalid = !email.value.trim();
+            } else if (text instanceof HTMLInputElement) {
+              invalid = !text.value.trim();
+            } else if (textarea instanceof HTMLTextAreaElement) {
+              invalid = !textarea.value.trim();
+            }
+
+            markInvalid(group, invalid);
+            if (invalid) valid = false;
+          });
+
+          if (!valid && errorBox instanceof HTMLElement) {
+            errorBox.classList.remove("hidden");
+          }
+
+          return valid;
+        }
+
+        document.querySelectorAll(".survey-next").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (!validateCurrentStep()) return;
+            if (currentStep < stepPanels.length - 1) {
+              currentStep += 1;
+              updateStep();
+            }
+          });
+        });
+
+        document.querySelectorAll(".survey-prev").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (currentStep > 0) {
+              currentStep -= 1;
+              updateStep();
+            }
+          });
+        });
+
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          if (!validateCurrentStep()) return;
+
+          const formData = new FormData(form);
+          const payload = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch("/api/airtable/etude-ia-2026", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+
+            if (response.ok) {
+              form.classList.add("hidden");
+              if (successBox instanceof HTMLElement) successBox.classList.remove("hidden");
+              if (progressBar instanceof HTMLElement) progressBar.style.width = "100%";
+              if (progressText instanceof HTMLElement) progressText.textContent = "Étude complétée";
+              if (errorBox instanceof HTMLElement) errorBox.classList.add("hidden");
+            } else {
+              const data = await response.json().catch(() => null);
+              console.error("Survey submit failed:", data);
+              alert("Impossible d’envoyer l’étude pour le moment.");
+            }
+          } catch (error) {
+            console.error("Survey submit error:", error);
+            alert("Impossible d’envoyer l’étude pour le moment.");
+          }
+        });
+
+        updateStep();
+      })();
+    </script>
+  </main>
+</BaseLayout>
