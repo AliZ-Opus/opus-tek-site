@@ -17,18 +17,17 @@ interface Props {
 
 const {
   title = "OPUS Technology",
-  description = "OPUS Technology accompagne les organisations dans l’architecture, l’intégration, les plateformes et l’intelligence artificielle.",
+  description =
+    "OPUS Technology accompagne les organisations dans le cadrage, l’intégration et l’activation sélective de l’intelligence.",
   ogImage = "/og/opus-og.png",
 } = Astro.props;
 
 const navItems: NavItem[] = [
+  { label: "Accueil", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Offres", href: "/offres" },
-  { label: "Confiance", href: "/confiance" },
-  { label: "Insights", href: "/insights" },
-  { label: "Phoenixx", href: "/phoenixx-opus" },
+  { label: "Phoenixx ↔ OPUS", href: "/phoenixx-opus" },
   { label: "Ressources", href: "/ressources" },
-  { label: "Équipe", href: "/equipe" },
+  { label: "Confiance", href: "/confiance" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -64,6 +63,7 @@ const resolvedOgImage = ogImage.startsWith("http")
 
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta property="og:type" content="website" />
@@ -156,7 +156,7 @@ const resolvedOgImage = ogImage.startsWith("http")
               </a>
 
               <span class="hidden 2xl:inline-flex border-l border-neutral-200 pl-3 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                Execution architects
+                Execution architects — OPUS
               </span>
             </div>
 
@@ -199,7 +199,7 @@ const resolvedOgImage = ogImage.startsWith("http")
                 href="/contact"
                 class="inline-flex min-h-12 items-center justify-center whitespace-nowrap border border-opus-dark bg-opus-dark px-4 text-[0.82rem] font-medium text-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition hover:border-black hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)] 2xl:px-5"
               >
-                Soumettre un besoin →
+                Parler de votre projet →
               </a>
             </div>
           </div>
@@ -233,7 +233,7 @@ const resolvedOgImage = ogImage.startsWith("http")
               href="/contact"
               class="mt-5 inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-5 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
             >
-              Soumettre un besoin →
+              Parler de votre projet →
             </a>
           </nav>
         </div>
@@ -259,11 +259,19 @@ const resolvedOgImage = ogImage.startsWith("http")
           </a>
 
           <p class="mt-5 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-            Exécution claire. Gouvernance lisible.
+            Architecture, intégration et activation sélective de l’intelligence, avec une exécution gouvernée.
+          </p>
+
+          <p class="mt-5 text-sm leading-7 text-neutral-700">
+            contact@opus-tek.ca · +1 418-717-9653 · <a href="https://www.opus-tek.ca" class="underline-offset-2 hover:underline">www.opus-tek.ca</a>
+          </p>
+
+          <p class="mt-3 text-sm leading-7 text-neutral-500">
+            Canada (Québec) · Tunisie (Sousse) · Brésil (São Paulo)
           </p>
 
           <p class="mt-5 text-sm leading-7 text-neutral-500">
-            © 2026 OPUS Technology. Tous droits réservés. Les modèles opérationnels et méthodologies documentaires présentés sont la propriété exclusive de l’organisation.
+            © 2026 OPUS Technology. Tous droits réservés.
           </p>
         </div>
 
@@ -297,7 +305,7 @@ const resolvedOgImage = ogImage.startsWith("http")
                 href="/propriete-intellectuelle"
                 class="text-sm leading-6 text-neutral-700 transition hover:text-opus-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
               >
-                Propriété Intellectuelle
+                Propriété intellectuelle
               </a>
             </li>
             <li>
@@ -305,7 +313,7 @@ const resolvedOgImage = ogImage.startsWith("http")
                 href="/confidentialite"
                 class="text-sm leading-6 text-neutral-700 transition hover:text-opus-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
               >
-                Politique de Confidentialité
+                Politique de confidentialité
               </a>
             </li>
             <li>
