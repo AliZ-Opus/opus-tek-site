@@ -23,12 +23,12 @@ const {
 <section
   aria-label={alt}
   class={`relative isolate overflow-hidden bg-white ${className}`}
-  style={`height:${height}px;`}
+  style={`height:clamp(136px, 16vw, ${height}px);`}
 >
   <div
     aria-hidden="true"
     class="absolute inset-0"
-    style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 18%, black 82%, transparent 100%); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: 100% 100%; mask-size: 100% 100%;"
+    style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: 100% 100%; mask-size: 100% 100%;"
   >
     <Image
       src={src}
@@ -40,7 +40,7 @@ const {
       loading={priority ? "eager" : "lazy"}
       fetchpriority={priority ? "high" : "auto"}
       class="h-full w-full object-cover object-center"
-      style="opacity:1!important; mix-blend-mode:luminosity;"
+      style="opacity:1!important; mix-blend-mode:luminosity; object-position:center 54%; transform:scale(1.04);"
     />
   </div>
 
