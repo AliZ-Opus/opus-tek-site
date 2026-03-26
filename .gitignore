@@ -30,3 +30,23 @@ node_modules/
 
 
 .vercel
+
+# system
+desktop.ini
+.DS_Store
+
+# local env
+.env
+.env.*
+
+# dependencies / build
+node_modules/
+dist/
+.astro/
+.vercel/
+
+# editor
+.vscode/
+
+# temporary image depot
+SRC_DEPOT/
