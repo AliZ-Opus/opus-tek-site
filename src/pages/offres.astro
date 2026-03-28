@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import heroImage from "../assets/hero/opus-offres.png";
 
@@ -50,15 +49,14 @@ const offers = [
         </div>
 
         <div class="relative mt-6 h-full min-h-[400px] sm:min-h-[520px] lg:min-h-[560px] xl:mt-0 xl:min-h-[640px]">
-          <Image
-            src={heroImage}
+          <img
+            src={heroImage.src}
             alt="Visuel architectural illustrant les offres OPUS"
-            widths={[960, 1280, 1600, 1920]}
-            sizes="(max-width: 1023px) 100vw, 55vw"
-            format="avif"
-            quality={92}
+            width={heroImage.width}
+            height={heroImage.height}
             loading="eager"
             fetchpriority="high"
+            decoding="async"
             class="absolute inset-0 h-full w-full object-cover object-center"
             style="opacity: 1 !important;"
           />

@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HomeServicesHub from "../components/HomeServicesHub.astro";
 import heroImage from "../assets/hero/opus-services.png";
@@ -43,15 +42,14 @@ const pageDescription =
         </div>
 
         <div class="relative mt-6 h-full min-h-[380px] sm:min-h-[500px] lg:min-h-[540px] xl:mt-0 xl:min-h-[620px]">
-          <Image
-            src={heroImage}
+          <img
+            src={heroImage.src}
             alt="Visuel architectural illustrant les domaines de services OPUS"
-            widths={[960, 1280, 1600, 1920]}
-            sizes="(max-width: 1023px) 100vw, 50vw"
-            format="avif"
-            quality={92}
+            width={heroImage.width}
+            height={heroImage.height}
             loading="eager"
             fetchpriority="high"
+            decoding="async"
             class="absolute inset-0 h-full w-full object-cover object-center"
             style="opacity: 1 !important;"
           />

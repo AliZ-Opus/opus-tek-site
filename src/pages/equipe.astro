@@ -1,38 +1,37 @@
----
-import { Image } from "astro:assets";
+﻿---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import heroImage from "../assets/hero/opus-trust-team.png";
 
-const pageTitle = "Équipe - OPUS Technology";
+const pageTitle = "Ã‰quipe - OPUS Technology";
 const pageDescription =
-  "L'expertise senior n'est pas un slogan. C'est un modèle de livraison lisible, responsable et défendable.";
+  "L'expertise senior n'est pas un slogan. C'est un modÃ¨le de livraison lisible, responsable et dÃ©fendable.";
 
 const teamMembers = [
   {
-    kicker: "PRÉSIDENT",
+    kicker: "PRÃ‰SIDENT",
     name: "David Banford",
-    title: "Président",
+    title: "PrÃ©sident",
     photo: "/assets/team/david-banford.jpg",
     linkedin: "https://www.linkedin.com/in/david-banford/",
     vision:
-      "Faire d'OPUS et de Phoenixx des structures capables de transformer l'ambition technologique en capacité réelle d'exécution.",
+      "Faire d'OPUS et de Phoenixx des structures capables de transformer l'ambition technologique en capacitÃ© rÃ©elle d'exÃ©cution.",
     role:
-      "Porter la vision, structurer l'expansion et maintenir une trajectoire crédible entre développement d'affaires, capacité de delivery et lisibilité stratégique.",
+      "Porter la vision, structurer l'expansion et maintenir une trajectoire crÃ©dible entre dÃ©veloppement d'affaires, capacitÃ© de delivery et lisibilitÃ© stratÃ©gique.",
     commitment:
-      "Mettre l'expérience entrepreneuriale et la profondeur technologique au service d'organisations qui attendent une exécution fiable et tenue.",
+      "Mettre l'expÃ©rience entrepreneuriale et la profondeur technologique au service d'organisations qui attendent une exÃ©cution fiable et tenue.",
   },
   {
-    kicker: "ARCHITECTURE ET OPÉRATIONS",
+    kicker: "ARCHITECTURE ET OPÃ‰RATIONS",
     name: "Ali Zouari",
-    title: "Vice-président Architecture et Opérations",
+    title: "Vice-prÃ©sident Architecture et OpÃ©rations",
     photo: "/assets/team/ali-zouari.jpg",
     linkedin: "https://www.linkedin.com/in/ali-zouari-05608b5/",
     vision:
-      "Concevoir des fondations numériques durables capables d'aligner besoins d'affaires, gouvernance, sécurité et choix technologiques.",
+      "Concevoir des fondations numÃ©riques durables capables d'aligner besoins d'affaires, gouvernance, sÃ©curitÃ© et choix technologiques.",
     role:
-      "Structurer les architectures cibles, sécuriser les décisions d'intégration et réduire la complexité des écosystèmes TI.",
+      "Structurer les architectures cibles, sÃ©curiser les dÃ©cisions d'intÃ©gration et rÃ©duire la complexitÃ© des Ã©cosystÃ¨mes TI.",
     commitment:
-      "Mettre l'expérience d'architecture, de gouvernance de solutions et de leadership technique au service d'une exécution claire et réutilisable.",
+      "Mettre l'expÃ©rience d'architecture, de gouvernance de solutions et de leadership technique au service d'une exÃ©cution claire et rÃ©utilisable.",
   },
   {
     kicker: "RESPONSABLE DU SITE",
@@ -41,71 +40,70 @@ const teamMembers = [
     photo: "/assets/team/slim-el-mekki.jpg",
     linkedin: "https://www.linkedin.com/in/med-slim-el-mekki-5b1853127/",
     vision:
-      "Faire du site OPUS un espace de crédibilité, de précision et de cohérence.",
+      "Faire du site OPUS un espace de crÃ©dibilitÃ©, de prÃ©cision et de cohÃ©rence.",
     role:
-      "Piloter la cohérence du site, la qualité d'intégration, la clarté du parcours et la présence des preuves.",
+      "Piloter la cohÃ©rence du site, la qualitÃ© d'intÃ©gration, la clartÃ© du parcours et la prÃ©sence des preuves.",
     commitment:
-      "Maintenir un environnement numérique net, rigoureux et premium, où l'expérience utilisateur soutient la décision et la confiance.",
+      "Maintenir un environnement numÃ©rique net, rigoureux et premium, oÃ¹ l'expÃ©rience utilisateur soutient la dÃ©cision et la confiance.",
   },
   {
-    kicker: "DÉVELOPPEMENT DES AFFAIRES",
+    kicker: "DÃ‰VELOPPEMENT DES AFFAIRES",
     name: "Yassine Zouari",
-    title: "Développement des affaires - Phoenixx & OPUS",
+    title: "DÃ©veloppement des affaires - Phoenixx & OPUS",
     photo: "/assets/team/yassine-zouari.jpg",
     linkedin: "https://www.linkedin.com/in/yassine-zouari-28a27b356/",
     vision:
-      "Créer des relations d'affaires fondées sur la clarté, la confiance et une compréhension concrète des priorités client.",
+      "CrÃ©er des relations d'affaires fondÃ©es sur la clartÃ©, la confiance et une comprÃ©hension concrÃ¨te des prioritÃ©s client.",
     role:
-      "Qualifier les besoins, structurer les premiers échanges et relier la valeur recherchée par le client au modèle d'intervention proposé.",
+      "Qualifier les besoins, structurer les premiers Ã©changes et relier la valeur recherchÃ©e par le client au modÃ¨le d'intervention proposÃ©.",
     commitment:
-      "Apporter discipline, responsabilité et qualité relationnelle pour soutenir une croissance crédible.",
+      "Apporter discipline, responsabilitÃ© et qualitÃ© relationnelle pour soutenir une croissance crÃ©dible.",
   },
   {
-    kicker: "DÉVELOPPEMENT DES AFFAIRES",
+    kicker: "DÃ‰VELOPPEMENT DES AFFAIRES",
     name: "Kamel Saidi",
-    title: "Développement des affaires - Phoenixx & OPUS",
+    title: "DÃ©veloppement des affaires - Phoenixx & OPUS",
     photo: "/assets/team/kamel-saidi.png",
     linkedin: "https://www.linkedin.com/in/kamel-saidi-251327185/",
     vision:
-      "Développer des relations d'affaires durables en reliant lecture du marché, compréhension client et capacité réelle d'exécution.",
+      "DÃ©velopper des relations d'affaires durables en reliant lecture du marchÃ©, comprÃ©hension client et capacitÃ© rÃ©elle d'exÃ©cution.",
     role:
-      "Identifier les opportunités de croissance, structurer les approches de développement de marché et accompagner les discussions commerciales jusqu'à la conclusion.",
+      "Identifier les opportunitÃ©s de croissance, structurer les approches de dÃ©veloppement de marchÃ© et accompagner les discussions commerciales jusqu'Ã  la conclusion.",
     commitment:
-      "Créer des relations de confiance durables et transformer les besoins d'affaires en trajectoires de collaboration concrètes.",
+      "CrÃ©er des relations de confiance durables et transformer les besoins d'affaires en trajectoires de collaboration concrÃ¨tes.",
   },
 ];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main id="main-content" class="bg-white">
-    <section aria-label="Équipe OPUS" class="relative isolate overflow-clip bg-white">
+    <section aria-label="Ã‰quipe OPUS" class="relative isolate overflow-clip bg-white">
       <div class="mx-auto w-full grid min-h-[80svh] max-h-[760px] max-w-[1680px] grid-cols-1 items-center px-4 py-10 md:px-8 lg:grid-cols-[45%_55%] xl:px-10">
         <div class="relative z-20 flex min-w-0 items-center">
           <div class="relative w-full max-w-[800px] py-8 lg:py-12 lg:pr-12 xl:pr-24">
             <div class="relative z-10">
               <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500 sm:text-xs">
-                ÉQUIPE
+                Ã‰QUIPE
               </p>
               <h1 class="max-w-[20ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
-                L'expertise senior n'est pas un slogan. C'est notre modèle de livraison.
+                L'expertise senior n'est pas un slogan. C'est notre modÃ¨le de livraison.
               </h1>
               <p class="mt-6 max-w-[60ch] text-base leading-8 text-neutral-700 md:text-[1.05rem]">
-                OPUS s'appuie sur une logique simple : des rôles lisibles, une responsabilité assumée et une posture d'exécution qui reste crédible du premier échange jusqu'au delivery.
+                OPUS s'appuie sur une logique simple : des rÃ´les lisibles, une responsabilitÃ© assumÃ©e et une posture d'exÃ©cution qui reste crÃ©dible du premier Ã©change jusqu'au delivery.
               </p>
             </div>
           </div>
         </div>
 
         <div class="relative mt-6 h-full min-h-[400px] sm:min-h-[520px] lg:min-h-[560px] xl:mt-0 xl:min-h-[640px]">
-          <Image
-            src={heroImage}
+          <img
+            src={heroImage.src}
             alt="Réunion d'équipe illustrant le modèle de livraison OPUS"
-            widths={[960, 1280, 1600, 1920]}
-            sizes="(max-width: 1023px) 100vw, 55vw"
-            format="avif"
-            quality={92}
+            width={heroImage.width}
+            height={heroImage.height}
             loading="eager"
             fetchpriority="high"
+            decoding="async"
             class="absolute inset-0 h-full w-full object-cover object-center"
             style="opacity: 1 !important;"
           />
@@ -117,12 +115,12 @@ const teamMembers = [
       <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
         <div class="w-full border border-neutral-200 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.08)]">
           <div class="w-full px-6 py-6 md:px-7 md:py-7">
-            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">ÉQUIPE</p>
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">Ã‰QUIPE</p>
             <h2 class="mt-4 max-w-[18ch] text-[clamp(1.9rem,3.8vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
-              Une lecture humaine, mais structurée.
+              Une lecture humaine, mais structurÃ©e.
             </h2>
             <p class="mt-5 max-w-[72ch] text-base leading-8 text-neutral-700">
-              Chaque rôle existe pour soutenir la même promesse : une exécution claire, gouvernée et défendable.
+              Chaque rÃ´le existe pour soutenir la mÃªme promesse : une exÃ©cution claire, gouvernÃ©e et dÃ©fendable.
             </p>
 
             <div class="mt-10 w-full grid grid-cols-1 gap-6 lg:grid-cols-2 2xl:grid-cols-4">
@@ -142,7 +140,7 @@ const teamMembers = [
                   </div>
                   <div class="mt-6 space-y-5">
                     <div><p class="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">Vision</p><p class="mt-2 text-sm leading-7 text-neutral-700">{member.vision}</p></div>
-                    <div><p class="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">Rôle</p><p class="mt-2 text-sm leading-7 text-neutral-700">{member.role}</p></div>
+                    <div><p class="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">RÃ´le</p><p class="mt-2 text-sm leading-7 text-neutral-700">{member.role}</p></div>
                     <div><p class="text-[0.72rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">Engagement</p><p class="mt-2 text-sm leading-7 text-neutral-700">{member.commitment}</p></div>
                   </div>
                 </article>
@@ -154,3 +152,6 @@ const teamMembers = [
     </section>
   </main>
 </BaseLayout>
+
+
+

@@ -1,8 +1,6 @@
 ---
-import { Image } from "astro:assets";
-
 interface Props {
-  src: ImageMetadata;
+  src: ImageMetadata | string;
   alt: string;
   height?: number;
   priority?: boolean;
@@ -18,6 +16,10 @@ const {
   slogan,
   class: className = "",
 } = Astro.props;
+
+const resolvedSrc = typeof src === "string" ? src : src.src;
+const resolvedWidth = typeof src === "string" ? undefined : src.width;
+const resolvedHeight = typeof src === "string" ? undefined : src.height;
 ---
 
 <section
@@ -30,15 +32,14 @@ const {
     class="absolute inset-0"
     style="-webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 14%, black 86%, transparent 100%); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: 100% 100%; mask-size: 100% 100%;"
   >
-    <Image
-      src={src}
+    <img
+      src={resolvedSrc}
       alt={alt}
-      widths={[1280, 1600, 1920, 2560]}
-      sizes="100vw"
-      format="avif"
-      quality={90}
+      width={resolvedWidth}
+      height={resolvedHeight}
       loading={priority ? "eager" : "lazy"}
       fetchpriority={priority ? "high" : "auto"}
+      decoding="async"
       class="h-full w-full object-cover object-center"
       style="opacity:1!important; mix-blend-mode:luminosity; object-position:center 54%; transform:scale(1.04);"
     />

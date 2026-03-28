@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import S1Underline from "./nav/S1Underline.astro";
 import HomeHeroMicroCard from "./HomeHeroMicroCard.astro";
 import heroImage from "../assets/hero/opus-hero-cgi-hq.png";
@@ -117,15 +116,14 @@ const {
     </div>
 
     <div class="relative mt-6 h-full min-h-[520px] sm:min-h-[600px] lg:mt-0 lg:min-h-[760px]">
-      <Image
-        src={heroImage}
+      <img
+        src={heroImage.src}
         alt="Visualisation architecturale OPUS"
-        widths={[1280, 1600, 1920, 2400]}
-        sizes="(max-width: 1023px) 100vw, 67vw"
-        format="avif"
-        quality={96}
+        width={heroImage.width}
+        height={heroImage.height}
         loading="eager"
         fetchpriority="high"
+        decoding="async"
         class="absolute inset-0 h-full w-full object-cover object-center"
         style="opacity:1!important;"
       />

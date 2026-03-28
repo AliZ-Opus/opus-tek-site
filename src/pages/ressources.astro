@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import heroImage from "../assets/hero/opus-ressources.png";
 import { strategicCaseStudies } from "../data/caseStudies";
@@ -70,15 +69,14 @@ const pageDescription =
         </div>
 
         <div class="relative mt-4 h-full min-h-[280px] sm:min-h-[380px] lg:min-h-[450px] xl:mt-0 xl:min-h-[500px]">
-          <Image
-            src={heroImage}
+          <img
+            src={heroImage.src}
             alt="Visuel documentaire illustrant les ressources OPUS"
-            widths={[960, 1280, 1600, 1920]}
-            sizes="(max-width: 1023px) 100vw, 55vw"
-            format="avif"
-            quality={92}
+            width={heroImage.width}
+            height={heroImage.height}
             loading="eager"
             fetchpriority="high"
+            decoding="async"
             class="absolute inset-0 h-full w-full object-cover object-center"
             style="opacity: 1 !important;"
           />

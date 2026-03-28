@@ -1,37 +1,36 @@
----
-import { Image } from "astro:assets";
+﻿---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import heroImage from "../assets/hero/opus-phoenixx-opus.png";
 
-const pageTitle = "Phoenixx - rôles, gouvernance et continuité";
+const pageTitle = "Phoenixx - rÃ´les, gouvernance et continuitÃ©";
 const pageDescription =
-  "Phoenixx tient le cadre d'affaires et la continuité contractuelle. OPUS porte le cadrage, l'architecture, l'intégration et l'exécution.";
+  "Phoenixx tient le cadre d'affaires et la continuitÃ© contractuelle. OPUS porte le cadrage, l'architecture, l'intÃ©gration et l'exÃ©cution.";
 
 const roles = [
   {
     label: "Phoenixx",
-    title: "Cadre d'affaires, continuité contractuelle, ancrage relationnel",
-    body: "Phoenixx tient le cadre commercial, la continuité de la relation et l'assise contractuelle. Le client garde un point d'ancrage lisible sur la durée.",
+    title: "Cadre d'affaires, continuitÃ© contractuelle, ancrage relationnel",
+    body: "Phoenixx tient le cadre commercial, la continuitÃ© de la relation et l'assise contractuelle. Le client garde un point d'ancrage lisible sur la durÃ©e.",
   },
   {
     label: "OPUS",
-    title: "Cadrage, architecture, intégration, exécution",
-    body: "OPUS porte la lecture du sujet, les décisions structurantes, la remise en cohérence technique et la responsabilité de delivery sur les mécanismes à exécuter.",
+    title: "Cadrage, architecture, intÃ©gration, exÃ©cution",
+    body: "OPUS porte la lecture du sujet, les dÃ©cisions structurantes, la remise en cohÃ©rence technique et la responsabilitÃ© de delivery sur les mÃ©canismes Ã  exÃ©cuter.",
   },
 ];
 
 const outcomes = [
   {
     label: "POUR LE CLIENT",
-    text: "Un montage lisible : le cadre d'affaires reste stable, l'exécution technique reste attribuable et les rôles ne se mélangent pas.",
+    text: "Un montage lisible : le cadre d'affaires reste stable, l'exÃ©cution technique reste attribuable et les rÃ´les ne se mÃ©langent pas.",
   },
   {
     label: "POUR LE DELIVERY",
-    text: "Moins de zone grise entre gouvernance d'affaires, cadrage et delivery. Les arbitrages circulent mieux et les responsabilités restent tenues.",
+    text: "Moins de zone grise entre gouvernance d'affaires, cadrage et delivery. Les arbitrages circulent mieux et les responsabilitÃ©s restent tenues.",
   },
   {
     label: "POUR LA CONFIANCE",
-    text: "Le modèle renforce la crédibilité du dispositif sans gonfler la promesse : Phoenixx ancre, OPUS exécute, chacun sur son périmètre utile.",
+    text: "Le modÃ¨le renforce la crÃ©dibilitÃ© du dispositif sans gonfler la promesse : Phoenixx ancre, OPUS exÃ©cute, chacun sur son pÃ©rimÃ¨tre utile.",
   },
 ];
 ---
@@ -45,10 +44,10 @@ const outcomes = [
             <div class="relative z-10">
               <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">PHOENIXX</p>
               <h1 class="max-w-[16ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
-                Un partage de rôles net, pour une exécution crédible.
+                Un partage de rÃ´les net, pour une exÃ©cution crÃ©dible.
               </h1>
               <p class="mt-6 max-w-[62ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
-                Phoenixx tient le cadre d'affaires, la continuité contractuelle et l'ancrage relationnel. OPUS prend le cadrage, l'architecture, l'intégration et l'exécution. Le modèle sert à réduire la zone grise, pas à l'habiller.
+                Phoenixx tient le cadre d'affaires, la continuitÃ© contractuelle et l'ancrage relationnel. OPUS prend le cadrage, l'architecture, l'intÃ©gration et l'exÃ©cution. Le modÃ¨le sert Ã  rÃ©duire la zone grise, pas Ã  l'habiller.
               </p>
 
               <div class="mt-8 flex flex-wrap gap-3">
@@ -67,15 +66,14 @@ const outcomes = [
         </div>
 
         <div class="relative mt-6 h-full min-h-[360px] sm:min-h-[460px] lg:min-h-[540px] xl:mt-0 xl:min-h-[620px]">
-          <Image
-            src={heroImage}
+          <img
+            src={heroImage.src}
             alt="Visuel architectural illustrant le modèle Phoenixx et OPUS"
-            widths={[960, 1280, 1600, 1920]}
-            sizes="(max-width: 1023px) 100vw, 52vw"
-            format="avif"
-            quality={92}
+            width={heroImage.width}
+            height={heroImage.height}
             loading="eager"
             fetchpriority="high"
+            decoding="async"
             class="absolute inset-0 h-full w-full object-cover object-center"
             style="opacity: 1 !important;"
           />
@@ -115,22 +113,22 @@ const outcomes = [
       <div class="mx-auto w-full max-w-[1720px] px-4 md:px-8 xl:px-10">
         <div class="max-w-[1040px]">
           <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">FORMATION & ACCOMPAGNEMENT IA</p>
-          <h2 class="mt-4 max-w-[18ch] text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">Une capacité réelle au Brésil, prête à s'élargir proprement.</h2>
-          <p class="mt-6 max-w-[78ch] text-base leading-8 text-neutral-700">Phoenixx porte déjà une exécution réelle sur deux MBA IA 100 % en ligne opérés au Brésil. Avec OPUS, le sujet s'étend maintenant vers une logique plus large de formation et d'accompagnement, structurée à partir du réel, des retours de marché et d'un dispositif de qualification sérieux.</p>
+          <h2 class="mt-4 max-w-[18ch] text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">Une capacitÃ© rÃ©elle au BrÃ©sil, prÃªte Ã  s'Ã©largir proprement.</h2>
+          <p class="mt-6 max-w-[78ch] text-base leading-8 text-neutral-700">Phoenixx porte dÃ©jÃ  une exÃ©cution rÃ©elle sur deux MBA IA 100 % en ligne opÃ©rÃ©s au BrÃ©sil. Avec OPUS, le sujet s'Ã©tend maintenant vers une logique plus large de formation et d'accompagnement, structurÃ©e Ã  partir du rÃ©el, des retours de marchÃ© et d'un dispositif de qualification sÃ©rieux.</p>
         </div>
 
         <div class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-3">
           <article class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
             <h3 class="text-[1.08rem] font-semibold leading-7 text-opus-dark">Phoenixx</h3>
-            <p class="mt-4 text-sm leading-7 text-neutral-700">Cadre d'affaires, continuité contractuelle et ancrage d'exécution déjà prouvé au Brésil sur les MBA IA.</p>
+            <p class="mt-4 text-sm leading-7 text-neutral-700">Cadre d'affaires, continuitÃ© contractuelle et ancrage d'exÃ©cution dÃ©jÃ  prouvÃ© au BrÃ©sil sur les MBA IA.</p>
           </article>
           <article class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
             <h3 class="text-[1.08rem] font-semibold leading-7 text-opus-dark">OPUS</h3>
-            <p class="mt-4 text-sm leading-7 text-neutral-700">Cadrage, architecture de l'offre, intégration du parcours, capture de la demande et exécution progressive.</p>
+            <p class="mt-4 text-sm leading-7 text-neutral-700">Cadrage, architecture de l'offre, intÃ©gration du parcours, capture de la demande et exÃ©cution progressive.</p>
           </article>
           <article class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
             <h3 class="text-[1.08rem] font-semibold leading-7 text-opus-dark">Phoenixx University</h3>
-            <p class="mt-4 text-sm leading-7 text-neutral-700">Deux MBA IA 100 % en ligne déjà opérés au Brésil, reconnus par le MEC, avec une logique professionnalisante, des projets concrets et une portée internationale.</p>
+            <p class="mt-4 text-sm leading-7 text-neutral-700">Deux MBA IA 100 % en ligne dÃ©jÃ  opÃ©rÃ©s au BrÃ©sil, reconnus par le MEC, avec une logique professionnalisante, des projets concrets et une portÃ©e internationale.</p>
           </article>
         </div>
 
@@ -139,10 +137,13 @@ const outcomes = [
             Voir le volet formation IA
           </a>
           <a href="/formation-accompagnement-ia#sondage" class="inline-flex min-h-12 items-center justify-center border border-neutral-400 bg-white px-6 text-sm font-medium text-opus-dark shadow-[0_10px_24px_rgba(0,0,0,0.04)] transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">
-            Répondre au sondage
+            RÃ©pondre au sondage
           </a>
         </div>
       </div>
     </section>
   </main>
 </BaseLayout>
+
+
+
