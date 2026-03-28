@@ -1,8 +1,9 @@
 ---
 import "../styles/global.css";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import S1Underline from "../components/nav/S1Underline.astro";
 import BrandLogo from "../components/brand/BrandLogo.astro";
+import { motherPhrase } from "../data/corpus";
 
 interface NavItem {
   label: string;
@@ -17,15 +18,15 @@ interface Props {
 
 const {
   title = "OPUS Technology",
-  description =
-    "OPUS Technology accompagne les organisations dans le cadrage, l’intégration et l’activation sélective de l’intelligence.",
+  description = motherPhrase,
   ogImage = "/og/opus-og.png",
 } = Astro.props;
 
 const navItems: NavItem[] = [
   { label: "Accueil", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Phoenixx ↔ OPUS", href: "/phoenixx-opus" },
+  { label: "Phoenixx", href: "/phoenixx-opus" },
+  { label: "Formation IA", href: "/formation-accompagnement-ia" },
   { label: "Ressources", href: "/ressources" },
   { label: "Confiance", href: "/confiance" },
   { label: "Contact", href: "/contact" },
@@ -53,7 +54,7 @@ const resolvedOgImage = ogImage.startsWith("http")
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <ViewTransitions />
+    <ClientRouter />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -73,7 +74,7 @@ const resolvedOgImage = ogImage.startsWith("http")
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={resolvedOgImage} />
-    <meta property="og:image:alt" content="OPUS Technology — visuel architectural premium" />
+    <meta property="og:image:alt" content="OPUS Technology - visuel architectural premium" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -143,20 +144,20 @@ const resolvedOgImage = ogImage.startsWith("http")
     </a>
 
     <header class="sticky top-0 z-[100] border-b border-black/6 bg-white/88 backdrop-blur-md supports-[backdrop-filter]:bg-white/82">
-      <div class="mx-auto w-full max-w-[1680px] px-4 py-4 md:px-8 xl:px-10">
-        <div class="grid w-full grid-cols-1 items-center gap-6 xl:grid-cols-[32%_68%]">
-          <div class="flex min-w-0 items-center justify-between gap-6">
+      <div class="mx-auto w-full max-w-[1720px] px-4 py-4 md:px-8 xl:px-10">
+        <div class="grid w-full grid-cols-1 items-center gap-5 xl:grid-cols-[22rem_minmax(0,1fr)]">
+          <div class="flex min-w-0 items-center justify-between gap-4">
             <div class="flex min-w-0 items-center gap-3">
               <a
                 href="/"
                 class="inline-flex min-w-0 items-center transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
                 aria-label="Accueil OPUS Technology"
               >
-                <BrandLogo theme="dark" className="h-14 w-auto md:h-16 lg:h-[72px]" />
+                <BrandLogo theme="dark" className="h-11 w-auto md:h-12 xl:h-14" />
               </a>
 
-              <span class="hidden 2xl:inline-flex border-l border-neutral-200 pl-3 text-[0.6rem] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                Execution architects — OPUS
+              <span class="hidden border-l border-neutral-200 pl-3 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-neutral-500 2xl:inline-flex">
+                cadrer · arbitrer · exécuter
               </span>
             </div>
 
@@ -171,17 +172,17 @@ const resolvedOgImage = ogImage.startsWith("http")
             </button>
           </div>
 
-          <div class="hidden min-w-0 items-center gap-5 xl:flex">
+          <div class="hidden min-w-0 items-center gap-4 xl:flex">
             <div class="min-w-0 flex-1 overflow-hidden">
               <S1Underline selector='[data-s1-item]' active='[aria-current="page"]'>
-                <nav aria-label="Navigation principale" class="flex min-w-0 items-center justify-end gap-5 2xl:gap-6">
+                <nav aria-label="Navigation principale" class="flex min-w-0 items-center justify-end gap-4 2xl:gap-5">
                   {navItems.map((item) => (
                     <a
                       href={item.href}
                       data-s1-item
                       aria-current={isActive(item.href) ? "page" : undefined}
                       class:list={[
-                        "inline-flex shrink-0 min-h-10 items-center pb-3 text-[0.72rem] font-medium uppercase tracking-[0.14em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]",
+                        "inline-flex shrink-0 min-h-10 items-center pb-3 text-[0.72rem] font-medium uppercase tracking-[0.12em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]",
                         isActive(item.href)
                           ? "text-opus-dark"
                           : "text-neutral-500 hover:text-opus-dark",
@@ -197,9 +198,9 @@ const resolvedOgImage = ogImage.startsWith("http")
             <div class="shrink-0">
               <a
                 href="/contact"
-                class="inline-flex min-h-12 items-center justify-center whitespace-nowrap border border-opus-dark bg-opus-dark px-4 text-[0.82rem] font-medium text-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition hover:border-black hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)] 2xl:px-5"
+                class="inline-flex min-h-12 items-center justify-center whitespace-nowrap border border-opus-dark bg-opus-dark px-4 text-[0.8rem] font-medium text-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition hover:border-black hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)] 2xl:px-5"
               >
-                Parler de votre projet →
+                Soumettre un besoin
               </a>
             </div>
           </div>
@@ -212,7 +213,7 @@ const resolvedOgImage = ogImage.startsWith("http")
         hidden
         class="border-t border-neutral-200 bg-white xl:hidden"
       >
-        <div class="mx-auto w-full max-w-[1680px] px-4 py-5 md:px-8">
+        <div class="mx-auto w-full max-w-[1720px] px-4 py-5 md:px-8">
           <nav aria-label="Navigation mobile" class="flex flex-col">
             {navItems.map((item) => (
               <a
@@ -233,7 +234,7 @@ const resolvedOgImage = ogImage.startsWith("http")
               href="/contact"
               class="mt-5 inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-5 text-sm font-medium text-white transition hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
             >
-              Parler de votre projet →
+              Soumettre un besoin
             </a>
           </nav>
         </div>
@@ -248,7 +249,7 @@ const resolvedOgImage = ogImage.startsWith("http")
         class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-opus-red/80 via-opus-red/55 to-transparent"
       ></div>
 
-      <div class="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-10 px-4 py-12 md:px-8 md:py-14 lg:grid-cols-[1.15fr_.9fr_.95fr] xl:px-10">
+      <div class="mx-auto grid w-full max-w-[1720px] grid-cols-1 gap-10 px-4 py-12 md:px-8 md:py-14 lg:grid-cols-[1.15fr_.9fr_.95fr] xl:px-10">
         <div class="max-w-[56ch]">
           <a
             href="/"
@@ -259,11 +260,11 @@ const resolvedOgImage = ogImage.startsWith("http")
           </a>
 
           <p class="mt-5 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-            Architecture, intégration et activation sélective de l’intelligence, avec une exécution gouvernée.
+            {motherPhrase}
           </p>
 
           <p class="mt-5 text-sm leading-7 text-neutral-700">
-            contact@opus-tek.ca · +1 418-717-9653 · <a href="https://www.opus-tek.com" class="underline-offset-2 hover:underline">www.opus-tek.com</a>
+            contact@opus-tek.ca - +1 418-717-9653 - <a href="https://www.opus-tek.com" class="underline-offset-2 hover:underline">www.opus-tek.com</a>
           </p>
 
           <p class="mt-3 text-sm leading-7 text-neutral-500">
@@ -296,7 +297,7 @@ const resolvedOgImage = ogImage.startsWith("http")
 
         <div>
           <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
-            Légal & Social
+            Légal & social
           </p>
 
           <ul class="mt-4 space-y-3">

@@ -3,128 +3,29 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="FAQ — OPUS Technology"
-  description="FAQ OPUS : mode d’intervention, gouvernance, sécurité, IA, delivery, modèles d’engagement."
+  title="FAQ - OPUS Technology"
+  description="Réponses courtes et utiles sur le mode d'intervention OPUS, la gouvernance, la sécurité, l'IA, le delivery et les formats d'engagement."
 >
-  <main id="main" class="site-main">
+  <main id="main-content" class="site-main">
     <section class="page">
       <div class="wrap">
         <div class="page-inner">
           <div class="page-kicker">FAQ</div>
           <h1 class="page-title">Questions fréquentes</h1>
           <p class="page-lead">
-            Réponses directes, orientées exécution : comment on travaille, ce qu’on livre, et comment on garde le contrôle
-            (qualité, sécurité, traçabilité).
+            Réponses directes, orientées exécution : comment OPUS travaille, ce qui est réellement livré et comment le cadre reste gouvernable.
           </p>
 
           <div class="hero-cta" style="margin-top:18px;">
-            <a class="btn btn-primary" href="/contact">Soumettre un besoin →</a>
-            <a class="btn btn-secondary" href="/ressources">Voir nos preuves →</a>
+            <a class="btn btn-primary" href="/contact">Soumettre un besoin</a>
+            <a class="btn btn-secondary" href="/ressources">Voir les preuves</a>
           </div>
 
           <h2 class="page-title" style="font-size:28px; margin-top:34px;">Delivery & collaboration</h2>
           <div class="page-grid" style="margin-top:18px;">
-            <article class="card">
-              <h3 class="card-title">Comment travaillez-vous avec nos équipes ?</h3>
-              <p class="card-text">
-                En co-travail : responsabilités claires, cadence, qualité et documentation exploitable. Objectif : livrer vite sans perdre la gouvernance.
-              </p>
-            </article>
-
-            <article class="card">
-              <h3 class="card-title">Pouvez-vous intervenir sur un besoin “petit” ?</h3>
-              <p class="card-text">
-                Oui : cadrage court, stabilisation CI/CD, sécurisation d’un flux, automatisation ciblée, ou renfort expert — sans projet lourd.
-              </p>
-            </article>
-
-            <article class="card">
-              <h3 class="card-title">Sous quel format intervenez-vous ?</h3>
-              <p class="card-text">
-                Cadrage court (1–2 semaines), exécution incrémentale, puis stabilisation/transfer. On s’adapte au contexte (interne, fournisseur, hybride).
-              </p>
-            </article>
-          </div>
-
-          <h2 class="page-title" style="font-size:28px; margin-top:34px;">Sécurité, conformité, gouvernance</h2>
-          <div class="page-grid" style="margin-top:18px;">
-            <article class="card">
-              <h3 class="card-title">Intégrez-vous la sécurité dès le départ ?</h3>
-              <p class="card-text">
-                Oui. Exigences, contrôles, accès, secrets, journaux et traçabilité sont traités en amont, puis validés par incréments.
-              </p>
-            </article>
-
-            <article class="card">
-              <h3 class="card-title">Comment gérez-vous la conformité ?</h3>
-              <p class="card-text">
-                Conformité “contextuelle” : on applique vos règles, vos politiques et vos contraintes, avec preuves et mécanismes d’audit.
-              </p>
-            </article>
-
-            <article class="card">
-              <h3 class="card-title">Comment évitez-vous la dérive ?</h3>
-              <p class="card-text">
-                Décisions explicites (ADR), backlog priorisé, critères d’acceptation, jalons, et validations au bon niveau.
-              </p>
-            </article>
-          </div>
-
-          <h2 class="page-title" style="font-size:28px; margin-top:34px;">IA & automatisation</h2>
-          <div class="page-grid" style="margin-top:18px;">
-            <article class="card">
-              <h3 class="card-title">Faites-vous de l’IA “pratique” ?</h3>
-              <p class="card-text">
-                Oui : ciblage, extraction, classification, assistants, RAG — intégrés aux outils existants, avec garde-fous et contrôle qualité.
-              </p>
-            </article>
-
-            <article class="card">
-              <h3 class="card-title">Comment garantissez-vous la fiabilité ?</h3>
-              <p class="card-text">
-                Tests, jeux de validation, monitoring, logs, et mécanismes de fallback. On privilégie l’opérable à la démo.
-              </p>
-            </article>
-
-            <article class="card">
-              <h3 class="card-title">Pouvez-vous industrialiser un POC ?</h3>
-              <p class="card-text">
-                Oui : passage de POC à MVP via architecture cible, sécurité, CI/CD, observabilité, runbooks, et critères Go/No-Go.
-              </p>
-            </article>
-          </div>
-
-          <h2 class="page-title" style="font-size:28px; margin-top:34px;">Modèle OPUS ↔ Phoenixx</h2>
-          <div class="page-grid" style="margin-top:18px;">
-            <article class="card">
-              <h3 class="card-title">OPUS ↔ Phoenixx : quel modèle ?</h3>
-              <p class="card-text">
-                Phoenixx (Canada) apporte l’ancrage local et l’écosystème. OPUS porte la livraison et l’exécution. Le modèle maximise proximité, contrôle et capacité.
-              </p>
-            </article>
-
-            <article class="card">
-              <h3 class="card-title">Travaillez-vous avec des partenaires ?</h3>
-              <p class="card-text">
-                Oui, lorsque cela augmente la capacité. Le cadre reste identique : responsabilités claires, standards, qualité et traçabilité.
-              </p>
-            </article>
-
-            <article class="card">
-              <h3 class="card-title">Comment démarre-t-on ?</h3>
-              <p class="card-text">
-                Tu décris ton besoin (contexte, objectifs, contraintes). On répond rapidement avec un cadrage clair et des prochaines étapes.
-              </p>
-            </article>
-          </div>
-
-          <div class="hero-cta" style="margin-top:26px;">
-            <a class="btn btn-primary" href="/contact">Soumettre un besoin →</a>
-            <a class="btn btn-secondary" href="/services">Voir nos services →</a>
-          </div>
-
-          <div class="breadcrumb">
-            <a href="/">Accueil</a> <span>→</span> <span>FAQ</span>
+            <article class="card"><h3 class="card-title">Comment travaillez-vous avec les équipes internes ?</h3><p class="card-text">En co-travail, avec responsabilités explicites, cadence lisible et documentation exploitable.</p></article>
+            <article class="card"><h3 class="card-title">Pouvez-vous intervenir sur un besoin ciblé ?</h3><p class="card-text">Oui. OPUS peut cadrer un sujet précis, stabiliser un mécanisme ou remettre une trajectoire en cohérence sans lancer un chantier disproportionné.</p></article>
+            <article class="card"><h3 class="card-title">Sous quel format intervenez-vous ?</h3><p class="card-text">Cadrage court, intervention structurante, séquence d'exécution ou accompagnement continu selon le point de friction réel.</p></article>
           </div>
         </div>
       </div>

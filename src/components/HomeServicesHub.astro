@@ -1,324 +1,71 @@
 ---
-import S1Underline from "./nav/S1Underline.astro";
-
-type DomainKey = "architecture" | "engineering" | "intelligence";
-
-interface ServiceItem {
-  title: string;
-  description: string;
-  icon:
-    | "architecture"
-    | "integration"
-    | "governance"
-    | "automation"
-    | "cloud"
-    | "modernization"
-    | "data"
-    | "devops"
-    | "security"
-    | "ai"
-    | "portal"
-    | "observability";
-}
-
-const domains: {
-  key: DomainKey;
-  label: string;
-  eyebrow: string;
-  intro: string;
-  services: ServiceItem[];
-}[] = [
+const domains = [
   {
-    key: "architecture",
     label: "Architecture",
-    eyebrow: "DOMAIN 01",
-    intro:
-      "Cadrer, structurer et sécuriser les fondations technologiques, les choix d’intégration et les trajectoires de transformation.",
-    services: [
-      { icon: "architecture", title: "Architecture de solution", description: "Conception cible, alignement des capacités et cadrage des décisions structurantes." },
-      { icon: "integration", title: "Architecture d’intégration", description: "Interfaces, flux, orchestration et cohérence entre plateformes et services." },
-      { icon: "governance", title: "Gouvernance technologique", description: "Rôles, validations, arbitrages et discipline documentaire applicables." },
-      { icon: "security", title: "Architecture de sécurité", description: "Protection, séparation des responsabilités et maîtrise des risques clés." },
-      { icon: "cloud", title: "Architecture cloud & hybride", description: "Fondations cloud, connectivité, résilience et intégration des environnements." },
-      { icon: "modernization", title: "Modernisation des plateformes", description: "Évolution des environnements legacy vers des modèles plus robustes et gouvernés." },
+    eyebrow: "QUAND ENGAGER OPUS",
+    title: "Quand le sujet manque de socle, d'arbitrages et de trajectoire claire.",
+    body: "OPUS intervient pour clarifier le périmètre, remettre les dépendances en cohérence et poser les décisions structurantes avant qu'un programme ne se disperse davantage.",
+    bullets: [
+      "Cadrage senior du sujet et des dépendances",
+      "Arbitrages structurants remis à plat",
+      "Trajectoire cible plus défendable pour les décideurs",
     ],
   },
   {
-    key: "engineering",
     label: "Ingénierie",
-    eyebrow: "DOMAIN 02",
-    intro:
-      "Transformer une vision en dispositifs concrets, exploitables et livrables dans un cadre d’exécution maîtrisé.",
-    services: [
-      { icon: "automation", title: "Automatisation", description: "Workflow, orchestration et réduction des tâches manuelles à faible valeur." },
-      { icon: "devops", title: "DevOps & delivery", description: "Chaînes de livraison, qualité d’exécution et pratiques de mise en œuvre durables." },
-      { icon: "integration", title: "Implémentation d’intégrations", description: "Déploiement concret des interfaces et connexions entre systèmes d’entreprise." },
-      { icon: "portal", title: "Portails & expérience service", description: "Parcours structurés, libre-service et expérience utilisateur orientée adoption." },
-      { icon: "observability", title: "Observabilité opérationnelle", description: "Visibilité sur les flux, signaux, incidents et qualité de fonctionnement." },
-      { icon: "security", title: "Hardening opérationnel", description: "Mesures de robustesse, contrôles et discipline de livraison sécurisée." },
+    eyebrow: "QUAND ENGAGER OPUS",
+    title: "Quand les systèmes, le delivery et les opérations ne tiennent plus ensemble.",
+    body: "OPUS reconnecte les flux, les responsabilités et les mécanismes d'exécution quand l'accumulation de friction rend le delivery plus lent, plus fragile ou plus opaque.",
+    bullets: [
+      "Interfaces et flux critiques remis en ligne",
+      "Exécution plus lisible pour les équipes et la direction",
+      "Moins de friction entre architecture, delivery et exploitation",
     ],
   },
   {
-    key: "intelligence",
     label: "Intelligence",
-    eyebrow: "DOMAIN 03",
-    intro:
-      "Mettre les données, l’IA et les signaux métier au service de décisions plus claires et d’une exécution plus pertinente.",
-    services: [
-      { icon: "data", title: "Stratégie de données", description: "Structuration, qualité, usage et lisibilité des actifs informationnels." },
-      { icon: "ai", title: "IA appliquée", description: "Cas d’usage, cadrage, gouvernance et intégration progressive de capacités d’IA." },
-      { icon: "governance", title: "Gouvernance des données", description: "Règles, responsabilités, accès et fiabilité des informations critiques." },
-      { icon: "observability", title: "Mesure & signaux", description: "KPI, instrumentation et lecture des résultats pour piloter avec plus de précision." },
-      { icon: "automation", title: "Décision-to-execution", description: "Chaînage entre signal, arbitrage, action et preuve de réalisation." },
-      { icon: "cloud", title: "Plateformes intelligentes", description: "Capacités cloud, données et IA assemblées dans un modèle exploitable." },
+    eyebrow: "QUAND ENGAGER OPUS",
+    title: "Quand l'activation des données ou de l'IA doit rester gouvernable.",
+    body: "OPUS n'active que ce qui peut être expliqué, encadré et soutenu dans le temps. L'objectif n'est pas l'effet d'annonce, mais une capacité utile, traçable et exécutable.",
+    bullets: [
+      "Usages clarifiés avant activation",
+      "Règles de preuve et de responsabilité explicites",
+      "Capacités utiles sans perdre la maîtrise du risque",
     ],
   },
 ];
-
-function iconMarkup(icon: ServiceItem["icon"]) {
-  switch (icon) {
-    case "architecture":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><rect x="9" y="9" width="6" height="6"/><path d="M12 9V5"/><path d="M12 19v-4"/><path d="M9 12H5"/><path d="M19 12h-4"/></svg>`;
-    case "integration":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><rect x="3" y="6" width="6" height="4"/><rect x="15" y="14" width="6" height="4"/><path d="M9 8h4a3 3 0 0 1 3 3v3"/></svg>`;
-    case "governance":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16"/><path d="M10 4v16"/></svg>`;
-    case "automation":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><circle cx="8" cy="12" r="2.5"/><circle cx="16" cy="8" r="2"/><circle cx="16" cy="16" r="2"/><path d="M10.5 11l3.5-2"/><path d="M10.5 13l3.5 2"/></svg>`;
-    case "cloud":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="M7 18h10a3 3 0 0 0 .3-6A5 5 0 0 0 8 9a4 4 0 0 0-1 9Z"/></svg>`;
-    case "modernization":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><rect x="3" y="7" width="6" height="10"/><path d="M12 12h9"/><path d="m18 8 3 4-3 4"/></svg>`;
-    case "data":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><ellipse cx="12" cy="6" rx="6.5" ry="2.5"/><path d="M5.5 6v6c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5V6"/><path d="M5.5 12v6c0 1.4 2.9 2.5 6.5 2.5s6.5-1.1 6.5-2.5v-6"/></svg>`;
-    case "devops":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="M8 7a5 5 0 0 1 8 2"/><path d="m16 5 .5 4-4-.5"/><path d="M16 17a5 5 0 0 1-8-2"/><path d="m8 19-.5-4 4 .5"/></svg>`;
-    case "security":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-2.7 7.7-7 10-4.3-2.3-7-5.5-7-10V6l7-3Z"/><path d="M9.5 12.5 11 14l3.5-3.5"/></svg>`;
-    case "ai":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><circle cx="12" cy="4.5" r="1.5"/><circle cx="19.5" cy="12" r="1.5"/><circle cx="12" cy="19.5" r="1.5"/><circle cx="4.5" cy="12" r="1.5"/><path d="M12 6v3.5"/><path d="M14.5 12H18"/><path d="M12 14.5V18"/><path d="M6 12h3.5"/></svg>`;
-    case "portal":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/><path d="M8 14h8"/></svg>`;
-    case "observability":
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15l3-4 2.5 2.5L17 9"/></svg>`;
-  }
-}
 ---
 
-<section aria-label="Hub services OPUS" data-services-hub class="bg-white py-20 md:py-24">
-  <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
-    <div class="max-w-[920px]">
-      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
-        SERVICES HUB
-      </p>
-
-      <h2 class="mt-4 max-w-[9ch] text-[clamp(2rem,4vw,3.7rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
-        3 domaines. 6 capacités. 9 secondes pour comprendre.
+<section aria-label="Qualification des services OPUS" class="bg-white py-18 md:py-22">
+  <div class="mx-auto w-full max-w-[1720px] px-4 md:px-8 xl:px-10">
+    <div class="max-w-[980px]">
+      <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">LIGNES D'INTERVENTION</p>
+      <h2 class="mt-4 max-w-[13ch] text-[clamp(2rem,4vw,3.7rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+        Trois lignes pour savoir quand engager OPUS et sur quel type de blocage.
       </h2>
-
-      <p class="mt-5 max-w-[70ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
-        OPUS structure ses interventions autour de trois domaines lisibles. Chaque domaine regroupe des capacités
-        concrètes, immédiatement compréhensibles, sans surcharge ni complexité inutile.
+      <p class="mt-5 max-w-[78ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+        Services ne rejoue pas la persuasion de la home. Cette page sert à qualifier le type de besoin, le niveau de recadrage nécessaire et la ligne d'intervention la plus utile pour remettre un sujet en état de décision puis d'exécution.
       </p>
     </div>
 
-    <div class="mt-10">
-      <S1Underline selector='[role="tab"]' active='[aria-selected="true"]'>
-        <div
-          role="tablist"
-          aria-label="Domaines de services"
-          class="flex min-w-0 gap-8 overflow-x-auto pb-2"
-        >
-          {domains.map((domain, index) => (
-            <button
-              type="button"
-              role="tab"
-              id={`tab-${domain.key}`}
-              aria-controls={`panel-${domain.key}`}
-              aria-selected={index === 0 ? "true" : "false"}
-              tabindex={index === 0 ? 0 : -1}
-              data-domain-tab={domain.key}
-              class:list={[
-                "shrink-0 pb-3 text-left text-[0.82rem] font-medium uppercase tracking-[0.18em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]",
-                index === 0 ? "text-opus-dark" : "text-neutral-500 hover:text-opus-dark",
-              ]}
-            >
-              {domain.label}
-            </button>
-          ))}
-        </div>
-      </S1Underline>
-    </div>
-
-    <div class="mt-10 grid grid-cols-1 gap-8 xl:grid-cols-[minmax(0,1fr)_320px] xl:gap-10">
-      <div class="min-w-0">
-        <div class="order-first mb-8 grid grid-cols-1 gap-4 xl:hidden">
-          <aside class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Verified</p>
-            <p class="mt-4 text-[clamp(2rem,4vw,3rem)] font-semibold leading-none tracking-[-0.04em] text-opus-red">
-              3
-            </p>
-            <h3 class="mt-4 text-base font-semibold leading-6 text-opus-dark">Execution domains</h3>
-            <p class="mt-3 text-sm leading-6 text-neutral-700">
-              Architecture, ingénierie et intelligence dans une lecture simple et immédiatement actionnable.
-            </p>
-          </aside>
-
-          <aside class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Documented</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="inline-flex items-center border border-neutral-200 px-3 py-2 text-[0.75rem] font-medium text-opus-dark">Senior-led</span>
-              <span class="inline-flex items-center border border-neutral-200 px-3 py-2 text-[0.75rem] font-medium text-opus-dark">Delivery-ready</span>
-              <span class="inline-flex items-center border border-neutral-200 px-3 py-2 text-[0.75rem] font-medium text-opus-dark">NDA-safe</span>
-            </div>
-            <p class="mt-4 text-sm leading-6 text-neutral-700">
-              Un positionnement structuré pour des contextes exigeants, avec des signaux de confiance lisibles.
-            </p>
-          </aside>
-        </div>
-
-        {domains.map((domain, index) => (
-          <section
-            id={`panel-${domain.key}`}
-            role="tabpanel"
-            aria-labelledby={`tab-${domain.key}`}
-            data-domain-panel={domain.key}
-            hidden={index !== 0}
-          >
-            <div class="max-w-[860px]">
-              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">
-                {domain.eyebrow}
-              </p>
-
-              <p class="mt-4 max-w-[68ch] text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-                {domain.intro}
-              </p>
-            </div>
-
-            <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
-              {domain.services.slice(0, 6).map((service) => (
-                <article
-                  class="group relative h-full border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)] transition duration-300 ease-out hover:-translate-y-[2px] hover:border-neutral-300 hover:shadow-[0_16px_40px_rgba(0,0,0,0.06)]"
-                >
-                  <div class="flex items-start gap-4">
-                    <span class="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-neutral-200 bg-neutral-50 text-opus-dark transition-all duration-300 ease-out group-hover:-translate-y-[1px] group-hover:border-opus-red/25 group-hover:bg-white">
-                      <Fragment set:html={iconMarkup(service.icon)} />
-                    </span>
-
-                    <div class="min-w-0">
-                      <div class="mb-3 h-[2px] w-14 bg-opus-red"></div>
-
-                      <h3 class="text-[1rem] font-semibold leading-6 text-opus-dark transition-colors duration-300 group-hover:text-opus-red">
-                        {service.title}
-                      </h3>
-
-                      <p class="mt-2 text-sm leading-6 text-neutral-700">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div
-                    aria-hidden="true"
-                    class="absolute inset-x-0 bottom-0 h-[2px] origin-left scale-x-0 bg-opus-red transition-transform duration-500 ease-out group-hover:scale-x-100"
-                  ></div>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
-
-      <aside class="hidden xl:block">
-        <div class="sticky top-28 space-y-4">
-          <section class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)] transition hover:-translate-y-1 hover:shadow-lg">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Verified</p>
-            <p class="mt-4 text-[clamp(2.1rem,4vw,3.2rem)] font-semibold leading-none tracking-[-0.04em] text-opus-red">
-              6
-            </p>
-            <h3 class="mt-4 text-base font-semibold leading-6 text-opus-dark">Capabilities per domain</h3>
-            <p class="mt-3 text-sm leading-6 text-neutral-700">
-              Une sélection volontairement resserrée pour maintenir une lecture claire et crédible.
-            </p>
-          </section>
-
-          <section class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Documented</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <span class="inline-flex items-center border border-neutral-200 px-3 py-2 text-[0.75rem] font-medium text-opus-dark">Senior-led</span>
-              <span class="inline-flex items-center border border-neutral-200 px-3 py-2 text-[0.75rem] font-medium text-opus-dark">Delivery-ready</span>
-              <span class="inline-flex items-center border border-neutral-200 px-3 py-2 text-[0.75rem] font-medium text-opus-dark">NDA-safe</span>
-            </div>
-            <p class="mt-4 text-sm leading-6 text-neutral-700">
-              Une posture de travail lisible, rassurante et immédiatement compréhensible par les parties prenantes.
-            </p>
-          </section>
-        </div>
-      </aside>
+    <div class="mt-10 grid grid-cols-1 gap-5 xl:grid-cols-3">
+      {domains.map((domain) => (
+        <article class="flex h-full flex-col border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+          <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">{domain.eyebrow}</p>
+          <div class="mt-4 h-[2px] w-14 bg-opus-red"></div>
+          <p class="mt-5 text-[0.78rem] font-medium uppercase tracking-[0.18em] text-neutral-500">{domain.label}</p>
+          <h3 class="mt-3 text-[1.2rem] font-semibold leading-7 text-opus-dark">{domain.title}</h3>
+          <p class="mt-4 text-sm leading-7 text-neutral-700">{domain.body}</p>
+          <ul class="mt-6 space-y-3 border-t border-neutral-200 pt-6 text-sm leading-7 text-neutral-700">
+            {domain.bullets.map((bullet) => (
+              <li class="flex gap-3">
+                <span class="mt-[0.85rem] h-[2px] w-4 shrink-0 bg-opus-red"></span>
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
     </div>
   </div>
 </section>
-
-<script is:inline>
-  (() => {
-    function initServicesHub() {
-      document.querySelectorAll("[data-services-hub]").forEach((hub) => {
-        if (!(hub instanceof HTMLElement)) return;
-        if (hub.dataset.servicesReady === "true") return;
-        hub.dataset.servicesReady = "true";
-
-        const tabs = Array.from(hub.querySelectorAll('[role="tab"]'));
-        const panels = Array.from(hub.querySelectorAll("[data-domain-panel]"));
-
-        if (!tabs.length || !panels.length) return;
-
-        const activate = (nextTab) => {
-          const key = nextTab.dataset.domainTab;
-
-          tabs.forEach((tab) => {
-            const selected = tab === nextTab;
-            tab.setAttribute("aria-selected", selected ? "true" : "false");
-            tab.tabIndex = selected ? 0 : -1;
-            tab.classList.toggle("text-opus-dark", selected);
-            tab.classList.toggle("text-neutral-500", !selected);
-          });
-
-          panels.forEach((panel) => {
-            const match = panel.dataset.domainPanel === key;
-            panel.hidden = !match;
-          });
-
-          requestAnimationFrame(() => {
-            window.dispatchEvent(new Event("resize"));
-          });
-        };
-
-        tabs.forEach((tab, index) => {
-          tab.addEventListener("click", () => activate(tab));
-
-          tab.addEventListener("keydown", (event) => {
-            let nextIndex = index;
-
-            if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
-            if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
-            if (event.key === "Home") nextIndex = 0;
-            if (event.key === "End") nextIndex = tabs.length - 1;
-
-            if (nextIndex !== index) {
-              event.preventDefault();
-              const nextTab = tabs[nextIndex];
-              nextTab.focus();
-              activate(nextTab);
-            }
-          });
-        });
-
-        const activeTab = tabs.find((tab) => tab.getAttribute("aria-selected") === "true") ?? tabs[0];
-        activate(activeTab);
-      });
-    }
-
-    initServicesHub();
-    document.addEventListener("astro:page-load", initServicesHub);
-  })();
-</script>

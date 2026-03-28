@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { strategicCaseStudies } from "../../data/caseStudies";
+
+const study = strategicCaseStudies[2];
+---
+
+<BaseLayout title={study.pageTitle} description={study.pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section class="bg-white py-24 md:py-28">
+      <div class="mx-auto w-full max-w-[900px] px-4 md:px-8">
+        <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
+          {study.eyebrow}
+        </p>
+
+        <h1 class="mt-5 text-4xl font-black tracking-tight text-opus-dark md:text-5xl">
+          {study.title}
+        </h1>
+
+        <p class="mt-8 text-[1rem] leading-[1.8] text-neutral-700">
+          {study.intro}
+        </p>
+
+        <div class="mt-14 space-y-10">
+          {study.sections.map((section) => (
+            <section>
+              <h2 class="text-2xl font-semibold tracking-tight text-opus-dark">{section.title}</h2>
+              <p class="mt-5 leading-[1.8] text-neutral-700">{section.body}</p>
+            </section>
+          ))}
+        </div>
+
+        <div class="mt-16 h-28 w-[2px] bg-opus-red"></div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

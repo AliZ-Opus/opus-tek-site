@@ -41,12 +41,11 @@
     let currentY = window.innerHeight / 2;
     let targetX = currentX;
     let targetY = currentY;
-    let rafId = 0;
     let hovering = false;
 
     const interactiveSelector = 'a, button, [role="tab"], input, textarea, select, label[for], [data-cursor-hover]';
 
-    const setHoverState = (state) => {
+    const setHoverState = (state: boolean) => {
       hovering = state;
       if (hovering) {
         ring.style.transform = "translate(-50%, -50%) scale(1.5)";
@@ -66,20 +65,20 @@
       currentY += (targetY - currentY) * 0.18;
 
       root.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
-      rafId = requestAnimationFrame(tick);
+      requestAnimationFrame(tick);
     };
 
-    const onMove = (event) => {
+    const onMove = (event: MouseEvent) => {
       targetX = event.clientX;
       targetY = event.clientY;
     };
 
-    const onOver = (event) => {
+    const onOver = (event: MouseEvent) => {
       const target = event.target instanceof Element ? event.target.closest(interactiveSelector) : null;
       setHoverState(Boolean(target));
     };
 
-    const onOut = (event) => {
+    const onOut = (event: MouseEvent) => {
       const related = event.relatedTarget instanceof Element ? event.relatedTarget.closest(interactiveSelector) : null;
       if (!related) setHoverState(false);
     };

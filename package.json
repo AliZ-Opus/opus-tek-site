@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "test": "node --test tests"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -18,7 +20,9 @@
     "node": ">=20.19.0 <21"
   },
   "devDependencies": {
-    "@astrojs/vercel": "^8.2.11"
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/vercel": "^8.2.11",
+    "typescript": "^5.9.3"
   },
   "volta": {
     "node": "20.19.0"

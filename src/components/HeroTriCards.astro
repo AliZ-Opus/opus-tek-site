@@ -1,5 +1,4 @@
 ---
-// src/components/HeroTriCards.astro
 type Card = {
   title: string;
   desc: string;
@@ -16,19 +15,19 @@ const cards: Card[] = [
     href: "/ressources",
     chips: ["Études de cas", "Repères", "FAQ"],
     icon: "bulb",
-    cta: "Voir toutes les ressources",
+    cta: "Voir les ressources",
   },
   {
     title: "Services",
-    desc: "Cadrage, conception, sécurisation et exécution d’architectures et plateformes stratégiques.",
+    desc: "Cadrage, conception, sécurisation et exécution d'architectures et de plateformes stratégiques.",
     href: "/services",
     chips: ["Architecture", "Données", "IA", "Modernisation"],
     icon: "gear",
-    cta: "Explorer les services",
+    cta: "Voir les services",
   },
   {
     title: "Solutions",
-    desc: "Actifs et briques technologiques pour accélérer l’automatisation, la gouvernance et la traçabilité.",
+    desc: "Actifs et briques technologiques pour accélérer l'automatisation, la gouvernance et la traçabilité.",
     href: "/solutions",
     chips: ["Automation", "Gouvernance", "AI Engine", "Data Platform"],
     icon: "puzzle",
@@ -40,7 +39,7 @@ const cards: Card[] = [
 <section class="tri" aria-label="Ressources, services et solutions">
   <div class="tri__grid" role="list">
     {cards.map((c) => (
-      <a class="tri__card" href={c.href} role="listitem" aria-label={`${c.title} — ${c.cta}`}>
+      <a class="tri__card" href={c.href} role="listitem" aria-label={`${c.title} - ${c.cta}`}>
         <div class="tri__icon" aria-hidden="true">
           {c.icon === "bulb" && (
             <svg viewBox="0 0 24 24" fill="none">
@@ -81,7 +80,7 @@ const cards: Card[] = [
 
         <div class="tri__head">
           <h2 class="tri__title">{c.title}</h2>
-          <span class="tri__arrow" aria-hidden="true">→</span>
+          <span class="tri__arrow" aria-hidden="true">+</span>
         </div>
 
         <p class="tri__desc">{c.desc}</p>
@@ -104,14 +103,11 @@ const cards: Card[] = [
     border-top: 1px solid rgba(var(--line),1);
     border-bottom: 1px solid rgba(var(--line),1);
   }
-
-  /* FULL WIDTH 3 columns like CGI */
   .tri__grid{
     display:grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     width: 100%;
   }
-
   .tri__card{
     padding: 16px 16px 14px;
     text-decoration:none;
@@ -122,8 +118,6 @@ const cards: Card[] = [
     transition: transform .14s ease, box-shadow .14s ease, background .14s ease, border-color .14s ease;
     outline: none;
   }
-
-  /* vertical separators */
   .tri__card:not(:first-child)::before{
     content:"";
     position:absolute;
@@ -133,7 +127,6 @@ const cards: Card[] = [
     width:1px;
     background: rgba(var(--line),1);
   }
-
   .tri__icon{
     width: 28px;
     height: 28px;
@@ -147,7 +140,6 @@ const cards: Card[] = [
     transition: border-color .14s ease, transform .14s ease;
   }
   .tri__icon svg{ width:100%;height:100%; }
-
   .tri__head{
     display:flex;
     align-items:center;
@@ -155,21 +147,18 @@ const cards: Card[] = [
     gap: 12px;
     margin-bottom: 4px;
   }
-
   .tri__title{
     margin:0;
     font-size: 16px;
     font-weight: 900;
     letter-spacing: -0.01em;
   }
-
   .tri__arrow{
     opacity: 0;
     transform: translateX(-6px);
     transition: opacity .14s ease, transform .14s ease;
     color: rgba(var(--ink),.72);
   }
-
   .tri__desc{
     margin:0;
     color: rgba(var(--ink),.80);
@@ -177,14 +166,12 @@ const cards: Card[] = [
     line-height: 1.45;
     max-width: 48ch;
   }
-
   .tri__chips{
     margin-top: 8px;
     display:flex;
     flex-wrap: wrap;
     gap: 8px;
   }
-
   .tri__chip{
     font-size: 11px;
     line-height: 1;
@@ -195,15 +182,12 @@ const cards: Card[] = [
     background: #fff;
     user-select: none;
   }
-
   .tri__cta{
     margin-top: 8px;
     font-size: 12px;
     font-weight: 900;
     color: rgba(var(--ink),.86);
   }
-
-  /* Hover: subtle, premium */
   .tri__card:hover{
     background: rgba(0,0,0,0.008);
     transform: translateY(-2px);
@@ -217,12 +201,10 @@ const cards: Card[] = [
     border-color: rgba(var(--ink),0.22);
     transform: translateY(-1px);
   }
-
   .tri__card:focus-visible{
     outline: 3px solid rgba(var(--red),0.35);
     outline-offset: -2px;
   }
-
   @media (max-width: 980px){
     .tri__grid{ grid-template-columns: 1fr; }
     .tri__card:not(:first-child)::before{ display:none; }

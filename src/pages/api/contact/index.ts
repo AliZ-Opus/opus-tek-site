@@ -1,7 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
-import nodemailer from "nodemailer";
+import { createWorkspaceTransport, escapeHtml, resolveMailRoute } from "../../../lib/server/workspaceMail.js";
 
 const hits = new Map<string, { count: number; ts: number }>();
 const WINDOW_MS = 60_000;
@@ -20,34 +20,6 @@ function rateLimit(ip: string) {
 
   cur.count += 1;
   return true;
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-function getTransporter() {
-  const user = import.meta.env.GOOGLE_WORKSPACE_SMTP_USER;
-  const pass = import.meta.env.GOOGLE_WORKSPACE_SMTP_APP_PASSWORD;
-
-  if (!user || !pass) {
-    throw new Error("Missing GOOGLE_WORKSPACE_SMTP_USER or GOOGLE_WORKSPACE_SMTP_APP_PASSWORD");
-  }
-
-  return nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    auth: {
-      user,
-      pass,
-    },
-  });
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -101,16 +73,11 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    const smtpUser = import.meta.env.GOOGLE_WORKSPACE_SMTP_USER;
-    const from = import.meta.env.MAIL_FROM || smtpUser;
-    const to = import.meta.env.MAIL_TO || "ali.zouari@opus-tek.ca";
+    const { from, to } = resolveMailRoute(import.meta.env, {
+      fallbackTo: "ali.zouari@opus-tek.ca",
+    });
 
-    if (!from || !to) {
-      throw new Error("Missing MAIL_FROM/MAIL_TO configuration");
-    }
-
-    const subject = `Nouveau message site OPUS — ${name}`;
-
+    const subject = `Nouveau message site OPUS - ${name}`;
     const text = [
       "Nouveau message depuis le site OPUS",
       "",
@@ -151,7 +118,7 @@ export const POST: APIRoute = async ({ request }) => {
       </div>
     `;
 
-    const transporter = getTransporter();
+    const transporter = createWorkspaceTransport(import.meta.env);
 
     await transporter.sendMail({
       from,
@@ -166,14 +133,13 @@ export const POST: APIRoute = async ({ request }) => {
       status: 200,
       headers: { "content-type": "application/json" },
     });
-  } catch (err: any) {
+  } catch (err) {
     console.error("CONTACT_API_ERROR:", err);
 
     return new Response(
       JSON.stringify({
         ok: false,
         error: "server_error",
-        detail: err?.message || String(err),
       }),
       {
         status: 500,

@@ -1,6 +1,7 @@
 ---
 import S1Underline from '../nav/S1Underline.astro';
-const { items = [] } = Astro.props;
+type AnchorItem = { id: string; label: string };
+const { items = [] }: { items?: AnchorItem[] } = Astro.props;
 ---
 <nav class="offer-anchors" aria-label="Sections de l'offre" data-offer-anchors>
   <S1Underline selector='[data-offer-anchor]' active='[aria-current="true"]'>
@@ -13,11 +14,11 @@ const { items = [] } = Astro.props;
   <script>
     const root = document.currentScript?.closest('[data-offer-anchors]');
     if (root) {
-      const links = Array.from(root.querySelectorAll('[data-offer-anchor]'));
-      const ids = links.map(l => l.getAttribute('href')?.slice(1)).filter(Boolean);
-      const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+      const links = Array.from(root.querySelectorAll<HTMLAnchorElement>('[data-offer-anchor]'));
+      const ids = links.map((l) => l.getAttribute('href')?.slice(1)).filter((id): id is string => Boolean(id));
+      const sections = ids.map((id) => document.getElementById(id)).filter((section): section is HTMLElement => Boolean(section));
 
-      const setActive = (id) => {
+      const setActive = (id: string) => {
         links.forEach((l) => {
           const active = l.getAttribute('href') === `#${id}`;
           l.classList.toggle('is-active', active);

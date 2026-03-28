@@ -2,79 +2,52 @@
 import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HomeServicesHub from "../components/HomeServicesHub.astro";
-import ExecutionArchitecture from "../components/ExecutionArchitecture.astro";
 import heroImage from "../assets/hero/opus-services.png";
 
-const pageTitle = "Services — OPUS Technology";
+const pageTitle = "Services - OPUS Technology";
 const pageDescription =
-  "Trois lignes d’intervention OPUS: Architecture, Ingénierie et Intelligence pour cadrer, intégrer et activer de façon gouvernée et actionnable.";
-
-const serviceLines = [
-  {
-    label: "Architecture",
-    title: "Cadrage, décision, fondation",
-    body: "Nous clarifions le périmètre, les arbitrages et la trajectoire cible pour sécuriser les décisions structurantes.",
-  },
-  {
-    label: "Ingénierie",
-    title: "Intégration, cohérence, industrialisation",
-    body: "Nous relions systèmes et équipes avec des standards d’exécution qui tiennent dans le temps.",
-  },
-  {
-    label: "Intelligence",
-    title: "Qualification, gouvernance, activation sélective",
-    body: "Nous activons l’IA sur des usages utiles et contrôlés, avec des règles de preuve et de responsabilité.",
-  },
-];
+  "Trois lignes d'intervention OPUS pour recadrer un programme, remettre du mécanisme dans le delivery et rendre l'exécution plus gouvernable.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main id="main-content" class="bg-white">
     <section aria-label="Services OPUS" class="relative isolate overflow-clip border-b border-neutral-200 bg-white">
-      <div class="mx-auto grid min-h-[80svh] max-h-[760px] max-w-[1680px] grid-cols-1 items-center px-4 py-10 md:px-8 lg:grid-cols-[45%_55%] xl:px-10">
+      <div class="mx-auto grid min-h-[80svh] max-w-[1720px] grid-cols-1 items-center px-4 py-10 md:px-8 lg:grid-cols-[50%_50%] xl:px-10">
         <div class="relative z-20 flex min-w-0 items-center">
-          <div class="relative w-full max-w-[800px] py-8 lg:py-12 lg:pr-12 xl:pr-24">
+          <div class="relative w-full max-w-[900px] py-8 lg:py-10 lg:pr-8 xl:pr-16">
             <div
               aria-hidden="true"
-              class="pointer-events-none absolute inset-y-0 -left-8 right-[-38%] z-0"
-              style="
-                background: linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0) 100%);
-                -webkit-mask-image: linear-gradient(to right, black 42%, transparent 100%);
-                mask-image: linear-gradient(to right, black 42%, transparent 100%);
-                -webkit-mask-repeat: no-repeat;
-                mask-repeat: no-repeat;
-                -webkit-mask-size: 100% 100%;
-                mask-size: 100% 100%;
-              "
+              class="pointer-events-none absolute inset-y-0 -left-8 right-[-28%] z-0"
+              style="background: linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.08) 82%, rgba(255,255,255,0) 100%);"
             ></div>
 
             <div class="relative z-10">
               <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500 sm:text-xs">SERVICES</p>
-              <h1 class="max-w-[18ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
-                Trois leviers pour transformer un besoin complexe en exécution maîtrisée.
+              <h1 class="max-w-[16ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
+                Savoir quand engager OPUS, et sur quel type de blocage.
               </h1>
-              <p class="mt-6 max-w-[58ch] text-base leading-8 text-neutral-700 md:text-[1.05rem]">
-                OPUS intervient là où les décisions techniques ont un impact business direct.
+              <p class="mt-6 max-w-[66ch] text-base leading-8 text-neutral-700 md:text-[1.05rem]">
+                La home expose pourquoi OPUS compte. Ici, l'objectif est plus simple : qualifier le sujet, identifier la ligne d'intervention utile et comprendre comment nous remettons un programme en état de décision, puis d'exécution.
               </p>
 
               <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <a href="/contact" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition hover:border-black hover:bg-black">
-                  Parler de votre projet →
+                  Soumettre un besoin
                 </a>
-                <a href="/phoenixx-opus" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark shadow-[0_10px_24px_rgba(0,0,0,0.04)] transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">
-                  Voir le modèle Phoenixx ↔ OPUS →
+                <a href="/ressources#case-studies" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark shadow-[0_10px_24px_rgba(0,0,0,0.04)] transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">
+                  Voir les cas
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="relative mt-6 h-full min-h-[400px] sm:min-h-[520px] lg:min-h-[560px] xl:mt-0 xl:min-h-[640px]">
+        <div class="relative mt-6 h-full min-h-[380px] sm:min-h-[500px] lg:min-h-[540px] xl:mt-0 xl:min-h-[620px]">
           <Image
             src={heroImage}
             alt="Visuel architectural illustrant les domaines de services OPUS"
             widths={[960, 1280, 1600, 1920]}
-            sizes="(max-width: 1023px) 100vw, 55vw"
+            sizes="(max-width: 1023px) 100vw, 50vw"
             format="avif"
             quality={92}
             loading="eager"
@@ -86,42 +59,33 @@ const serviceLines = [
       </div>
     </section>
 
-    <section class="relative z-30 -mt-[96px] md:-mt-[110px] lg:-mt-[120px]">
+    <section class="relative z-30 mt-6 md:mt-8 lg:mt-10">
       <HomeServicesHub />
     </section>
 
-    <section class="bg-white py-10 md:py-12">
-      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
-        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {serviceLines.map((item) => (
-            <article class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">{item.label}</p>
-              <h2 class="mt-3 text-[1.1rem] font-semibold leading-6 text-opus-dark">{item.title}</h2>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <ExecutionArchitecture />
-
     <section class="border-t border-neutral-200 bg-white py-16 md:py-20">
-      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+      <div class="mx-auto w-full max-w-[1720px] px-4 md:px-8 xl:px-10">
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-[1.05fr_.95fr]">
           <article class="border border-neutral-200 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">BÉNÉFICE DÉCIDEUR</p>
-            <p class="mt-4 text-sm leading-8 text-neutral-700 md:text-[0.98rem]">
-              Un langage commun entre direction, produit et delivery: décisions plus rapides, exécution plus prévisible.
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">LECTURE RAPIDE</p>
+            <h2 class="mt-4 max-w-[16ch] text-[clamp(1.7rem,2.8vw,2.7rem)] font-semibold leading-[1] tracking-[-0.03em] text-opus-dark">
+              Choisir la bonne ligne d'intervention évite de perdre encore du temps en intensification mal cadrée.
+            </h2>
+            <p class="mt-5 text-sm leading-8 text-neutral-700 md:text-[0.98rem]">
+              Architecture recadre le socle et les décisions. Ingénierie reconnecte l'exécution réelle. Intelligence rend utile ce qui peut être activé sans perdre en lisibilité ni en maîtrise du risque.
             </p>
           </article>
           <article class="border border-neutral-200 bg-neutral-50 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">NEXT STEP</p>
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">PREUVE UTILE</p>
             <p class="mt-4 text-sm leading-8 text-neutral-700 md:text-[0.98rem]">
-              Vous avez un programme critique à cadrer, intégrer ou fiabiliser ?
+              Si le sujet doit encore être qualifié, les cas montrent comment OPUS reprend un socle critique, clarifie des arbitrages et remet une trajectoire en état d'exécution défendable.
             </p>
-            <div class="mt-6 border-t border-neutral-200 pt-6">
+            <div class="mt-6 flex flex-wrap gap-3 border-t border-neutral-200 pt-6">
               <a href="/contact" class="inline-flex min-h-11 items-center justify-center border border-opus-dark bg-opus-dark px-5 text-sm font-medium text-white transition hover:bg-black">
-                Parler à OPUS →
+                Soumettre un besoin
+              </a>
+              <a href="/ressources#case-studies" class="inline-flex min-h-11 items-center justify-center border border-neutral-300 bg-white px-5 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">
+                Voir les cas
               </a>
             </div>
           </article>

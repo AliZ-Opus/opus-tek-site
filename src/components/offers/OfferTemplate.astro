@@ -1,6 +1,11 @@
 ---
 import OfferAnchors from './OfferAnchors.astro';
-const { offer } = Astro.props;
+import type { OfferData } from '../../data/offers';
+interface Props {
+  offer: OfferData;
+}
+
+const { offer } = Astro.props as Props;
 const anchorItems = [
   { id: 'overview', label: 'Overview' },
   { id: 'method', label: 'Method' },
