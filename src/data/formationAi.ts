@@ -5,7 +5,7 @@ export const formationHero = {
   kicker: "FORMATION & ACCOMPAGNEMENT IA",
   title: "Une capacité réelle au Brésil, prête à s'élargir proprement.",
   intro:
-    "Deux MBA IA 100 % en ligne, déjà opérés au Brésil via Phoenixx, servent de base réelle. OPUS et Phoenixx structurent maintenant un volet plus large formation + accompagnement, avec une première étape sérieuse : qualifier la demande avant d'élargir l'offre.",
+    "Deux MBA IA 100 % en ligne, déjà opérés au Brésil via Phoenixx, servent de base réelle. OPUS et Phoenixx structurent maintenant un volet plus large de formation et d'accompagnement, avec une première étape sérieuse : qualifier la demande avant d'élargir l'offre.",
 };
 
 export const credibilityMetrics = [
@@ -31,7 +31,7 @@ export const operatingStates = [
   {
     label: "EN STRUCTURATION",
     title: "Une extension plus large est en préparation",
-    body: "OPUS et Phoenixx structurent maintenant un volet plus large formation + accompagnement, avec une logique plus nette entre programmes, accompagnement entreprise et trajectoires sur mesure.",
+    body: "OPUS et Phoenixx structurent maintenant un volet plus large de formation et d'accompagnement, avec une logique plus nette entre programmes, accompagnement entreprise et trajectoires sur mesure.",
   },
   {
     label: "À QUALIFIER",
@@ -74,7 +74,7 @@ export const mbaPrograms = [
     title: "MBA Ingénierie des données & IA",
     subtitle: "Construire la base technique qui alimente l'IA moderne.",
     audience:
-      "Professionnels TI, data engineers, analysts, data scientists et profils qui veulent migrer vers la donnée, le cloud et l'IA appliquée.",
+      "Professionnels TI, data engineers, analystes, data scientists et profils qui veulent migrer vers la donnée, le cloud et l'IA appliquée.",
     positioning:
       "Un MBA professionnalisant centré sur l'infrastructure de données, les pipelines, le cloud et les mécanismes qui rendent l'IA exploitable à grande échelle.",
     skills: [
@@ -98,7 +98,7 @@ export const mbaPrograms = [
     title: "MBA Intelligence artificielle & Machine Learning",
     subtitle: "Entrer sur le marché de l'IA avec une base pratique et déployable.",
     audience:
-      "Développeurs, professionnels TI, data analysts, data engineers et profils ML qui veulent accélérer vers des usages IA réels.",
+      "Développeurs, professionnels TI, analystes de données, data engineers et profils ML qui veulent accélérer vers des usages IA réels.",
     positioning:
       "Un MBA centré sur la pratique du Machine Learning, de l'IA générative, du NLP et du déploiement cloud pour rendre les modèles plus proches de l'usage réel.",
     skills: [
@@ -113,7 +113,7 @@ export const mbaPrograms = [
     career:
       "Vise des rôles comme développeur IA, data scientist, ingénieur ML ou spécialiste cloud et déploiement IA.",
     format:
-      "12 mois, 100 % en ligne, 3 certificats intermédiaires, pas de TCC et évaluation par projets réels.",
+      "12 mois, 100 % en ligne, 3 certificats intermédiaires, sans mémoire académique lourd et avec évaluation par projets réels.",
     recognition:
       "Diplôme reconnu par le MEC au Brésil, en partenariat avec l'Université Anhanguera.",
   },
