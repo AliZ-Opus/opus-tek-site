@@ -1,0 +1,137 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "IA 2026 | Initiative de formation IA en ligne";
+const pageDescription =
+  "Initiative de formation IA en ligne portée en Tunisie avec Phoenixx University, en phase de sondage et de structuration de l'offre.";
+
+const positioningPoints = [
+  "un partenariat confirmé avec l’Université de Sousse",
+  "une ouverture internationale concrète",
+  "la référence à un modèle de formation comparable déjà opéré au Brésil",
+];
+
+const pathways = [
+  "des MBA",
+  "des certifications",
+  "des formats courts",
+  "des parcours spécialisés",
+  "des passerelles internationales",
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section class="relative isolate overflow-hidden border-b border-neutral-200 bg-[linear-gradient(180deg,#ffffff_0%,#f5f5f4_100%)]">
+      <div aria-hidden="true" class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-opus-red/80 via-opus-red/45 to-transparent"></div>
+      <div aria-hidden="true" class="absolute right-[-8rem] top-12 h-40 w-40 rounded-full bg-opus-red/8 blur-3xl md:h-56 md:w-56"></div>
+
+      <div class="mx-auto grid min-h-[calc(100svh-5rem)] max-w-[1720px] grid-cols-1 gap-8 px-4 py-10 md:px-8 md:py-12 lg:min-h-[72svh] lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)] lg:items-center xl:px-10">
+        <div class="relative z-10 max-w-[880px]">
+          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">IA 2026</p>
+          <h1 class="mt-5 max-w-[13ch] text-[clamp(2.8rem,6vw,5.2rem)] font-black leading-[0.92] tracking-[-0.05em] text-opus-dark">
+            L’avenir de la formation IA se construit maintenant.
+          </h1>
+
+          <p class="mt-6 max-w-[64ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+            OPUS porte en Tunisie une initiative de formation IA en ligne liée à Phoenixx University.
+          </p>
+
+          <div class="mt-7 max-w-[60ch] border-l-2 border-opus-red/70 pl-5">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Cette démarche s’appuie sur :</p>
+            <ul class="mt-4 space-y-3 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+              {positioningPoints.map((item) => (
+                <li class="flex gap-3">
+                  <span aria-hidden="true" class="mt-[0.68rem] h-1.5 w-1.5 shrink-0 rounded-full bg-opus-red"></span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="/formation-accompagnement-ia" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white shadow-[0_14px_32px_rgba(0,0,0,0.1)] transition hover:border-black hover:bg-black">
+              Répondre au sondage
+            </a>
+            <a href="#initiative" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">
+              Découvrir l’initiative
+            </a>
+          </div>
+
+          <p class="mt-6 max-w-[56ch] text-sm leading-7 text-neutral-600">
+            Répondez aujourd’hui pour recevoir en priorité les prochaines informations, les résultats clés de l’étude et les futures ouvertures.
+          </p>
+        </div>
+
+        <aside class="relative z-10">
+          <div class="border border-neutral-200 bg-white/92 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.06)] backdrop-blur-sm md:p-7">
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Positionnement</p>
+            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+              Nous sommes dans une phase de sondage et de structuration de l’offre.
+            </p>
+            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+              L’objectif est simple : comprendre les attentes réelles du marché étudiant afin d’orienter les prochains parcours de formation IA.
+            </p>
+
+            <div class="mt-6 h-px bg-neutral-200"></div>
+
+            <p class="mt-6 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Confiance</p>
+            <p class="mt-4 text-sm leading-7 text-neutral-700">L’offre est portée en Tunisie.</p>
+            <p class="mt-2 text-sm leading-7 text-neutral-700">
+              Les validations administratives relèvent du cadre compétent tunisien.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="initiative" class="bg-white py-12 md:py-16">
+      <div class="mx-auto max-w-[1720px] px-4 md:px-8 xl:px-10">
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+          <article class="border border-neutral-200 bg-white p-6 shadow-[0_12px_36px_rgba(0,0,0,0.04)] md:p-7">
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Initiative</p>
+            <h2 class="mt-4 max-w-[16ch] text-[clamp(1.8rem,3.6vw,3rem)] font-semibold leading-[1] tracking-[-0.03em] text-opus-dark">
+              Une construction sérieuse, à partir du réel.
+            </h2>
+            <p class="mt-5 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+              Cette page constitue l’entrée du dispositif QR → landing page → sondage → sortie post-sondage. Elle présente l’initiative de manière claire, sans sur-promesse, avant le branchement final du questionnaire.
+            </p>
+          </article>
+
+          <article class="border border-neutral-200 bg-neutral-50 p-6 shadow-[0_12px_36px_rgba(0,0,0,0.03)] md:p-7">
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Parcours visés</p>
+            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+              Les réponses contribueront à structurer :
+            </p>
+            <ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {pathways.map((item) => (
+                <li class="border border-neutral-200 bg-white px-4 py-4 text-sm leading-6 text-neutral-700 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-neutral-200 bg-neutral-50 py-12 md:py-14">
+      <div class="mx-auto max-w-[1720px] px-4 md:px-8 xl:px-10">
+        <div class="max-w-[980px] border border-neutral-200 bg-white p-6 shadow-[0_12px_36px_rgba(0,0,0,0.04)] md:p-7">
+          <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Sondage</p>
+          <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+            Le sondage est maintenant accessible via le CTA principal et renvoie vers la page de qualification déjà en place.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="/formation-accompagnement-ia" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:border-black hover:bg-black">
+              Répondre au sondage
+            </a>
+            <a href="#initiative" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">
+              Découvrir l’initiative
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

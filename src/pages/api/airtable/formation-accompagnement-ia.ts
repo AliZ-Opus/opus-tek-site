@@ -1,4 +1,4 @@
-export const prerender = false;
+﻿export const prerender = false;
 
 import type { APIRoute } from "astro";
 import {
@@ -98,7 +98,7 @@ export const POST: APIRoute = async ({ request }) => {
     await transporter.sendMail({
       from,
       to,
-      replyTo: data.email,
+      ...(data.email ? { replyTo: data.email } : {}),
       subject: mail.subject,
       text: mail.text,
       html: mail.html,
@@ -144,3 +144,4 @@ export const POST: APIRoute = async ({ request }) => {
     });
   }
 };
+

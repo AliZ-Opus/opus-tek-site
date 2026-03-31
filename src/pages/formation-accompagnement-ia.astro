@@ -8,18 +8,64 @@ import {
   credibilityNotes,
   formationAxes,
   formationHero,
-  formatOptions,
-  interestOptions,
-  levelOptions,
   mbaPrograms,
   operatingStates,
   partnershipFrame,
-  profileOptions,
-  surveyFraming,
-  surveyProgress,
-  timelineOptions,
-  topicOptions,
 } from "../data/formationAi";
+
+const surveySectionLabels = [
+  "A. Intérêt et demande globale",
+  "B. Intérêt par type d’offre",
+  "C. MBA international (Brésil)",
+  "D. Stage international (Canada)",
+  "E. Prix et disposition à payer",
+  "F. Financement",
+  "G. Intention réelle",
+  "H. Programmes recherchés (optionnel)",
+  "I. Freins à l’inscription",
+  "J. Commentaires libres (optionnel)",
+];
+
+const interestGlobalOptions = ["Aucun", "Faible", "Moyen", "Élevé", "Très élevé"];
+const openingIntentOptions = ["Prêt(e) à t’inscrire", "Intéressé(e) mais hésitant(e)", "Pas intéressé(e)"];
+const offerInterestOptions = [
+  "MBA international (diplôme universitaire)",
+  "Académie professionnelle (certification seulement)",
+  "Les deux",
+  "Aucune",
+];
+const singleOptionChoices = ["MBA uniquement", "Académie / certification uniquement"];
+const mbaRecognitionOptions = [
+  "Oui, totalement",
+  "Oui, si la reconnaissance internationale est claire",
+  "Mitigé(e), besoin de plus d’informations",
+  "Non",
+];
+const internationalFactorOptions = ["Pas important", "Important", "Très important"];
+const stageScaleOptions = ["1", "2", "3", "4", "5"];
+const stageInterestOptions = ["MBA + stage international", "MBA sans stage", "Stage seulement (sans MBA)", "Aucun"];
+const priceReactionOptions = [
+  "Je m’inscrirais sans hésiter",
+  "J’hésiterais, mais je considérerais sérieusement",
+  "Je ne m’inscrirais pas à ce prix",
+];
+const financingNeedOptions = ["Oui, indispensable", "Oui, important", "Non"];
+const financingDurationOptions = ["3 à 6 mois", "6 à 12 mois", "12 à 24 mois"];
+const preferredFormatOptions = ["3 500 CAD – paiement en 6 mois", "3 900 CAD – paiement en 12 mois", "Aucun des deux"];
+const enrollmentInterestOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+const programInterestOptions = [
+  "MBA international",
+  "Académie professionnelle (certification seulement)",
+  "Stage international (Canada)",
+];
+const barrierOptions = [
+  "Prix",
+  "Reconnaissance du diplôme",
+  "Temps / charge de travail",
+  "Niveau technique requis",
+  "Autre (préciser)",
+];
+const mbaCourseMap = Object.fromEntries(mbaPrograms.map((program) => [program.title, program.skills]));
 ---
 
 <BaseLayout title={formationHero.pageTitle} description={formationHero.pageDescription}>
@@ -266,23 +312,14 @@ import {
         <div class="grid grid-cols-1 gap-8 xl:grid-cols-[.86fr_1.14fr]">
           <div class="max-w-[720px]">
             <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">SONDAGE / ÉTUDE DE MARCHÉ</p>
-            <h2 class="mt-4 max-w-[14ch] text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">{surveyFraming.title}</h2>
-            <p class="mt-6 text-base leading-8 text-neutral-700">{surveyFraming.intro}</p>
+            <h2 class="mt-4 max-w-[14ch] text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">Un sondage validé, désormais aligné sur l’étude de marché.</h2>
+            <p class="mt-6 text-base leading-8 text-neutral-700">Ce sondage vise à évaluer l’intérêt pour une plateforme de formation en ligne en intelligence artificielle et en data, combinant des programmes MBA internationaux et des certifications professionnelles, en plus d’offrir des possibilités de stages au Canada.</p>
+            <p class="mt-4 text-base leading-8 text-neutral-700">Les réponses, entièrement anonymes, serviront à valider la demande, le positionnement de l’offre et les attentes réelles du marché.</p>
 
-            <div class="mt-8 space-y-4">
-              {surveyFraming.bullets.map((item) => (
-                <div class="flex gap-3 border-b border-neutral-200 pb-4 last:border-b-0 last:pb-0">
-                  <span class="mt-[0.85rem] h-[2px] w-4 shrink-0 bg-opus-red"></span>
-                  <p class="text-sm leading-7 text-neutral-700">{item}</p>
-                </div>
-              ))}
-            </div>
-
-            <div class="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
-              {surveyProgress.map((item, index) => (
-                <div class="border border-neutral-200 bg-white px-4 py-4 text-center shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
-                  <p class="text-[0.64rem] font-semibold uppercase tracking-[0.18em] text-neutral-500">Étape {index + 1}</p>
-                  <p class="mt-2 text-sm leading-6 text-opus-dark">{item}</p>
+            <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {surveySectionLabels.map((item) => (
+                <div class="border border-neutral-200 bg-white px-4 py-4 text-sm leading-6 text-neutral-700 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
+                  {item}
                 </div>
               ))}
             </div>
@@ -290,31 +327,229 @@ import {
 
           <div class="border border-neutral-200 bg-white p-6 shadow-[0_18px_50px_rgba(0,0,0,0.08)] md:p-8 xl:p-10">
             <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">FORMULAIRE DE QUALIFICATION</p>
-            <h3 class="mt-4 text-[clamp(1.5rem,2.8vw,2.4rem)] font-semibold leading-[1.02] text-opus-dark">Qualifier la demande avant de structurer l'offre.</h3>
-            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">Le formulaire est branché à une route API exploitable. La surface est finale, et la capture est déjà structurée pour consolidation de marché.</p>
+            <h3 class="mt-4 text-[clamp(1.5rem,2.8vw,2.4rem)] font-semibold leading-[1.02] text-opus-dark">Sondage validé, structuré de A à J.</h3>
+            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">La soumission reste branchée à la surface API existante. Le contenu du questionnaire, lui, a été remplacé intégralement par la version validée.</p>
 
-            <form id="formation-ia-survey" class="mt-8 space-y-8" novalidate>
+            <form id="formation-ia-survey" class="mt-8 space-y-8" novalidate data-course-map={JSON.stringify(mbaCourseMap)}>
               <section class="space-y-5">
-                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">ÉTAPE 1 - PROFIL</p>
-                <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-                  <div><label for="full_name" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Nom complet</label><input id="full_name" name="full_name" type="text" required class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition focus:border-opus-red" placeholder="Nom et prénom" /></div>
-                  <div><label for="email" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Courriel</label><input id="email" name="email" type="email" required class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition focus:border-opus-red" placeholder="vous@organisation.com" /></div>
-                </div>
-                <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-                  <div><label for="country_region" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Pays / region</label><input id="country_region" name="country_region" type="text" required class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition focus:border-opus-red" placeholder="Tunisie, Quebec, Bresil, Afrique du Nord..." /></div>
-                  <div><label for="profile_type" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Profil professionnel</label><select id="profile_type" name="profile_type" required class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition focus:border-opus-red"><option value="">Selectionner un profil</option>{profileOptions.map((item) => <option value={item}>{item}</option>)}</select></div>
-                </div>
-                <div><label for="current_level" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Niveau actuel en IA / data / cloud</label><select id="current_level" name="current_level" required class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition focus:border-opus-red"><option value="">Selectionner un niveau</option>{levelOptions.map((item) => <option value={item}>{item}</option>)}</select></div>
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">A. Intérêt et demande globale</p>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">1. Quel est ton niveau d’intérêt global pour une plateforme de formation en IA / Data ?</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-5">
+                    {interestGlobalOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="interest_global" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">2. Si cette plateforme ouvrait prochainement, serais-tu :</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
+                    {openingIntentOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="opening_intent" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
               </section>
 
               <section class="space-y-5 border-t border-neutral-200 pt-8">
-                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">ÉTAPE 2 - INTÉRÊTS</p>
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">B. Intérêt par type d’offre</p>
+
                 <fieldset>
-                  <legend class="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Interet principal</legend>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">3. Parmi les options suivantes, laquelle t’intéresse le plus ?</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                    {offerInterestOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="offer_interest" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">4. Si tu devais choisir une seule option, laquelle ?</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                    {singleOptionChoices.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="single_option" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </section>
+
+              <section class="space-y-5 border-t border-neutral-200 pt-8">
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">C. MBA international (Brésil)</p>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">5. Le fait que le MBA soit un diplôme délivré par une grande université brésilienne reconnue te convient-il ?</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                    {mbaRecognitionOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="mba_recognition" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">6. Le caractère international du diplôme est-il un facteur important pour toi ?</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
+                    {internationalFactorOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="international_factor" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </section>
+
+              <section class="space-y-5 border-t border-neutral-200 pt-8">
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">D. Stage international (Canada)</p>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">7. L’ajout d’un stage pratico-pratique avec une entreprise canadienne rend-il le programme plus attractif ?</legend>
+                  <div class="grid grid-cols-5 gap-3 md:grid-cols-5">
+                    {stageScaleOptions.map((item) => (
+                      <label class="flex cursor-pointer flex-col items-center gap-2 border border-neutral-200 bg-white px-3 py-4 text-sm text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="stage_attractiveness" value={item} class="h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                  <p class="text-xs leading-6 text-neutral-500">Échelle de 1 (pas du tout) à 5 (très attractif)</p>
+                </fieldset>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">8. Serais-tu intéressé(e) par :</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                    {stageInterestOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="stage_interest" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </section>
+
+              <section class="space-y-5 border-t border-neutral-200 pt-8">
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">E. Prix et disposition à payer</p>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">9. Pour un MBA international en ligne incluant un stage : le programme est proposé à 3 900 CAD, avec la possibilité de payer 325 CAD par mois pendant 12 mois (financement interne, sans banque). À ce prix, quelle serait ta réaction ?</legend>
+                  <div class="grid grid-cols-1 gap-3">
+                    {priceReactionOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="mba_price_reaction" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">10. Et pour une académie certifiante (sans diplôme), 2600 CAD ?</legend>
+                  <div class="grid grid-cols-1 gap-3">
+                    {priceReactionOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="academy_price_reaction" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </section>
+
+              <section class="space-y-5 border-t border-neutral-200 pt-8">
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">F. Financement</p>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">11. Le paiement échelonné / financement serait-il nécessaire pour toi ?</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
+                    {financingNeedOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="financing_need" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">12. Si un financement interne mensuel est offert, quelle durée serait acceptable ?</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
+                    {financingDurationOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="financing_duration" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">13. Le programme est proposé à 3 900 CAD, avec la possibilité de payer 325 CAD par mois pendant 12 mois (financement interne, sans banque). Quelle serait ta réaction ?</legend>
+                  <div class="grid grid-cols-1 gap-3">
+                    {priceReactionOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="financed_mba_reaction" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">14. Lequel de ces formats te semblerait le plus acceptable ?</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
+                    {preferredFormatOptions.map((item) => (
+                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="preferred_format" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </section>
+
+              <section class="space-y-5 border-t border-neutral-200 pt-8">
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">G. Intention réelle</p>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">15. Si l’offre correspond à tes attentes (contenu, reconnaissance, prix), quel serait ton niveau d’intérêt pour t’inscrire ?</legend>
+                  <div class="grid grid-cols-5 gap-3 md:grid-cols-10">
+                    {enrollmentInterestOptions.map((item) => (
+                      <label class="flex cursor-pointer flex-col items-center gap-2 border border-neutral-200 bg-white px-3 py-4 text-sm text-neutral-700 transition hover:border-opus-dark/30">
+                        <input type="radio" name="enrollment_interest" value={item} class="h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <span>{item}</span>
+                      </label>
+                    ))}
+                  </div>
+                  <p class="text-xs leading-6 text-neutral-500">Échelle de 1 à 10</p>
+                </fieldset>
+              </section>
+
+              <section class="space-y-5 border-t border-neutral-200 pt-8">
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">H. Programmes recherchés (optionnel)</p>
+
+                <fieldset>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">16. Quels types de programmes t’intéressent le plus ? (choix multiples)</legend>
                   <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
-                    {interestOptions.map((item) => (
+                    {programInterestOptions.map((item) => (
                       <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
-                        <input type="radio" name="interest_main" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <input type="checkbox" name="program_interests" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" />
                         <span>{item}</span>
                       </label>
                     ))}
@@ -322,53 +557,77 @@ import {
                 </fieldset>
 
                 <fieldset>
-                  <legend class="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Thématiques prioritaires</legend>
-                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
-                    {topicOptions.map((item) => (
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">17. Choix entre les deux MBA proposés</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                    {mbaPrograms.map((program) => (
                       <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
-                        <input type="checkbox" name="priority_topics" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" />
-                        <span>{item}</span>
+                        <input type="radio" name="selected_mba" value={program.title} data-mba-choice class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" />
+                        <span>{program.title}</span>
                       </label>
+                    ))}
+                  </div>
+                </fieldset>
+
+                <fieldset id="course-ranking-panel" hidden>
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">18. Classement des 5 cours les plus intéressants dans le MBA sélectionné</legend>
+                  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    {Array.from({ length: 5 }, (_, index) => (
+                      <div>
+                        <label class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500" for={`ranked_course_${index + 1}`}>Rang {index + 1}</label>
+                        <select id={`ranked_course_${index + 1}`} name="ranked_courses" data-course-rank class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition focus:border-opus-red">
+                          <option value="">Choisir un cours</option>
+                        </select>
+                      </div>
                     ))}
                   </div>
                 </fieldset>
               </section>
 
               <section class="space-y-5 border-t border-neutral-200 pt-8">
-                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">ÉTAPE 3 - FORMAT</p>
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">I. Freins à l’inscription</p>
+
                 <fieldset>
-                  <legend class="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Préférence de format</legend>
-                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
-                    {formatOptions.map((item) => (
+                  <legend class="mb-3 text-sm font-medium leading-7 text-opus-dark">19. Quel est le principal frein qui pourrait t’empêcher de t’inscrire ?</legend>
+                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+                    {barrierOptions.map((item) => (
                       <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
-                        <input type="radio" name="format_preference" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
+                        <input type="radio" name="registration_barrier" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
                         <span>{item}</span>
                       </label>
                     ))}
                   </div>
                 </fieldset>
 
-                <fieldset>
-                  <legend class="mb-3 text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Horizon de démarrage</legend>
-                  <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
-                    {timelineOptions.map((item) => (
-                      <label class="flex cursor-pointer items-start gap-3 border border-neutral-200 bg-white px-4 py-4 text-sm leading-7 text-neutral-700 transition hover:border-opus-dark/30">
-                        <input type="radio" name="start_timeline" value={item} class="mt-1 h-4 w-4 accent-[var(--color-opus-red)]" required />
-                        <span>{item}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
+                <div id="registration-barrier-other-wrap" hidden>
+                  <label for="registration_barrier_other" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Préciser le frein</label>
+                  <input id="registration_barrier_other" name="registration_barrier_other" type="text" class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition focus:border-opus-red" placeholder="Préciser le principal frein" />
+                </div>
               </section>
 
               <section class="space-y-5 border-t border-neutral-200 pt-8">
-                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">ÉTAPE 4 - COMMENTAIRE</p>
-                <div><label for="comments" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Commentaires libres / attentes / besoins</label><textarea id="comments" name="comments" rows="6" class="w-full border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm leading-7 text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="Décrivez vos attentes, votre contexte, votre besoin de formation ou d'accompagnement."></textarea></div>
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">J. Commentaires libres (optionnel)</p>
+                <div>
+                  <label for="comments" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">20. As-tu des commentaires, suggestions ou attentes particulières concernant ce type de formation ?</label>
+                  <textarea id="comments" name="comments" rows="6" class="w-full border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm leading-7 text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="Champ de réponse libre"></textarea>
+                </div>
               </section>
 
               <div class="hidden" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off" /></div>
 
-              <p id="formation-survey-feedback" role="status" aria-live="polite" class="rounded-none border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700">Reponse courte, puis consolidation des retours pour structurer la suite.</p>
+              <p id="formation-survey-feedback" role="status" aria-live="polite" class="rounded-none border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700">Réponses anonymes, puis consolidation de l’étude pour structurer la suite.</p>
+
+              <section id="formation-survey-success" hidden class="border border-neutral-200 bg-neutral-50 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)] md:p-7">
+                <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Confirmation</p>
+                <h4 class="mt-4 text-[clamp(1.4rem,2.6vw,2rem)] font-semibold leading-[1.02] text-opus-dark">Merci pour votre participation.</h4>
+                <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">Votre réponse a bien été enregistrée.</p>
+                <p class="mt-3 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">Elle contribuera directement à la structuration de la future offre de formation IA portée en Tunisie via OPUS, dans le cadre de Phoenixx University.</p>
+                <p class="mt-3 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">La suite sera construite à partir de signaux réels, avec une logique progressive et maîtrisée.</p>
+                <div class="mt-6">
+                  <a href="/ia2026" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:border-black hover:bg-black">
+                    Retour à la page d’information
+                  </a>
+                </div>
+              </section>
 
               <div class="flex flex-wrap gap-3">
                 <button type="submit" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition hover:border-black hover:bg-black">Répondre au sondage</button>
@@ -379,7 +638,6 @@ import {
         </div>
       </div>
     </section>
-
     <section class="border-t border-neutral-200 bg-white py-16 md:py-20">
       <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
         <div class="max-w-[920px]">
@@ -412,15 +670,11 @@ import {
       const feedback = document.getElementById("formation-survey-feedback");
       if (!(form instanceof HTMLFormElement) || !(feedback instanceof HTMLElement)) return;
       const submitButton = form.querySelector('button[type="submit"]');
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      const parseName = (fullName) => {
-        const value = fullName.trim().replace(/\s+/g, " ");
-        if (!value) return { firstName: "", lastName: "" };
-        const parts = value.split(" ");
-        if (parts.length === 1) return { firstName: parts[0], lastName: "" };
-        return { firstName: parts.slice(0, -1).join(" "), lastName: parts.slice(-1).join(" ") };
-      };
+      const successPanel = document.getElementById("formation-survey-success");
+      const rankingPanel = document.getElementById("course-ranking-panel");
+      const barrierOtherWrap = document.getElementById("registration-barrier-other-wrap");
+      const barrierOtherInput = document.getElementById("registration_barrier_other");
+      const courseMap = JSON.parse(form.dataset.courseMap || "{}");
 
       const getRadioValue = (name) => {
         const field = form.querySelector(`input[name="${name}"]:checked`);
@@ -432,44 +686,128 @@ import {
           .filter((field) => field instanceof HTMLInputElement)
           .map((field) => field.value);
 
-      const validate = () => {
-        const data = new FormData(form);
-        const requiredText = ["full_name", "email", "country_region", "profile_type", "current_level"];
-        const missingText = requiredText.some((name) => !String(data.get(name) || "").trim());
-        const missingRadios = ["interest_main", "format_preference", "start_timeline"].some((name) => !getRadioValue(name));
-        const missingTopics = getCheckedValues("priority_topics").length === 0;
-        const email = String(data.get("email") || "").trim();
-        const invalidEmail = email ? !emailRegex.test(email) : false;
+      const getSelectValues = (name) =>
+        Array.from(form.querySelectorAll(`select[name="${name}"]`))
+          .filter((field) => field instanceof HTMLSelectElement)
+          .map((field) => field.value)
+          .filter(Boolean);
 
-        if (invalidEmail) {
-          feedback.textContent = "Merci de fournir une adresse courriel valide.";
-          return false;
+      const refreshBarrierField = () => {
+        const show = getRadioValue("registration_barrier") === "Autre (préciser)";
+        if (barrierOtherWrap instanceof HTMLElement) barrierOtherWrap.hidden = !show;
+        if (!show && barrierOtherInput instanceof HTMLInputElement) barrierOtherInput.value = "";
+      };
+
+      const refreshRankingPanel = () => {
+        const selectedMba = getRadioValue("selected_mba");
+        const selects = Array.from(form.querySelectorAll("select[data-course-rank]"));
+        const courses = Array.isArray(courseMap[selectedMba]) ? courseMap[selectedMba] : [];
+
+        if (!(rankingPanel instanceof HTMLElement)) return;
+        rankingPanel.hidden = !selectedMba;
+
+        selects.forEach((select) => {
+          if (!(select instanceof HTMLSelectElement)) return;
+          const previous = select.value;
+          select.innerHTML = '<option value="">Choisir un cours</option>';
+
+          courses.forEach((course) => {
+            const option = document.createElement("option");
+            option.value = course;
+            option.textContent = course;
+            if (course === previous) option.selected = true;
+            select.append(option);
+          });
+
+          if (previous && !courses.includes(previous)) select.value = "";
+        });
+      };
+
+      const validate = () => {
+        const requiredRadios = [
+          "interest_global",
+          "opening_intent",
+          "offer_interest",
+          "single_option",
+          "mba_recognition",
+          "international_factor",
+          "stage_attractiveness",
+          "stage_interest",
+          "mba_price_reaction",
+          "academy_price_reaction",
+          "financing_need",
+          "financing_duration",
+          "financed_mba_reaction",
+          "preferred_format",
+          "enrollment_interest",
+          "registration_barrier",
+        ];
+
+        const missingRadios = requiredRadios.some((name) => !getRadioValue(name));
+        if (missingRadios) return "Merci de compléter toutes les questions obligatoires du sondage.";
+
+        const barrier = getRadioValue("registration_barrier");
+        const barrierOther = barrierOtherInput instanceof HTMLInputElement ? barrierOtherInput.value.trim() : "";
+        if (barrier === "Autre (préciser)" && !barrierOther) {
+          return "Merci de préciser le frein principal lorsque vous choisissez “Autre (préciser)”.";
         }
 
-        return !(missingText || missingRadios || missingTopics);
+        const selectedMba = getRadioValue("selected_mba");
+        const rankedCourses = getSelectValues("ranked_courses");
+        const uniqueRankedCourses = [...new Set(rankedCourses)];
+        if (selectedMba && rankedCourses.length !== 5) {
+          return "Merci de classer les 5 cours du MBA sélectionné ou de laisser cette section optionnelle vide.";
+        }
+        if (rankedCourses.length > 0 && uniqueRankedCourses.length !== rankedCourses.length) {
+          return "Merci de classer 5 cours distincts sans doublon.";
+        }
+        if (!selectedMba && rankedCourses.length > 0) {
+          return "Merci de choisir d’abord l’un des deux MBA avant de classer les cours.";
+        }
+
+        return "";
       };
+
+      form.addEventListener("change", (event) => {
+        const target = event.target;
+        if (target instanceof HTMLInputElement && target.name === "registration_barrier") refreshBarrierField();
+        if (target instanceof HTMLInputElement && target.name === "selected_mba") refreshRankingPanel();
+      });
+
+      refreshBarrierField();
+      refreshRankingPanel();
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
 
-        if (!validate()) {
-          feedback.textContent = "Merci de compléter les champs requis et de choisir au moins une thématique prioritaire.";
+        const validationMessage = validate();
+        if (validationMessage) {
+          feedback.textContent = validationMessage;
           return;
         }
 
         const data = new FormData(form);
-        const { firstName, lastName } = parseName(String(data.get("full_name") || ""));
         const payload = {
-          first_name: firstName,
-          last_name: lastName,
-          email: String(data.get("email") || "").trim(),
-          country_region: String(data.get("country_region") || "").trim(),
-          profile_type: String(data.get("profile_type") || "").trim(),
-          current_level: String(data.get("current_level") || "").trim(),
-          interest_main: getRadioValue("interest_main"),
-          priority_topics: getCheckedValues("priority_topics"),
-          format_preference: getRadioValue("format_preference"),
-          start_timeline: getRadioValue("start_timeline"),
+          interest_global: getRadioValue("interest_global"),
+          opening_intent: getRadioValue("opening_intent"),
+          offer_interest: getRadioValue("offer_interest"),
+          single_option: getRadioValue("single_option"),
+          mba_recognition: getRadioValue("mba_recognition"),
+          international_factor: getRadioValue("international_factor"),
+          stage_attractiveness: getRadioValue("stage_attractiveness"),
+          stage_interest: getRadioValue("stage_interest"),
+          mba_price_reaction: getRadioValue("mba_price_reaction"),
+          academy_price_reaction: getRadioValue("academy_price_reaction"),
+          financing_need: getRadioValue("financing_need"),
+          financing_duration: getRadioValue("financing_duration"),
+          financed_mba_reaction: getRadioValue("financed_mba_reaction"),
+          preferred_format: getRadioValue("preferred_format"),
+          enrollment_interest: getRadioValue("enrollment_interest"),
+          program_interests: getCheckedValues("program_interests"),
+          selected_mba: getRadioValue("selected_mba"),
+          ranked_courses: getSelectValues("ranked_courses"),
+          registration_barrier: getRadioValue("registration_barrier"),
+          registration_barrier_other: String(data.get("registration_barrier_other") || "").trim(),
           comments: String(data.get("comments") || "").trim(),
           website: String(data.get("website") || "").trim(),
         };
@@ -486,18 +824,31 @@ import {
           const result = await response.json().catch(() => ({}));
 
           if (response.ok && result?.ok) {
-            feedback.textContent = "Sondage envoye. Les retours seront consolides pour structurer la suite du dispositif.";
+            feedback.hidden = true;
+            if (successPanel instanceof HTMLElement) successPanel.hidden = false;
+            form.querySelectorAll("input, select, textarea, button, a").forEach((element) => {
+              if (element instanceof HTMLInputElement || element instanceof HTMLSelectElement || element instanceof HTMLTextAreaElement || element instanceof HTMLButtonElement) {
+                element.disabled = true;
+              }
+            });
             form.reset();
+            refreshBarrierField();
+            refreshRankingPanel();
             return;
           }
 
-          if (result?.error === "invalid_email") {
-            feedback.textContent = "Merci de fournir une adresse courriel valide.";
+          if (result?.error === "missing_barrier_other") {
+            feedback.textContent = "Merci de préciser le frein principal lorsque vous choisissez “Autre (préciser)”.";
             return;
           }
 
-          if (result?.error === "missing_topics") {
-            feedback.textContent = "Choisissez au moins une thématique prioritaire.";
+          if (result?.error === "missing_selected_mba") {
+            feedback.textContent = "Merci de choisir d’abord l’un des deux MBA avant de classer les cours.";
+            return;
+          }
+
+          if (result?.error === "invalid_ranking") {
+            feedback.textContent = "Merci de classer les 5 cours du MBA sélectionné sans doublon.";
             return;
           }
 
@@ -510,7 +861,10 @@ import {
       });
     })();
   </script>
+
 </BaseLayout>
+
+
 
 
 
