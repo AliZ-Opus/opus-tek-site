@@ -18,6 +18,8 @@ interface Props {
   primaryCtaHref?: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
+  tertiaryCtaLabel?: string;
+  tertiaryCtaHref?: string;
   pods?: PodItem[];
 }
 
@@ -29,6 +31,8 @@ const {
   primaryCtaHref = "/contact",
   secondaryCtaLabel = "Voir les cas",
   secondaryCtaHref = "/ressources#case-studies",
+  tertiaryCtaLabel = "Découvrir l’initiative IA",
+  tertiaryCtaHref = "/ia2026",
   pods = [
     { label: "SERVICES", href: "/services", current: true },
     { label: "OFFRES", href: "/offres" },
@@ -89,6 +93,13 @@ const {
               class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark shadow-[0_10px_24px_rgba(0,0,0,0.04)] transition hover:border-opus-dark hover:bg-opus-dark hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
             >
               {secondaryCtaLabel}
+            </a>
+
+            <a
+              href={tertiaryCtaHref}
+              class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+            >
+              {tertiaryCtaLabel}
             </a>
           </div>
 

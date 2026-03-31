@@ -18,6 +18,8 @@ const pathways = [
   "des parcours spécialisés",
   "des passerelles internationales",
 ];
+
+const pamphletHref = "/assets/ia2026/opus-ia2026-pamphlet.png";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -111,6 +113,40 @@ const pathways = [
               ))}
             </ul>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-neutral-200 bg-opus-dark py-12 text-white md:py-14">
+      <div class="mx-auto max-w-[1720px] px-4 md:px-8 xl:px-10">
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-center">
+          <div class="max-w-[36rem]">
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/55">Support secondaire</p>
+            <h2 class="mt-4 text-[clamp(1.7rem,3vw,2.5rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-white">
+              Voir le support de présentation
+            </h2>
+            <p class="mt-4 text-sm leading-7 text-white/78 md:text-[0.98rem]">
+              Un support synthétique, aligné sur l’initiative, disponible en aperçu et en téléchargement.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href={pamphletHref} download class="inline-flex min-h-12 items-center justify-center border border-white/22 bg-white/8 px-6 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/14">
+                Télécharger le pamphlet
+              </a>
+            </div>
+          </div>
+
+          <div class="border border-white/12 bg-white/[0.04] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] md:p-5">
+            <p class="mb-4 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/55">Aperçu recto / verso</p>
+            <a href={pamphletHref} download class="block">
+              <img
+                src={pamphletHref}
+                alt="Aperçu recto verso du pamphlet de présentation IA 2026"
+                loading="lazy"
+                decoding="async"
+                class="w-full border border-white/12 object-cover shadow-[0_18px_40px_rgba(0,0,0,0.25)]"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </section>
