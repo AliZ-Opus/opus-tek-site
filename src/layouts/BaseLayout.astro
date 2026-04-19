@@ -25,18 +25,31 @@ const {
 const navItems: NavItem[] = [
   { label: "Accueil", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Phoenixx", href: "/phoenixx-opus" },
-  { label: "Formation IA", href: "/formation-accompagnement-ia" },
   { label: "Ressources", href: "/ressources" },
   { label: "Confiance", href: "/confiance" },
   { label: "Contact", href: "/contact" },
 ];
 
-const footerNavItems: NavItem[] = [...navItems];
+const defaultFooterNavItems: NavItem[] = [
+  { label: "Accueil", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Ressources", href: "/ressources" },
+  { label: "Confiance", href: "/confiance" },
+  { label: "Contact", href: "/contact" },
+];
 
 const currentPath = Astro.url.pathname;
 const canonical = Astro.url.href;
 const siteName = "OPUS Technology";
+
+const footerNavItems: NavItem[] =
+  currentPath === "/" || currentPath === "/services"
+    ? navItems
+    : defaultFooterNavItems;
+
+const isHomePage = currentPath === "/";
+const isServicesPage = currentPath === "/services";
+const hasCompactFooter = isHomePage || isServicesPage;
 
 const isActive = (href: string) => {
   if (href === "/") return currentPath === "/";
@@ -74,7 +87,7 @@ const resolvedOgImage = ogImage.startsWith("http")
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={resolvedOgImage} />
-    <meta property="og:image:alt" content="OPUS Technology - visuel architectural premium" />
+    <meta property="og:image:alt" content="OPUS Technology - visuel architectural" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -249,7 +262,10 @@ const resolvedOgImage = ogImage.startsWith("http")
         class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-opus-red/80 via-opus-red/55 to-transparent"
       ></div>
 
-      <div class="mx-auto grid w-full max-w-[1720px] grid-cols-1 gap-10 px-4 py-12 md:px-8 md:py-14 lg:grid-cols-[1.15fr_.9fr_.95fr] xl:px-10">
+      <div class:list={[
+        "mx-auto grid w-full max-w-[1720px] grid-cols-1 px-4 md:px-8 lg:grid-cols-[1.15fr_.9fr_.95fr] xl:px-10",
+        hasCompactFooter ? "gap-8 py-9 md:py-10" : "gap-10 py-12 md:py-14",
+      ]}>
         <div class="max-w-[56ch]">
           <a
             href="/"
@@ -259,19 +275,28 @@ const resolvedOgImage = ogImage.startsWith("http")
             <BrandLogo theme="dark" className="h-8 w-auto" />
           </a>
 
-          <p class="mt-5 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+          <p class:list={[
+            "text-sm leading-7 text-neutral-700 md:text-[0.98rem]",
+            hasCompactFooter ? "mt-4" : "mt-5",
+          ]}>
             {motherPhrase}
           </p>
 
-          <p class="mt-5 text-sm leading-7 text-neutral-700">
-            contact@opus-tek.ca - +1 418-717-9653 - <a href="https://www.opus-tek.com" class="underline-offset-2 hover:underline">www.opus-tek.com</a>
+          <p class:list={[
+            "text-sm leading-7 text-neutral-700",
+            hasCompactFooter ? "mt-4" : "mt-5",
+          ]}>
+            contact@opus-tek.ca · +1 418-717-9653 · +216 98 519 889
           </p>
 
           <p class="mt-3 text-sm leading-7 text-neutral-500">
-            Canada (Québec) · Tunisie (Sousse) · Brésil (São Paulo)
+            Canada (Québec) · Tunisie (Sousse) · <a href="https://www.opus-tek.com" class="underline-offset-2 hover:underline">www.opus-tek.com</a>
           </p>
 
-          <p class="mt-5 text-sm leading-7 text-neutral-500">
+          <p class:list={[
+            "text-sm leading-7 text-neutral-500",
+            hasCompactFooter ? "mt-4" : "mt-5",
+          ]}>
             © 2026 OPUS Technology. Tous droits réservés.
           </p>
         </div>
@@ -281,7 +306,10 @@ const resolvedOgImage = ogImage.startsWith("http")
             Navigation
           </p>
 
-          <ul class="mt-4 space-y-3">
+          <ul class:list={[
+            "mt-4",
+            hasCompactFooter ? "space-y-2" : "space-y-3",
+          ]}>
             {footerNavItems.map((item) => (
               <li>
                 <a
@@ -300,7 +328,10 @@ const resolvedOgImage = ogImage.startsWith("http")
             Légal & social
           </p>
 
-          <ul class="mt-4 space-y-3">
+          <ul class:list={[
+            "mt-4",
+            hasCompactFooter ? "space-y-2" : "space-y-3",
+          ]}>
             <li>
               <a
                 href="/propriete-intellectuelle"
@@ -319,7 +350,7 @@ const resolvedOgImage = ogImage.startsWith("http")
             </li>
             <li>
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/company/opus-tek/?viewAsMember=true"
                 target="_blank"
                 rel="noreferrer"
                 class="inline-flex items-center gap-2 text-sm leading-6 text-neutral-700 transition hover:text-opus-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"

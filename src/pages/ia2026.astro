@@ -1,173 +1,418 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
 
-const pageTitle = "IA 2026 | Initiative de formation IA en ligne";
+const pageTitle = "Qualification Formation IA & accompagnement - OPUS";
 const pageDescription =
-  "Initiative de formation IA en ligne portée en Tunisie avec Phoenixx University, en phase de sondage et de structuration de l'offre.";
+  "Landing autonome de qualification pour la demande Formation IA, certificats, MBA, accompagnement et parcours entreprises.";
+const canonical = Astro.url.href;
+const resolvedOgImage = new URL("/og/opus-og.png", Astro.site ?? Astro.url).href;
 
-const positioningPoints = [
-  "un partenariat confirmé avec l’Université de Sousse",
-  "une ouverture internationale concrète",
-  "la référence à un modèle de formation comparable déjà opéré au Brésil",
+const interestGlobalOptions = ["Aucun", "Faible", "Moyen", "Élevé", "Très élevé"];
+const openingIntentOptions = ["Prêt(e) à t'inscrire", "Intéressé(e) mais hésitant(e)", "Pas intéressé(e)"];
+const offerInterestOptions = [
+  "MBA international (diplôme universitaire)",
+  "Académie professionnelle (certification seulement)",
+  "Les deux",
+  "Aucune",
 ];
-
-const pathways = [
-  "des MBA",
-  "des certifications",
-  "des formats courts",
-  "des parcours spécialisés",
-  "des passerelles internationales",
+const singleOptionChoices = ["MBA uniquement", "Académie / certification uniquement"];
+const mbaRecognitionOptions = [
+  "Oui, totalement",
+  "Oui, si la reconnaissance internationale est claire",
+  "Mitigé(e), besoin de plus d'informations",
+  "Non",
 ];
-
-const pamphletHref = "/assets/ia2026/opus-ia2026-pamphlet.png";
+const internationalFactorOptions = ["Pas important", "Important", "Très important"];
+const scaleFive = ["1", "2", "3", "4", "5"];
+const stageInterestOptions = ["MBA + stage international", "MBA sans stage", "Stage seulement (sans MBA)", "Aucun"];
+const priceReactionOptions = [
+  "Je m'inscrirais sans hésiter",
+  "J'hésiterais, mais je considérerais sérieusement",
+  "Je ne m'inscrirais pas à ce prix",
+];
+const financingNeedOptions = ["Oui, indispensable", "Oui, important", "Non"];
+const financingDurationOptions = ["3 à 6 mois", "6 à 12 mois", "12 à 24 mois"];
+const preferredFormatOptions = ["3 500 CAD - paiement en 6 mois", "3 900 CAD - paiement en 12 mois", "Aucun des deux"];
+const enrollmentInterestOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+const programInterestOptions = [
+  "MBA international",
+  "Académie professionnelle (certification seulement)",
+  "Stage international (Canada)",
+  "Accompagnement entreprise",
+];
+const selectedMbaOptions = [
+  "MBA Ingénierie des données & IA",
+  "MBA Intelligence artificielle & Machine Learning",
+];
+const rankedCourseOptions = [
+  "IA générative",
+  "Machine Learning",
+  "Data engineering",
+  "Cloud IA",
+  "MLOps",
+  "Automatisation",
+];
+const barrierOptions = [
+  "Prix",
+  "Reconnaissance du diplôme",
+  "Temps / charge de travail",
+  "Niveau technique requis",
+  "Autre (préciser)",
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <main id="main-content" class="bg-white">
-    <section class="relative isolate overflow-hidden border-b border-neutral-200 bg-[linear-gradient(180deg,#ffffff_0%,#f5f5f4_100%)]">
-      <div aria-hidden="true" class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-opus-red/80 via-opus-red/45 to-transparent"></div>
-      <div aria-hidden="true" class="absolute right-[-8rem] top-12 h-40 w-40 rounded-full bg-opus-red/8 blur-3xl md:h-56 md:w-56"></div>
+<!doctype html>
+<html lang="fr" class="h-full scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_CA" />
+    <meta property="og:site_name" content="OPUS Technology" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:image:alt" content="OPUS Technology - visuel architectural" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={resolvedOgImage} />
+  </head>
 
-      <div class="mx-auto grid min-h-[calc(100svh-5rem)] max-w-[1720px] grid-cols-1 gap-8 px-4 py-10 md:px-8 md:py-12 lg:min-h-[72svh] lg:grid-cols-[minmax(0,1.08fr)_minmax(320px,0.92fr)] lg:items-center xl:px-10">
-        <div class="relative z-10 max-w-[880px]">
-          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">IA 2026</p>
-          <h1 class="mt-5 max-w-[13ch] text-[clamp(2.8rem,6vw,5.2rem)] font-black leading-[0.92] tracking-[-0.05em] text-opus-dark">
-            L’avenir de la formation IA se construit maintenant.
-          </h1>
+  <body class="min-h-full bg-white font-[Inter,sans-serif] text-opus-dark antialiased">
+    <header class="border-b border-neutral-200 bg-white">
+      <div class="mx-auto flex w-full max-w-[1480px] flex-col items-start justify-between gap-3 px-4 py-4 sm:flex-row sm:items-center md:gap-4 md:px-8 xl:px-10">
+        <a
+          href="/"
+          class="inline-flex min-w-0 items-center transition-opacity hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]"
+          aria-label="Accueil OPUS Technology"
+        >
+          <img
+            src="/assets/brand/logo-dark.png"
+            alt="OPUS Technology"
+            width="320"
+            height="96"
+            loading="eager"
+            decoding="async"
+            class="block select-none"
+            style="height: clamp(2rem, 4vw, 2.75rem); width: auto;"
+          />
+        </a>
 
-          <p class="mt-6 max-w-[64ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
-            OPUS porte en Tunisie une initiative de formation IA en ligne liée à Phoenixx University.
-          </p>
-
-          <div class="mt-7 max-w-[60ch] border-l-2 border-opus-red/70 pl-5">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Cette démarche s’appuie sur :</p>
-            <ul class="mt-4 space-y-3 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-              {positioningPoints.map((item) => (
-                <li class="flex gap-3">
-                  <span aria-hidden="true" class="mt-[0.68rem] h-1.5 w-1.5 shrink-0 rounded-full bg-opus-red"></span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="/formation-accompagnement-ia" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white shadow-[0_14px_32px_rgba(0,0,0,0.1)] transition hover:border-black hover:bg-black">
-              Répondre au sondage
-            </a>
-            <a href="#initiative" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">
-              Découvrir l’initiative
-            </a>
-          </div>
-
-          <p class="mt-6 max-w-[56ch] text-sm leading-7 text-neutral-600">
-            Répondez aujourd’hui pour recevoir en priorité les prochaines informations, les résultats clés de l’étude et les futures ouvertures.
-          </p>
-        </div>
-
-        <aside class="relative z-10">
-          <div class="border border-neutral-200 bg-white/92 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.06)] backdrop-blur-sm md:p-7">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Positionnement</p>
-            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-              Nous sommes dans une phase de sondage et de structuration de l’offre.
-            </p>
-            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-              L’objectif est simple : comprendre les attentes réelles du marché étudiant afin d’orienter les prochains parcours de formation IA.
-            </p>
-
-            <div class="mt-6 h-px bg-neutral-200"></div>
-
-            <p class="mt-6 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Confiance</p>
-            <p class="mt-4 text-sm leading-7 text-neutral-700">L’offre est portée en Tunisie.</p>
-            <p class="mt-2 text-sm leading-7 text-neutral-700">
-              Les validations administratives relèvent du cadre compétent tunisien.
-            </p>
-          </div>
-        </aside>
+        <a
+          href="/ressources/formation-ia-accompagnement"
+          class="inline-flex min-h-10 items-center justify-center whitespace-nowrap border border-neutral-200 bg-white px-3 text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-neutral-600 transition hover:border-opus-dark hover:text-opus-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)] sm:px-4 sm:text-[0.68rem] sm:tracking-[0.18em]"
+        >
+          <span class="md:hidden">Retour aux ressources</span>
+          <span class="hidden md:inline">Retour à Formation IA & accompagnement</span>
+        </a>
       </div>
-    </section>
+    </header>
 
-    <section id="initiative" class="bg-white py-12 md:py-16">
-      <div class="mx-auto max-w-[1720px] px-4 md:px-8 xl:px-10">
-        <div class="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-          <article class="border border-neutral-200 bg-white p-6 shadow-[0_12px_36px_rgba(0,0,0,0.04)] md:p-7">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Initiative</p>
-            <h2 class="mt-4 max-w-[16ch] text-[clamp(1.8rem,3.6vw,3rem)] font-semibold leading-[1] tracking-[-0.03em] text-opus-dark">
-              Une construction sérieuse, à partir du réel.
-            </h2>
-            <p class="mt-5 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-              Cette page constitue l’entrée du dispositif QR → landing page → sondage → sortie post-sondage. Elle présente l’initiative de manière claire, sans sur-promesse, avant le branchement final du questionnaire.
+    <main id="main-content" class="bg-white">
+      <section class="border-b border-neutral-200 bg-white py-12 md:py-14">
+        <div class="mx-auto grid max-w-[1480px] grid-cols-1 gap-8 px-4 md:px-8 lg:grid-cols-[1fr_.72fr] xl:px-10">
+          <div class="max-w-[780px]">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">QUALIFICATION</p>
+            <h1 class="mt-5 max-w-[13ch] text-[clamp(2.3rem,4.4vw,4.5rem)] font-semibold leading-[0.94] tracking-[-0.04em] text-opus-dark">
+              Formation IA & accompagnement.
+            </h1>
+            <p class="mt-6 max-w-[62ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+              Ce point d'entrée qualifie la demande pour des MBA, certificats, parcours entreprises et accompagnements IA, à partir d'une base déjà réelle.
             </p>
-          </article>
-
-          <article class="border border-neutral-200 bg-neutral-50 p-6 shadow-[0_12px_36px_rgba(0,0,0,0.03)] md:p-7">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Parcours visés</p>
-            <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-              Les réponses contribueront à structurer :
-            </p>
-            <ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {pathways.map((item) => (
-                <li class="border border-neutral-200 bg-white px-4 py-4 text-sm leading-6 text-neutral-700 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="border-t border-neutral-200 bg-opus-dark py-12 text-white md:py-14">
-      <div class="mx-auto max-w-[1720px] px-4 md:px-8 xl:px-10">
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-center">
-          <div class="max-w-[36rem]">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/55">Support secondaire</p>
-            <h2 class="mt-4 text-[clamp(1.7rem,3vw,2.5rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-white">
-              Voir le support de présentation
-            </h2>
-            <p class="mt-4 text-sm leading-7 text-white/78 md:text-[0.98rem]">
-              Un support synthétique, aligné sur l’initiative, disponible en aperçu et en téléchargement.
-            </p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a href={pamphletHref} download class="inline-flex min-h-12 items-center justify-center border border-white/22 bg-white/8 px-6 text-sm font-medium text-white transition hover:border-white/40 hover:bg-white/14">
-                Télécharger le pamphlet
-              </a>
+            <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+              <article class="border border-neutral-200 bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+                <p class="text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Base réelle</p>
+                <p class="mt-2 text-sm leading-6 text-neutral-700">2 programmes déjà opérés au Brésil.</p>
+              </article>
+              <article class="border border-neutral-200 bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+                <p class="text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">En structuration</p>
+                <p class="mt-2 text-sm leading-6 text-neutral-700">Formation, certificats et accompagnement.</p>
+              </article>
+              <article class="border border-neutral-200 bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+                <p class="text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">À qualifier</p>
+                <p class="mt-2 text-sm leading-6 text-neutral-700">Priorités, formats, horizon et intention.</p>
+              </article>
             </div>
           </div>
 
-          <div class="border border-white/12 bg-white/[0.04] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.22)] md:p-5">
-            <p class="mb-4 text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-white/55">Aperçu recto / verso</p>
-            <a href={pamphletHref} download class="block">
-              <img
-                src={pamphletHref}
-                alt="Aperçu recto verso du pamphlet de présentation IA 2026"
-                loading="lazy"
-                decoding="async"
-                class="w-full border border-white/12 object-cover shadow-[0_18px_40px_rgba(0,0,0,0.25)]"
-              />
-            </a>
-          </div>
+          <aside class="border border-neutral-200 bg-neutral-50 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">QR / URL stable</p>
+            <img src="/assets/qr/opus-ia2026-qr-final.png" alt="QR code vers le sondage Formation IA" loading="eager" decoding="async" class="mt-5 max-w-[180px] border border-neutral-200 bg-white p-3" />
+            <p class="mt-5 text-sm leading-7 text-neutral-700">
+              L'URL <strong>opus-tek.com/ia2026</strong> reste le point d'entrée officiel du sondage et de la qualification terrain.
+            </p>
+            <p class="mt-4 border-t border-neutral-200 pt-4 text-sm leading-7 text-neutral-700">
+              Continuité partenaire : l'Université de Sousse contribue à la diffusion et à la qualification de la demande.
+            </p>
+          </aside>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="border-t border-neutral-200 bg-neutral-50 py-12 md:py-14">
-      <div class="mx-auto max-w-[1720px] px-4 md:px-8 xl:px-10">
-        <div class="max-w-[980px] border border-neutral-200 bg-white p-6 shadow-[0_12px_36px_rgba(0,0,0,0.04)] md:p-7">
-          <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">Sondage</p>
-          <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-            Le sondage est maintenant accessible via le CTA principal et renvoie vers la page de qualification déjà en place.
-          </p>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href="/formation-accompagnement-ia" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:border-black hover:bg-black">
-              Répondre au sondage
-            </a>
-            <a href="#initiative" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">
-              Découvrir l’initiative
-            </a>
+      <section class="bg-white py-10 md:py-12">
+        <div class="mx-auto w-full max-w-[1480px] px-4 md:px-8 xl:px-10">
+          <div class="max-w-[760px]">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">SONDAGE</p>
+            <h2 class="mt-4 max-w-[13ch] text-[clamp(1.9rem,3.6vw,3.2rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+              Qualification de la demande.
+            </h2>
+            <p class="mt-5 text-sm leading-8 text-neutral-700 md:text-[0.98rem]">
+              Les réponses servent à lire le marché, prioriser les formats et structurer un déploiement progressif.
+            </p>
           </div>
+
+          <form id="formation-survey" class="mt-9 w-full space-y-5" novalidate>
+            <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">A. Intérêt et demande globale</p>
+              <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q1. Intérêt global</legend>
+                  <div class="mt-3 space-y-2">{interestGlobalOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="interest_global" value={option} />{option}</label>)}</div>
+                </fieldset>
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q2. Intention si ouverture</legend>
+                  <div class="mt-3 space-y-2">{openingIntentOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="opening_intent" value={option} />{option}</label>)}</div>
+                </fieldset>
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">B. Intérêt par type d'offre</p>
+              <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q3. Offre la plus intéressante</legend>
+                  <div class="mt-3 space-y-2">{offerInterestOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="offer_interest" value={option} />{option}</label>)}</div>
+                </fieldset>
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q4. Choix unique</legend>
+                  <div class="mt-3 space-y-2">{singleOptionChoices.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="single_option" value={option} />{option}</label>)}</div>
+                </fieldset>
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">C. MBA international (Brésil)</p>
+              <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q5. Reconnaissance MBA brésilien</legend>
+                  <div class="mt-3 space-y-2">{mbaRecognitionOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="mba_recognition" value={option} />{option}</label>)}</div>
+                </fieldset>
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q6. Importance du caractère international</legend>
+                  <div class="mt-3 space-y-2">{internationalFactorOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="international_factor" value={option} />{option}</label>)}</div>
+                </fieldset>
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">D. Stage international (Canada)</p>
+              <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q7. Attractivité du stage Canada</legend>
+                  <div class="mt-3 flex flex-wrap gap-4">{scaleFive.map((option) => <label class="flex gap-2 text-sm leading-6 text-neutral-700"><input required type="radio" name="stage_attractiveness" value={option} />{option}</label>)}</div>
+                </fieldset>
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q8. Intérêt stage</legend>
+                  <div class="mt-3 space-y-2">{stageInterestOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="stage_interest" value={option} />{option}</label>)}</div>
+                </fieldset>
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">E. Prix et disposition à payer</p>
+              <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q9. Réaction prix MBA</legend>
+                  <div class="mt-3 space-y-2">{priceReactionOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="mba_price_reaction" value={option} />{option}</label>)}</div>
+                </fieldset>
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q10. Réaction prix académie</legend>
+                  <div class="mt-3 space-y-2">{priceReactionOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="academy_price_reaction" value={option} />{option}</label>)}</div>
+                </fieldset>
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">F. Financement</p>
+              <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-3">
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q11. Besoin de financement</legend>
+                  <div class="mt-3 space-y-2">{financingNeedOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="financing_need" value={option} />{option}</label>)}</div>
+                </fieldset>
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q12. Durée acceptable</legend>
+                  <div class="mt-3 space-y-2">{financingDurationOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="financing_duration" value={option} />{option}</label>)}</div>
+                </fieldset>
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q13. 3 900 CAD / 12 mois</legend>
+                  <div class="mt-3 space-y-2">{priceReactionOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="financed_mba_reaction" value={option} />{option}</label>)}</div>
+                </fieldset>
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">G. Intention réelle</p>
+              <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q14. Format acceptable</legend>
+                  <div class="mt-3 space-y-2">{preferredFormatOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="preferred_format" value={option} />{option}</label>)}</div>
+                </fieldset>
+                <fieldset>
+                  <legend class="text-sm font-semibold text-opus-dark">Q15. Niveau d'intérêt réel</legend>
+                  <div class="mt-3 flex flex-wrap gap-4">{enrollmentInterestOptions.map((option) => <label class="flex gap-2 text-sm leading-6 text-neutral-700"><input required type="radio" name="enrollment_interest" value={option} />{option}</label>)}</div>
+                </fieldset>
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">H. Programmes recherchés (optionnel)</p>
+              <fieldset class="mt-5">
+                <legend class="text-sm font-semibold text-opus-dark">Q16. Programmes recherchés</legend>
+                <div class="mt-3 grid grid-cols-1 gap-2 md:grid-cols-2">{programInterestOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input type="checkbox" name="program_interests" value={option} />{option}</label>)}</div>
+              </fieldset>
+              <div class="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
+                <label class="block text-sm font-semibold text-opus-dark">
+                  Q17. MBA choisi (optionnel)
+                  <select name="selected_mba" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark">
+                    <option value="">Aucun choix</option>
+                    {selectedMbaOptions.map((option) => <option value={option}>{option}</option>)}
+                  </select>
+                </label>
+                <div>
+                  <p class="text-sm font-semibold text-opus-dark">Q18. Classement des cours (si MBA choisi)</p>
+                  <div class="mt-3 grid grid-cols-1 gap-3">
+                    {[1, 2, 3, 4, 5].map((rank) => (
+                      <select name="ranked_courses" class="min-h-11 border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark">
+                        <option value="">Priorité {rank}</option>
+                        {rankedCourseOptions.map((option) => <option value={option}>{option}</option>)}
+                      </select>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">I. Freins à l'inscription</p>
+              <fieldset class="mt-5">
+                <legend class="text-sm font-semibold text-opus-dark">Q19. Principal frein</legend>
+                <div class="mt-3 grid grid-cols-1 gap-2 md:grid-cols-2">{barrierOptions.map((option) => <label class="flex gap-3 text-sm leading-6 text-neutral-700"><input required type="radio" name="registration_barrier" value={option} />{option}</label>)}</div>
+              </fieldset>
+              <label class="mt-5 block text-sm font-semibold text-opus-dark">
+                Précision si autre
+                <input name="registration_barrier_other" type="text" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
+              </label>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">J. Commentaires libres (optionnel)</p>
+              <label class="mt-5 block text-sm font-semibold text-opus-dark">
+                Q20. Commentaires
+                <textarea name="comments" rows="5" class="mt-3 w-full border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm font-normal leading-7 text-opus-dark"></textarea>
+              </label>
+            </section>
+
+            <section class="border border-neutral-200 bg-neutral-50 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">APRÈS LE SONDAGE</p>
+              <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+                Les réponses consolident une lecture marché, puis orientent un déploiement progressif : formats, priorités, accompagnement et partenaires à mobiliser.
+              </p>
+              <div class="mt-6 flex flex-wrap items-center gap-3 border-t border-neutral-200 pt-6">
+                <button type="submit" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black">Envoyer le sondage</button>
+                <a href="/ressources/formation-ia-accompagnement" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">Voir la ressource courte</a>
+              </div>
+              <p id="survey-feedback" role="status" aria-live="polite" class="mt-5 border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-700">
+                Les réponses sont transmises à OPUS pour qualification.
+              </p>
+            </section>
+          </form>
         </div>
-      </div>
-    </section>
-  </main>
-</BaseLayout>
+      </section>
+    </main>
+
+    <script is:inline>
+      (() => {
+        const form = document.getElementById("formation-survey");
+        const feedback = document.getElementById("survey-feedback");
+        if (!(form instanceof HTMLFormElement) || !(feedback instanceof HTMLElement)) return;
+
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const data = new FormData(form);
+          const payload = {
+            interest_global: String(data.get("interest_global") || ""),
+            opening_intent: String(data.get("opening_intent") || ""),
+            offer_interest: String(data.get("offer_interest") || ""),
+            single_option: String(data.get("single_option") || ""),
+            mba_recognition: String(data.get("mba_recognition") || ""),
+            international_factor: String(data.get("international_factor") || ""),
+            stage_attractiveness: String(data.get("stage_attractiveness") || ""),
+            stage_interest: String(data.get("stage_interest") || ""),
+            mba_price_reaction: String(data.get("mba_price_reaction") || ""),
+            academy_price_reaction: String(data.get("academy_price_reaction") || ""),
+            financing_need: String(data.get("financing_need") || ""),
+            financing_duration: String(data.get("financing_duration") || ""),
+            financed_mba_reaction: String(data.get("financed_mba_reaction") || ""),
+            preferred_format: String(data.get("preferred_format") || ""),
+            enrollment_interest: String(data.get("enrollment_interest") || ""),
+            program_interests: data.getAll("program_interests").map(String),
+            selected_mba: String(data.get("selected_mba") || ""),
+            ranked_courses: data.getAll("ranked_courses").map(String).filter(Boolean),
+            registration_barrier: String(data.get("registration_barrier") || ""),
+            registration_barrier_other: String(data.get("registration_barrier_other") || ""),
+            comments: String(data.get("comments") || ""),
+            website: String(data.get("website") || ""),
+          };
+
+          if (!form.checkValidity()) {
+            feedback.textContent = "Merci de compléter les questions obligatoires.";
+            form.reportValidity();
+            return;
+          }
+
+          if (payload.selected_mba && payload.ranked_courses.length !== 5) {
+            feedback.textContent = "Merci de renseigner les cinq priorités si un MBA est sélectionné.";
+            return;
+          }
+
+          if (!payload.selected_mba && payload.ranked_courses.length > 0) {
+            feedback.textContent = "Merci de choisir un MBA avant de classer les cours.";
+            return;
+          }
+
+          feedback.textContent = "Envoi en cours...";
+
+          try {
+            const response = await fetch("/api/airtable/formation-accompagnement-ia", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            const result = await response.json().catch(() => ({}));
+
+            if (response.ok && result?.ok) {
+              feedback.textContent = "Merci. Le sondage a bien été transmis.";
+              form.reset();
+              return;
+            }
+
+            feedback.textContent = "Impossible d'envoyer le sondage pour le moment. Vous pouvez écrire à contact@opus-tek.ca.";
+          } catch {
+            feedback.textContent = "Erreur réseau. Réessayez dans quelques instants ou écrivez à contact@opus-tek.ca.";
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

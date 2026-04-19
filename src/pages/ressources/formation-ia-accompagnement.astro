@@ -1,0 +1,124 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { formationAxes } from "../../data/formationAi";
+
+const pageTitle = "Formation IA & accompagnement - OPUS Technology";
+const pageDescription =
+  "Point d'entrée secondaire OPUS pour comprendre la base réelle, les formats possibles et le sondage de qualification Formation IA.";
+
+const visibleMetrics = [
+  { value: "2", label: "programmes IA déjà opérés au Brésil" },
+  { value: "+125", label: "apprenants déjà inscrits" },
+  { value: "1", label: "point d'entrée de qualification" },
+];
+
+const visibleStates = [
+  {
+    label: "DÉJÀ OPÉRÉ",
+    title: "Une preuve d'exécution existe déjà",
+    body: "Deux programmes IA ont déjà été opérés au Brésil dans un cadre universitaire reconnu.",
+  },
+  {
+    label: "EN STRUCTURATION",
+    title: "Une offre plus large est en préparation",
+    body: "OPUS structure des formats de formation, certificats et accompagnement selon la demande réelle.",
+  },
+  {
+    label: "À QUALIFIER",
+    title: "Le sondage sert de point d'entrée sérieux",
+    body: "Les retours orientent les priorités, les formats et le rythme de déploiement.",
+  },
+];
+
+const visibleAxes = formationAxes.filter((axis) =>
+  ["MBA spécialisés", "Certifications ciblées", "Formations intensives", "Accompagnement pour entreprises"].includes(axis.title)
+);
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="bg-white">
+    <section aria-label="Formation IA et accompagnement" class="border-b border-neutral-200 bg-white py-14 md:py-16">
+      <div class="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-8 px-4 md:px-8 lg:grid-cols-[.95fr_1.05fr] xl:px-10">
+        <div class="max-w-[780px]">
+          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">RESSOURCE SECONDAIRE</p>
+          <h1 class="mt-5 max-w-[12ch] text-[clamp(2.3rem,4.2vw,4.2rem)] font-semibold leading-[0.94] tracking-[-0.04em] text-opus-dark">
+            Formation IA & accompagnement.
+          </h1>
+          <p class="mt-6 max-w-[60ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+            Une base déjà réelle, pas une promesse abstraite : deux programmes IA déjà opérés au Brésil servent de preuve pour structurer une offre plus large de formation, certificats et accompagnement.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="/ia2026" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black">Répondre au sondage</a>
+            <a href="/contact" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">Soumettre un besoin</a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3 lg:self-end">
+          {visibleMetrics.map((item) => (
+            <article class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[1.65rem] font-semibold leading-none tracking-[-0.04em] text-opus-red">{item.value}</p>
+              <p class="mt-3 text-sm leading-6 text-neutral-700">{item.label}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-12 md:py-14">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+          {visibleStates.map((item) => (
+            <article class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">{item.label}</p>
+              <div class="mt-4 h-[2px] w-12 bg-opus-red"></div>
+              <h2 class="mt-4 text-[1.1rem] font-semibold leading-7 text-opus-dark">{item.title}</h2>
+              <p class="mt-4 text-sm leading-7 text-neutral-700">{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-neutral-200 bg-neutral-50 py-12 md:py-14">
+      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="max-w-[760px]">
+          <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">OFFRE EN STRUCTURATION</p>
+          <h2 class="mt-4 max-w-[15ch] text-[clamp(1.8rem,3vw,2.8rem)] font-semibold leading-[1] tracking-[-0.03em] text-opus-dark">
+            Quatre familles, sans catalogue public.
+          </h2>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {visibleAxes.map((axis) => (
+            <article class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">{axis.label}</p>
+              <h3 class="mt-4 text-[1.05rem] font-semibold leading-6 text-opus-dark">{axis.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-neutral-700">{axis.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-neutral-200 bg-white py-12 md:py-14">
+      <div class="mx-auto grid w-full max-w-[1680px] grid-cols-1 gap-6 px-4 md:px-8 lg:grid-cols-[1fr_.9fr] xl:px-10">
+        <article class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+          <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">PROFONDEUR UTILE</p>
+          <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+            La preuve vient des programmes déjà opérés. Les détails MBA, technologies, publics cibles, formats et reconnaissances relèvent d'un support relationnel dédié, transmis dans le bon contexte.
+          </p>
+        </article>
+
+        <article class="border border-neutral-200 bg-neutral-50 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+          <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">QUALIFICATION</p>
+          <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+            Le sondage reste le point d'entrée sérieux pour qualifier la demande, les formats attendus et les priorités du marché.
+          </p>
+          <div class="mt-6 border-t border-neutral-200 pt-6">
+            <a href="/ia2026" class="inline-flex min-h-11 items-center justify-center border border-opus-dark bg-opus-dark px-5 text-sm font-medium text-white transition hover:bg-black">Répondre au sondage</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

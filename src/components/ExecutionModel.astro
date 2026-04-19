@@ -3,46 +3,46 @@ const steps = [
   {
     label: "01",
     title: "Clarifier le contexte",
-    body: "Lire les tensions, les contraintes, les dépendances et ce qui empêche encore une lecture nette du sujet.",
+    body: "Isoler les tensions, les dépendances et ce qui bloque encore une lecture commune.",
   },
   {
     label: "02",
     title: "Arbitrer ce qui compte",
-    body: "Rendre visibles les choix structurants, les priorités réelles et ce qui doit être décidé avant d'accélérer.",
+    body: "Rendre visibles les choix structurants avant que l'exécution ne consomme l'énergie.",
   },
   {
     label: "03",
     title: "Remettre le socle en cohérence",
-    body: "Recadrer l'architecture, les flux, les rôles et les mécanismes pour retrouver une base défendable.",
+    body: "Aligner architecture, flux, rôles et mécanismes sur une base défendable.",
   },
   {
     label: "04",
     title: "Rendre l'exécution gouvernable",
-    body: "Redonner une trajectoire exécutable, des preuves lisibles et une discipline de pilotage qui tient dans le temps.",
+    body: "Installer une trajectoire exécutable, des preuves lisibles et une discipline de pilotage.",
   },
 ];
 ---
 
-<section aria-label="Mécanisme OPUS" class="bg-white py-24 md:py-28">
+<section aria-label="Mécanisme OPUS" class="bg-white py-16 md:py-20">
   <div class="mx-auto max-w-[1720px] px-4 md:px-8 xl:px-10">
-    <div class="grid grid-cols-1 gap-12 xl:grid-cols-[.78fr_1.22fr] xl:items-start">
-      <div class="max-w-[760px]">
+    <div class="grid grid-cols-1 gap-10 xl:grid-cols-[.72fr_1.28fr] xl:items-start">
+      <div class="max-w-[720px]">
         <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">
           MÉCANISME OPUS
         </p>
 
         <h2 class="mt-4 max-w-[12ch] text-[clamp(2.2rem,4.5vw,4rem)] font-semibold leading-[0.95] tracking-[-0.03em] text-opus-dark">
-          Clarifier, arbitrer, remettre en cohérence, rendre exécutable.
+          Cadrer, arbitrer, rendre exécutable.
         </h2>
 
-        <p class="mt-6 max-w-[60ch] text-base leading-8 text-neutral-700 md:text-[1.05rem]">
-          OPUS n'ajoute pas une couche de langage. Le travail consiste à remettre un sujet en état de décision, puis en état d'exécution gouvernable, avec des points d'appui lisibles pour les décideurs comme pour le delivery.
+        <p class="mt-5 max-w-[42ch] text-base leading-8 text-neutral-700">
+          Remettre le sujet en état de décision, puis d'exécution gouvernable.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
         {steps.map((step) => (
-          <article class="border border-neutral-200 bg-white p-7 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+          <article class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
             <div class="h-[2px] w-14 bg-opus-red"></div>
             <p class="mt-5 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">
               ÉTAPE {step.label}

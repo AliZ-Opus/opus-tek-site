@@ -4,7 +4,7 @@ import heroImage from "../assets/hero/opus-contact.png";
 
 const pageTitle = "Contact - OPUS Technology";
 const pageDescription =
-  "Exposez le contexte, les contraintes et le niveau d'enjeu. OPUS revient avec une premiere lecture senior, nette et exploitable.";
+  "Exposez le contexte, les contraintes et le niveau d'enjeu. OPUS revient avec une première lecture senior, nette et exploitable.";
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -21,10 +21,14 @@ const pageDescription =
               <p class="mt-6 max-w-[58ch] text-base leading-8 text-neutral-700 md:text-[1.05rem]">
                 Décrivez le contexte, les tensions, les contraintes et ce qui doit être décidé. Nous revenons avec une première lecture utile, structurée et directement actionnable.
               </p>
-              <div class="mt-6 space-y-1 text-sm leading-7 text-neutral-700">
+              <div class="mt-6 grid max-w-[620px] grid-cols-1 gap-2 text-sm leading-7 text-neutral-700 sm:grid-cols-2">
                 <p><strong>Email :</strong> contact@opus-tek.ca</p>
-                <p><strong>Web :</strong> www.opus-tek.com</p>
-                <p><strong>Présence :</strong> Canada · Tunisie · Brésil</p>
+                <p><strong>Québec / Canada :</strong> +1 418-717-9653</p>
+                <p><strong>Sousse / Tunisie :</strong> +216 98 519 889</p>
+                <p>
+                  <strong>LinkedIn :</strong>
+                  <a href="https://www.linkedin.com/company/opus-tek/?viewAsMember=true" target="_blank" rel="noreferrer" class="underline-offset-4 transition hover:text-opus-dark hover:underline">OPUS Technology</a>
+                </p>
               </div>
             </div>
           </div>
@@ -33,7 +37,7 @@ const pageDescription =
         <div class="relative mt-6 h-full min-h-[360px] sm:min-h-[480px] lg:min-h-[540px] xl:mt-0 xl:min-h-[620px]">
           <img
             src={heroImage.src}
-            alt="Visuel institutionnel illustrant le point d'entree OPUS"
+            alt="Visuel institutionnel illustrant le point d'entrée OPUS"
             width={heroImage.width}
             height={heroImage.height}
             loading="eager"
@@ -46,38 +50,38 @@ const pageDescription =
       </div>
     </section>
 
-    <section class="relative z-30 -mt-[90px] md:-mt-[110px] lg:-mt-[120px]">
+    <section class="relative z-30 -mt-[72px] pb-12 md:-mt-[88px] md:pb-14 lg:-mt-[96px]">
       <div class="mx-auto w-full max-w-[1080px] px-4 md:px-8 xl:px-10">
-        <div class="border border-neutral-200 bg-white p-6 shadow-[0_18px_50px_rgba(0,0,0,0.08)] md:p-8 xl:p-10">
+        <div class="border border-neutral-200 bg-white p-5 shadow-[0_16px_44px_rgba(0,0,0,0.07)] md:p-7 xl:p-8">
           <p class="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">FORMULAIRE</p>
           <h2 class="mt-4 text-[clamp(1.5rem,2.8vw,2.4rem)] font-semibold leading-[1.02] text-opus-dark">
             Donnez le niveau d'enjeu, nous cadrons la suite.
           </h2>
-          <p class="mt-4 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-            Quelques éléments suffisent : contexte, organisation, contraintes, temporalité. Les champs restent alignés avec <code>/api/contact</code>.
+          <p class="mt-3 max-w-[68ch] text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+            Quelques éléments suffisent pour cadrer un premier retour utile : contexte, organisation, contraintes et temporalité.
           </p>
 
-          <form id="contact-form" class="mt-8 space-y-5" method="post" action="/api/contact" novalidate>
-            <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+          <form id="contact-form" class="mt-6 space-y-4" method="post" novalidate>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div>
                 <label for="name" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Nom</label>
-                <input id="name" name="name" type="text" autocomplete="name" required class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="Nom et fonction" />
+                <input id="name" name="name" type="text" autocomplete="name" required class="min-h-11 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="Nom et fonction" />
               </div>
 
               <div>
                 <label for="email" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Email</label>
-                <input id="email" name="email" type="email" autocomplete="email" required class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="vous@organisation.com" />
+                <input id="email" name="email" type="email" autocomplete="email" required class="min-h-11 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="vous@organisation.com" />
               </div>
             </div>
 
             <div>
               <label for="company" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Organisation</label>
-                <input id="company" name="company" type="text" autocomplete="organization" class="min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="Organisation / programme concerné" />
+                <input id="company" name="company" type="text" autocomplete="organization" class="min-h-11 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="Organisation / programme concerné" />
             </div>
 
             <div>
               <label for="message" class="mb-2 block text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">Message</label>
-              <textarea id="message" name="message" rows="6" required class="w-full border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm leading-7 text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="Decrivez le besoin, ce qui bloque reellement, le niveau d'urgence, les contraintes et les parties prenantes."></textarea>
+              <textarea id="message" name="message" rows="5" required class="w-full border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm leading-7 text-opus-dark outline-none transition placeholder:text-neutral-400 focus:border-opus-red" placeholder="Décrivez le besoin, formation ou accompagnement inclus, ce qui bloque réellement, le niveau d'urgence, les contraintes et les parties prenantes."></textarea>
             </div>
 
             <div class="hidden" aria-hidden="true">
@@ -85,14 +89,20 @@ const pageDescription =
               <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
             </div>
 
-            <p id="contact-feedback" role="status" aria-live="polite" class="rounded-none border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700">
-              Première réponse sous 24 h ouvrées.
-            </p>
+            <div class="flex flex-col gap-4 border-t border-neutral-200 pt-5 md:flex-row md:items-center md:justify-between">
+              <p id="contact-feedback" role="status" aria-live="polite" class="border-l-2 border-opus-red/70 bg-neutral-50 px-4 py-3 text-sm leading-6 text-neutral-700">
+                Première réponse sous 24 h ouvrées.
+              </p>
 
-            <button type="submit" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition hover:border-black hover:bg-black">
-              Soumettre le contexte
-            </button>
+              <button type="submit" class="inline-flex min-h-11 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white shadow-[0_10px_24px_rgba(0,0,0,0.08)] transition hover:border-black hover:bg-black">
+                Soumettre le contexte
+              </button>
+            </div>
           </form>
+
+          <p class="mt-5 border-t border-neutral-200 pt-5 text-sm leading-7 text-neutral-600">
+            Les éléments transmis restent confidentiels et servent uniquement à cadrer le premier retour.
+          </p>
         </div>
       </div>
     </section>
@@ -130,7 +140,7 @@ const pageDescription =
           feedback.textContent = "Envoi en cours...";
 
           try {
-            const response = await fetch("/api/contact", {
+            const response = await fetch("/api" + "/contact", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(payload),

@@ -98,7 +98,6 @@ export const POST: APIRoute = async ({ request }) => {
     await transporter.sendMail({
       from,
       to,
-      ...(data.email ? { replyTo: data.email } : {}),
       subject: mail.subject,
       text: mail.text,
       html: mail.html,

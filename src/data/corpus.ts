@@ -51,7 +51,7 @@ export const supportHierarchy: SupportItem[] = [
     label: "CONSIDÉRATION SÉRIEUSE",
     title: "Capability Pack",
     summary:
-      "Faire passer OPUS de crédible à sérieusement considérable avec une lecture plus dense, plus boardroom et plus défendable.",
+      "Apporter une lecture plus dense et défendable quand la discussion entre en considération sérieuse.",
     cta: "Recevoir le capability pack",
   },
 ];

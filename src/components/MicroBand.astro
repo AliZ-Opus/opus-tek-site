@@ -5,6 +5,7 @@ interface Props {
   height?: number;
   priority?: boolean;
   slogan?: string;
+  compact?: boolean;
   class?: string;
 }
 
@@ -14,6 +15,7 @@ const {
   height = 340,
   priority = false,
   slogan,
+  compact = false,
   class: className = "",
 } = Astro.props;
 
@@ -25,7 +27,7 @@ const resolvedHeight = typeof src === "string" ? undefined : src.height;
 <section
   aria-label={alt}
   class={`relative isolate overflow-hidden bg-white ${className}`}
-  style={`height:clamp(136px, 16vw, ${height}px);`}
+  style={`height:${compact ? `clamp(124px, 13vw, ${height}px)` : `clamp(136px, 16vw, ${height}px)`};`}
 >
   <div
     aria-hidden="true"
@@ -46,17 +48,30 @@ const resolvedHeight = typeof src === "string" ? undefined : src.height;
   </div>
 
   {(slogan || Astro.slots.has("default")) && (
-    <div class="pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 pt-6 text-center">
+    <div class:list={[
+      "pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 text-center",
+      compact ? "translate-y-[18px] pt-8 md:translate-y-[22px]" : "pt-6",
+    ]}>
       {slogan ? (
         <p
-          class="max-w-[14ch] text-[clamp(2rem,4vw,3.6rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-white"
+          class:list={[
+            "font-semibold tracking-[-0.03em] text-white",
+            compact
+              ? "max-w-[42ch] text-[clamp(1.65rem,2.6vw,2.45rem)] leading-[1.04]"
+              : "max-w-[14ch] text-[clamp(2rem,4vw,3.6rem)] leading-[0.98]",
+          ]}
           style="text-shadow: 0 2px 10px rgba(0,0,0,0.22), 0 10px 28px rgba(0,0,0,0.16);"
         >
           {slogan}
         </p>
       ) : (
         <div
-          class="max-w-[14ch] text-[clamp(2rem,4vw,3.6rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-white"
+          class:list={[
+            "font-semibold tracking-[-0.03em] text-white",
+            compact
+              ? "max-w-[42ch] text-[clamp(1.65rem,2.6vw,2.45rem)] leading-[1.04]"
+              : "max-w-[14ch] text-[clamp(2rem,4vw,3.6rem)] leading-[0.98]",
+          ]}
           style="text-shadow: 0 2px 10px rgba(0,0,0,0.22), 0 10px 28px rgba(0,0,0,0.16);"
         >
           <slot />

@@ -1,71 +1,54 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import S1Underline from "../components/nav/S1Underline.astro";
-import TrustPillarSection from "../components/TrustPillarSection.astro";
 import heroImage from "../assets/hero/opus-confiance.png";
 
 const pageTitle = "Confiance - OPUS Technology";
 const pageDescription =
-  "Confidentialite, propriete intellectuelle, gouvernance et facturation : un cadre plus lisible pour reduire le risque percu et rendre la collaboration defendable.";
-
-const pillars = [
-  { label: "Confidentialite", href: "#confidentialite" },
-  { label: "IP", href: "#ip" },
-  { label: "Gouvernance", href: "#gouvernance" },
-  { label: "Facturation", href: "#facturation" },
-];
+  "Confidentialité, propriété intellectuelle, gouvernance et facturation : un cadre lisible pour réduire le risque perçu.";
 
 const sections = [
   {
     id: "confidentialite",
-    eyebrow: "TRUST HUB",
-    title: "Confidentialite",
+    eyebrow: "GARANTIE",
+    title: "Confidentialité",
     intro:
-      "La confidentialite ne repose pas sur une formule generale. Elle tient a une circulation limitee, a des acces utiles et a une diffusion tenue au bon perimetre.",
+      "L'information sensible circule au bon niveau, pour la bonne utilité, sans exposition inutile.",
     cards: [
-      { label: "POSITION", title: "Diffusion limitee au bon perimetre", body: "Les informations sensibles, les elements d'architecture, les documents de cadrage et les arbitrages ne circulent pas librement. OPUS limite l'acces a ce qui est utile a l'execution reelle du sujet." },
-      { label: "OPERATING DISCIPLINE", title: "Partage structure et compartimente", body: "Les supports sont classes selon leur role et leur niveau d'exposition : public, partage commercial, partage restreint ou non diffuse. Cela reduit la dispersion sans ralentir le travail." },
-      { label: "EFFET", title: "Moins d'exposition inutile, plus de lisibilite", body: "Le client sait mieux qui voit quoi, a quel moment et pour quelle utilite. Le cadre devient plus propre, plus sobre et plus defendable sur les sujets sensibles." },
-      { label: "QUESTION UTILE", title: "Ce qui peut etre partage, et ce qui ne doit pas l'etre", body: "La bonne question n'est pas seulement de savoir si un sujet est confidentiel, mais comment il doit etre diffuse, documente et maintenu dans le bon circuit." },
+      { label: "CADRE", title: "Diffusion limitée", body: "Les éléments sensibles, livrables de cadrage et arbitrages ne circulent pas par défaut. L'accès reste utile, ciblé et défendable." },
+      { label: "EFFET", title: "Moins d'exposition inutile", body: "Le client sait mieux qui voit quoi, quand et pourquoi. La confidentialité devient une discipline de travail, pas une formule." },
     ],
   },
   {
     id: "ip",
-    eyebrow: "TRUST HUB",
+    eyebrow: "GARANTIE",
     title: "IP",
     intro:
-      "La propriete intellectuelle doit etre explicite et proportionnee au mandat. Ce qui est livre, reutilisable ou preexistant doit rester clairement distingue.",
+      "Ce qui est livré, réutilisable ou préexistant reste distingué dès le mandat.",
     cards: [
-      { label: "POSITION", title: "Ce qui est remis doit rester lisible", body: "OPUS distingue les livrables specifiques au client, les artefacts de mission, les composants reutilisables et le savoir-faire propre. Cette clarification reduit les zones grises futures." },
-      { label: "OPERATING DISCIPLINE", title: "Usage, transfert et continuite clarifies", body: "La question n'est pas seulement de savoir a qui appartient quoi, mais qui peut utiliser, modifier, transmettre ou poursuivre le travail dans un cadre comprehensible." },
-      { label: "EFFET", title: "Des droits plus faciles a comprendre et a soutenir", body: "Le client obtient une lecture plus propre de ce qu'il recoit reellement et de ce qu'il peut exploiter sans conflit d'interpretation." },
-      { label: "QUESTION UTILE", title: "Ce qui reste specifique au client et ce qui ne l'est pas", body: "Cette distinction evite les tensions contractuelles inutiles et rend la suite du mandat plus defendable si d'autres parties prenantes doivent intervenir." },
+      { label: "CADRE", title: "Livrables lisibles", body: "OPUS distingue les livrables client, artefacts de mission, composants réutilisables et savoir-faire propre." },
+      { label: "EFFET", title: "Droits plus soutenables", body: "La suite du mandat se comprend mieux : usage, transfert, modification et continuité restent dans un cadre explicite." },
     ],
   },
   {
     id: "gouvernance",
-    eyebrow: "TRUST HUB",
+    eyebrow: "GARANTIE",
     title: "Gouvernance",
     intro:
-      "La gouvernance ne sert pas a ajouter une couche. Elle sert a clarifier qui arbitre, qui valide, comment l'information circule et ce qui devient effectivement executable.",
+      "Les arbitrages, validations et changements restent visibles sans ajouter de lourdeur.",
     cards: [
-      { label: "POSITION", title: "Arbitrages et validations rendus lisibles", body: "Des projets avec plusieurs parties prenantes degradent vite si les roles et les points de validation restent implicites. OPUS pose un cadre leger mais ferme." },
-      { label: "OPERATING DISCIPLINE", title: "Tracabilite des decisions et changements", body: "Le but n'est pas de produire une bureaucratie. Le but est de garder une execution coherente quand les priorites, les livrables ou les dependances evoluent." },
-      { label: "EFFET", title: "Moins de rework, plus de continuite", body: "Une gouvernance claire reduit les malentendus, remet les arbitrages en coherence et permet de soutenir une execution plus stable dans le temps." },
-      { label: "QUESTION UTILE", title: "Qui decide, qui valide, et comment un changement est absorbe", body: "Quand ces points restent flous, le risque monte. Quand ils sont explicites, le sujet devient plus defendable pour les decideurs comme pour le delivery." },
+      { label: "CADRE", title: "Décisions traçables", body: "Qui arbitre, qui valide et comment un changement est absorbé ne restent pas implicites." },
+      { label: "EFFET", title: "Moins de rework", body: "La gouvernance réduit les malentendus et garde l'exécution cohérente quand les priorités évoluent." },
     ],
   },
   {
     id: "facturation",
-    eyebrow: "TRUST HUB",
+    eyebrow: "GARANTIE",
     title: "Facturation",
     intro:
-      "La facturation doit suivre la logique du mandat. Elle doit etre comprehensible, previsible et assez claire pour ne pas devenir une friction supplementaire.",
+      "Le cadre économique suit la logique réelle du mandat et reste compréhensible.",
     cards: [
-      { label: "POSITION", title: "Modalites explicites, rythme assume", body: "OPUS clarifie le type d'engagement, le rythme, les livrables de reference et ce qui justifie un ajustement. Le cadre economique doit rester lisible du debut a la fin." },
-      { label: "OPERATING DISCIPLINE", title: "Ce qui declenche, ce qui change, ce qui recadre", body: "Forfait, bloc d'intervention, phase de cadrage ou execution continue : la logique choisie doit rester comprehensible pour les deux parties." },
-      { label: "EFFET", title: "Moins de friction financiere, plus de maturite relationnelle", body: "Le client comprend mieux ce qui est facture, pourquoi et selon quelle logique. Cela soutient une relation plus stable dans les mandats complexes." },
-      { label: "QUESTION UTILE", title: "Ce qui est inclus et ce qui appelle un recadrage", body: "Quand ces points sont explicites, la dimension financiere reste un support a l'execution plutot qu'un facteur de tension." },
+      { label: "CADRE", title: "Modalités explicites", body: "Type d'engagement, rythme, livrables de référence et ajustements possibles sont clarifiés sans surcharger le mandat." },
+      { label: "EFFET", title: "Moins de friction financière", body: "Le client comprend ce qui est facturé, pourquoi et selon quelle logique. La relation reste plus stable." },
     ],
   },
 ];
@@ -80,20 +63,19 @@ const sections = [
             <div aria-hidden="true" class="pointer-events-none absolute inset-y-0 -left-8 right-[-38%] z-0" style="background: linear-gradient(to right, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0) 100%); -webkit-mask-image: linear-gradient(to right, black 42%, transparent 100%); mask-image: linear-gradient(to right, black 42%, transparent 100%); -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-size: 100% 100%; mask-size: 100% 100%;"></div>
 
             <div class="relative z-10">
-              <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">TRUST HUB</p>
+              <p class="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">CONFIANCE</p>
               <h1 class="max-w-[18ch] text-display-hero font-semibold leading-tightest tracking-authority text-opus-dark">
                 La confiance tient d'abord à la discipline de travail.
               </h1>
               <p class="mt-6 max-w-[60ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
-                Confidentialité, droits, gouvernance et cadre économique : quatre points qui réduisent le risque perçu quand ils sont tenus avec sobriété.
+                Confidentialité, droits, gouvernance et cadre économique : quatre garanties tenues sobrement pour réduire le risque perçu.
               </p>
               <div class="mt-8 flex flex-wrap gap-3">
                 <a href="/contact" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black">Soumettre un besoin</a>
                 <a href="/ressources#case-studies" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">Voir les cas</a>
-                <a href="/ressources/capability-pack" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">Recevoir le capability pack</a>
               </div>
-              <div class="mt-7 h-[2px] w-24 bg-opus-red"></div>
-              <div class="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-neutral-600">
+              <div class="mt-6 h-[2px] w-20 bg-opus-red"></div>
+              <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-neutral-600">
                 <span class="inline-flex items-center gap-2"><span class="h-[2px] w-4 bg-opus-red"></span>Diffusion contrôlée</span>
                 <span class="inline-flex items-center gap-2"><span class="h-[2px] w-4 bg-opus-red"></span>Rigueur documentaire</span>
                 <span class="inline-flex items-center gap-2"><span class="h-[2px] w-4 bg-opus-red"></span>Arbitrages traçables</span>
@@ -103,66 +85,80 @@ const sections = [
         </div>
 
         <div class="relative mt-6 h-full min-h-[400px] sm:min-h-[520px] lg:min-h-[560px] xl:mt-0 xl:min-h-[640px]">
-          <img src={heroImage.src} alt="Visuel architectural illustrant la confiance, la gouvernance et la discipline d'execution" width={heroImage.width} height={heroImage.height} loading="eager" fetchpriority="high" decoding="async" class="absolute inset-0 h-full w-full object-cover object-center" style="opacity: 1 !important;" />
+          <img src={heroImage.src} alt="Visuel architectural illustrant la confiance, la gouvernance et la discipline d'exécution" width={heroImage.width} height={heroImage.height} loading="eager" fetchpriority="high" decoding="async" class="absolute inset-0 h-full w-full object-cover object-center" style="opacity: 1 !important;" />
         </div>
       </div>
     </section>
 
-    <section class="relative z-30 -mt-[96px] md:-mt-[110px] lg:-mt-[120px]">
-      <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
-        <div class="w-full border border-neutral-200 bg-white shadow-[0_16px_50px_rgba(0,0,0,0.07)]">
-          <div class="px-6 py-6 md:px-7 md:py-7">
-            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">NAVIGATION</p>
-            <div class="mt-6">
-              <S1Underline selector='[data-s1-item]' active='[aria-current="page"]'>
-                <nav aria-label="Navigation Trust Hub" class="flex flex-wrap items-center gap-3">
-                  {pillars.map((item, index) => (
-                    <a href={item.href} data-s1-item aria-current={index === 0 ? "page" : undefined} class:list={["inline-flex min-h-11 items-center border px-4 py-3 text-[0.78rem] font-medium uppercase tracking-[0.18em] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[rgba(255,0,0,.45)]", index === 0 ? "border-opus-dark bg-white text-opus-dark" : "border-neutral-200 bg-neutral-50 text-neutral-500 hover:border-opus-dark hover:bg-white hover:text-opus-dark"]}>{item.label}</a>
-                  ))}
-                </nav>
-              </S1Underline>
-            </div>
-            <p class="mt-6 max-w-[72ch] text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
-              Le contenu ne cherche pas à rassurer par déclaration. Il montre comment OPUS limite l'exposition, clarifie la diffusion, tient la documentation et garde les changements dans un cadre plus défendable.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="border-t border-neutral-200 bg-white py-14 md:py-18">
+    <section class="relative z-30 -mt-[64px] border-t border-neutral-200 bg-white py-8 md:-mt-[76px] md:py-10 lg:-mt-[84px]">
       <div class="mx-auto max-w-[1680px] px-4 md:px-8 xl:px-10">
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <article class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]"><p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">SIGNAUX CONCRETS</p><h2 class="mt-4 text-[1.05rem] font-semibold leading-6 text-opus-dark">Public / partage commercial / non diffusé</h2><p class="mt-3 text-sm leading-7 text-neutral-700">Tous les supports n'ont pas le même statut. OPUS distingue ce qui peut circuler, ce qui se partage à périmètre restreint et ce qui ne sort pas.</p></article>
-          <article class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]"><p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">SIGNAUX CONCRETS</p><h2 class="mt-4 text-[1.05rem] font-semibold leading-6 text-opus-dark">Accès limités au bon niveau</h2><p class="mt-3 text-sm leading-7 text-neutral-700">L'information sensible n'est pas diffusée par défaut. Elle reste dans le bon circuit, avec les bonnes personnes, pour la bonne utilité.</p></article>
-          <article class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]"><p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">SIGNAUX CONCRETS</p><h2 class="mt-4 text-[1.05rem] font-semibold leading-6 text-opus-dark">Rigueur documentaire</h2><p class="mt-3 text-sm leading-7 text-neutral-700">Ce qui est partagé doit rester lisible, versionné et réutilisable. Cette discipline réduit le flou quand le sujet devient sensible ou multi-acteurs.</p></article>
-          <article class="border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]"><p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">SIGNAUX CONCRETS</p><h2 class="mt-4 text-[1.05rem] font-semibold leading-6 text-opus-dark">Arbitrages et changements tenus</h2><p class="mt-3 text-sm leading-7 text-neutral-700">Un sujet reste défendable quand les arbitrages, validations et évolutions ne se perdent pas dans les conversations.</p></article>
+          <article class="border border-neutral-200 bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.03)]"><p class="text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">CONFIDENTIALITÉ</p><h2 class="mt-3 text-[1rem] font-semibold leading-6 text-opus-dark">Diffusion limitée</h2><p class="mt-2 text-sm leading-6 text-neutral-700">Les informations sensibles restent dans le bon circuit.</p></article>
+          <article class="border border-neutral-200 bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.03)]"><p class="text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">IP</p><h2 class="mt-3 text-[1rem] font-semibold leading-6 text-opus-dark">Droits clarifiés</h2><p class="mt-2 text-sm leading-6 text-neutral-700">Livrables, artefacts et savoir-faire restent distingués.</p></article>
+          <article class="border border-neutral-200 bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.03)]"><p class="text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">GOUVERNANCE</p><h2 class="mt-3 text-[1rem] font-semibold leading-6 text-opus-dark">Arbitrages traçables</h2><p class="mt-2 text-sm leading-6 text-neutral-700">Décisions et changements restent lisibles.</p></article>
+          <article class="border border-neutral-200 bg-white p-4 shadow-[0_10px_30px_rgba(0,0,0,0.03)]"><p class="text-[0.66rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">FACTURATION</p><h2 class="mt-3 text-[1rem] font-semibold leading-6 text-opus-dark">Cadre économique net</h2><p class="mt-2 text-sm leading-6 text-neutral-700">Rythme, livrables et ajustements restent compréhensibles.</p></article>
         </div>
       </div>
     </section>
 
-    {sections.map((section) => (
-      <TrustPillarSection id={section.id} eyebrow={section.eyebrow} title={section.title} intro={section.intro} cards={section.cards} />
-    ))}
+    <section class="border-t border-neutral-200 bg-white py-10 md:py-12">
+      <div class="mx-auto max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {sections.map((section) => (
+            <article id={section.id} class="scroll-mt-32 border border-neutral-200 bg-white p-5 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-neutral-500">{section.eyebrow}</p>
+              <h2 class="mt-3 text-[1.18rem] font-semibold leading-7 text-opus-dark">{section.title}</h2>
+              <p class="mt-3 text-sm leading-7 text-neutral-700">{section.intro}</p>
+              <div class="mt-5 space-y-4 border-t border-neutral-200 pt-5">
+                {section.cards.map((card) => (
+                  <div>
+                    <p class="text-[0.66rem] font-semibold uppercase tracking-[0.2em] text-neutral-500">{card.label}</p>
+                    <h3 class="mt-2 text-[0.98rem] font-semibold leading-6 text-opus-dark">{card.title}</h3>
+                    <p class="mt-2 text-sm leading-6 text-neutral-700">{card.body}</p>
+                  </div>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
 
-    <section class="border-t border-neutral-200 bg-white py-16 md:py-20">
+    <section class="border-t border-neutral-200 bg-neutral-50 py-8 md:py-10">
+      <div class="mx-auto max-w-[1680px] px-4 md:px-8 xl:px-10">
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-[.9fr_1.1fr]">
+          <div class="max-w-[680px]">
+            <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">CONTINUITÉ</p>
+            <h2 class="mt-3 max-w-[18ch] text-[clamp(1.45rem,2vw,2rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-opus-dark">
+              Un cadre stable, une exécution attribuable.
+            </h2>
+          </div>
+
+          <p class="max-w-[70ch] text-sm leading-7 text-neutral-700 md:text-[0.98rem]">
+            Un point d'entrée lisible, un cadre commercial stable et un delivery attribuable réduisent la zone grise entre engagement et exécution.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-neutral-200 bg-white py-10 md:py-12">
       <div class="mx-auto w-full max-w-[1680px] px-4 md:px-8 xl:px-10">
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[1.05fr_.95fr]">
-          <article class="border border-neutral-200 bg-white p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
-            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">NEXT STEP</p>
-            <h2 class="mt-4 max-w-[15ch] text-[clamp(1.9rem,3vw,3.1rem)] font-black leading-[0.96] tracking-[-0.04em] text-opus-dark">Un cadre tenu reduit le risque percu avant meme le premier livrable.</h2>
-            <p class="mt-5 max-w-[62ch] text-sm leading-8 text-neutral-700 md:text-[0.98rem]">OPUS ne promet pas une confiance abstraite. Elle devient visible dans la discipline de diffusion, la tenue documentaire, la clarte des droits et la coherence du cadre de travail.</p>
-            <div class="mt-7 flex flex-wrap gap-3">
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-[1.1fr_.9fr]">
+          <article class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+            <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">SUITE</p>
+            <h2 class="mt-3 max-w-[18ch] text-[clamp(1.45rem,2vw,2rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-opus-dark">Réduire le risque perçu avant engagement.</h2>
+            <p class="mt-4 max-w-[58ch] text-sm leading-7 text-neutral-700 md:text-[0.98rem]">Diffusion, droits, arbitrages et cadre économique rendent la collaboration plus défendable.</p>
+            <div class="mt-5 flex flex-wrap gap-3">
               <a href="/contact" class="inline-flex min-h-12 items-center justify-center border border-opus-dark bg-opus-dark px-6 text-sm font-medium text-white transition hover:bg-black">Soumettre un besoin</a>
               <a href="/ressources#case-studies" class="inline-flex min-h-12 items-center justify-center border border-neutral-300 bg-white px-6 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">Voir les cas</a>
             </div>
           </article>
 
-          <article class="border border-neutral-200 bg-neutral-50 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+          <article class="border border-neutral-200 bg-neutral-50 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
             <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">APPROFONDISSEMENT</p>
-            <p class="mt-4 text-sm leading-8 text-neutral-700 md:text-[0.98rem]">Si le sujet doit etre partage a d'autres decideurs, densifie ou passe en phase de qualification plus serieuse, le capability pack donne le niveau de detail utile sans theatrisation.</p>
-            <div class="mt-6 border-t border-neutral-200 pt-6">
-              <a href="/ressources/capability-pack" class="inline-flex min-h-11 items-center justify-center border border-opus-dark bg-opus-dark px-5 text-sm font-medium text-white transition hover:bg-black">Recevoir le capability pack</a>
+            <p class="mt-3 text-sm leading-7 text-neutral-700 md:text-[0.98rem]">Pour densifier une discussion déjà engagée.</p>
+            <div class="mt-5 border-t border-neutral-200 pt-5">
+              <a href="/ressources/capability-pack" class="inline-flex min-h-11 items-center justify-center border border-neutral-300 bg-white px-5 text-sm font-medium text-opus-dark transition hover:border-opus-dark hover:bg-opus-dark hover:text-white">Recevoir le capability pack</a>
             </div>
           </article>
         </div>
@@ -170,34 +166,3 @@ const sections = [
     </section>
   </main>
 </BaseLayout>
-
-<script>
-  function initTrustNav() {
-    const links = Array.from(document.querySelectorAll("[data-s1-item]"));
-    const sections = Array.from(document.querySelectorAll("section[id]"));
-    if (!links.length || !sections.length) return;
-    if (document.documentElement.dataset.trustNavReady === "true") return;
-    document.documentElement.dataset.trustNavReady = "true";
-    const setActive = (id: string) => {
-      links.forEach((link) => {
-        const href = link.getAttribute("href");
-        if (href === `#${id}`) link.setAttribute("aria-current", "page");
-        else link.removeAttribute("aria-current");
-      });
-    };
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible?.target?.id) setActive(visible.target.id);
-    }, { rootMargin: "-20% 0px -60% 0px", threshold: [0.2, 0.35, 0.5] });
-    sections.forEach((section) => observer.observe(section));
-    links.forEach((link) => {
-      link.addEventListener("click", () => {
-        const href = link.getAttribute("href") || "";
-        const id = href.replace("#", "");
-        if (id) setActive(id);
-      });
-    });
-  }
-  initTrustNav();
-  document.addEventListener("astro:page-load", initTrustNav);
-</script>

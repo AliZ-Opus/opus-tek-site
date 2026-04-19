@@ -2,53 +2,53 @@
 const domains = [
   {
     label: "Architecture",
-    eyebrow: "QUAND ENGAGER OPUS",
-    title: "Quand le sujet manque de socle, d'arbitrages et de trajectoire claire.",
-    body: "OPUS intervient pour clarifier le périmètre, remettre les dépendances en cohérence et poser les décisions structurantes avant qu'un programme ne se disperse davantage.",
+    eyebrow: "SOCLE / ARBITRAGES / TRAJECTOIRE",
+    title: "Quand le socle manque et que les arbitrages bloquent la trajectoire.",
+    body: "Architecture fixe le cadre avant l'exécution : socle, décisions structurantes, trajectoire défendable.",
     bullets: [
-      "Cadrage senior du sujet et des dépendances",
-      "Arbitrages structurants remis à plat",
-      "Trajectoire cible plus défendable pour les décideurs",
+      "Socle cible arrêté",
+      "Arbitrages rendus explicites",
+      "Trajectoire prête à décider",
     ],
   },
   {
     label: "Ingénierie",
-    eyebrow: "QUAND ENGAGER OPUS",
-    title: "Quand les systèmes, le delivery et les opérations ne tiennent plus ensemble.",
-    body: "OPUS reconnecte les flux, les responsabilités et les mécanismes d'exécution quand l'accumulation de friction rend le delivery plus lent, plus fragile ou plus opaque.",
+    eyebrow: "SYSTÈMES / DELIVERY / OPÉRATIONS",
+    title: "Quand systèmes, flux et opérations freinent le delivery.",
+    body: "Ingénierie remet le mécanisme en prise : interfaces, responsabilités, flux critiques et opérabilité.",
     bullets: [
-      "Interfaces et flux critiques remis en ligne",
-      "Exécution plus lisible pour les équipes et la direction",
-      "Moins de friction entre architecture, delivery et exploitation",
+      "Flux critiques remis en ligne",
+      "Interfaces clarifiées",
+      "Delivery observable",
     ],
   },
   {
     label: "Intelligence",
-    eyebrow: "QUAND ENGAGER OPUS",
-    title: "Quand l'activation des données ou de l'IA doit rester gouvernable.",
-    body: "OPUS n'active que ce qui peut être expliqué, encadré et soutenu dans le temps. L'objectif n'est pas l'effet d'annonce, mais une capacité utile, traçable et exécutable.",
+    eyebrow: "GOUVERNANCE / TRAÇABILITÉ / CONTRÔLE",
+    title: "Quand l'activation doit rester utile, explicable et maîtrisée.",
+    body: "Intelligence cadre les usages, la preuve, la responsabilité et les parcours de montée en compétence avant activation : rien d'opaque, rien d'ornemental.",
     bullets: [
-      "Usages clarifiés avant activation",
-      "Règles de preuve et de responsabilité explicites",
-      "Capacités utiles sans perdre la maîtrise du risque",
+      "Usages utiles cadrés",
+      "Preuve traçable",
+      "Activation sous contrôle",
     ],
   },
 ];
 ---
 
-<section aria-label="Qualification des services OPUS" class="bg-white py-18 md:py-22">
+<section aria-label="Qualification des services OPUS" class="bg-white py-14 md:py-18">
   <div class="mx-auto w-full max-w-[1720px] px-4 md:px-8 xl:px-10">
     <div class="max-w-[980px]">
       <p class="text-[0.72rem] font-semibold uppercase tracking-[0.28em] text-neutral-500">LIGNES D'INTERVENTION</p>
-      <h2 class="mt-4 max-w-[13ch] text-[clamp(2rem,4vw,3.7rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
-        Trois lignes pour savoir quand engager OPUS et sur quel type de blocage.
+      <h2 class="mt-4 max-w-[14ch] text-[clamp(1.8rem,3.2vw,3.1rem)] font-semibold leading-[0.98] tracking-[-0.03em] text-opus-dark">
+        Trois lignes, trois blocages.
       </h2>
-      <p class="mt-5 max-w-[78ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
-        Services ne rejoue pas la persuasion de la home. Cette page sert à qualifier le type de besoin, le niveau de recadrage nécessaire et la ligne d'intervention la plus utile pour remettre un sujet en état de décision puis d'exécution.
+      <p class="mt-5 max-w-[52ch] text-base leading-8 text-neutral-700 md:text-[1.02rem]">
+        Socle, delivery, intelligence : chaque ligne répond à un blocage différent.
       </p>
     </div>
 
-    <div class="mt-10 grid grid-cols-1 gap-5 xl:grid-cols-3">
+    <div class="mt-8 grid grid-cols-1 gap-5 xl:grid-cols-3">
       {domains.map((domain) => (
         <article class="flex h-full flex-col border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
           <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">{domain.eyebrow}</p>
