@@ -68,6 +68,10 @@ test("buildFormationSurveyAirtableFields maps the payload consistently", () => {
   );
 
   assert.equal(fields["Offer Preference"], "MBA international (diplôme universitaire)");
+  assert.equal(fields["Interest Global"], "Élevé");
+  assert.equal(fields["Canada Stage Attractiveness"], "5");
+  assert.equal(fields["Enrollment Intent"], "8");
+  assert.equal(fields["Main Barrier"], "Temps / charge de travail");
   assert.equal(fields["Program Types"], "MBA international | Stage international (Canada)");
   assert.match(fields.Comments, /Q15 Niveau d’intérêt réel: 8\/10/);
   assert.match(fields.Comments, /Q20 Commentaires: Besoin de cadrage/);

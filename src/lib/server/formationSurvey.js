@@ -152,10 +152,21 @@ export function buildFormationSurveyAirtableFields(data, createdAt = new Date().
   ].join("\n");
 
   return {
+    "Interest Global": data.interestGlobal,
+    "Opening Intent": data.openingIntent,
     "Offer Preference": data.offerInterest,
     "Single Offer Choice": data.singleOption,
-    "Opening Intent": data.openingIntent,
+    "MBA Brazil Fit": data.mbaRecognition,
+    "International Factor": data.internationalFactor,
+    "Canada Stage Attractiveness": data.stageAttractiveness,
+    "Stage Interest": data.stageInterest,
+    "MBA Price": data.mbaPriceReaction,
+    "Academy Price": data.academyPriceReaction,
+    "Financing Need": data.financingNeed,
+    "Financing Duration": data.financingDuration,
+    "Enrollment Intent": data.enrollmentInterest,
     "Program Types": joinValues(data.programInterests),
+    "Main Barrier": data.registrationBarrier,
     Comments: comments,
     Source: "opus-site-formation-ia",
     "Created From": "website",
