@@ -174,6 +174,32 @@ const barrierOptions = [
             <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
             <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">RÃ‰PONDANT</p>
+              <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+                <label class="block text-sm font-semibold text-opus-dark">
+                  PrÃ©nom
+                  <input name="first_name" type="text" autocomplete="given-name" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
+                </label>
+                <label class="block text-sm font-semibold text-opus-dark">
+                  Nom
+                  <input name="last_name" type="text" autocomplete="family-name" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
+                </label>
+                <label class="block text-sm font-semibold text-opus-dark">
+                  Email
+                  <input name="email" type="email" autocomplete="email" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
+                </label>
+                <label class="block text-sm font-semibold text-opus-dark">
+                  TÃ©lÃ©phone
+                  <input name="phone" type="tel" autocomplete="tel" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
+                </label>
+                <label class="block text-sm font-semibold text-opus-dark md:col-span-2">
+                  Pays
+                  <input name="country" type="text" autocomplete="country-name" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
+                </label>
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
               <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">A. Intérêt et demande globale</p>
               <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
                 <fieldset>
@@ -351,6 +377,11 @@ const barrierOptions = [
           event.preventDefault();
           const data = new FormData(form);
           const payload = {
+            first_name: String(data.get("first_name") || ""),
+            last_name: String(data.get("last_name") || ""),
+            email: String(data.get("email") || ""),
+            phone: String(data.get("phone") || ""),
+            country: String(data.get("country") || ""),
             interest_global: String(data.get("interest_global") || ""),
             opening_intent: String(data.get("opening_intent") || ""),
             offer_interest: String(data.get("offer_interest") || ""),

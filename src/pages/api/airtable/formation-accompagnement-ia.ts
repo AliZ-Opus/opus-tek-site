@@ -12,6 +12,7 @@ const hits = new Map<string, { count: number; ts: number }>();
 const WINDOW_MS = 60_000;
 const MAX = 8;
 const EXPECTED_AIRTABLE_TABLE_NAME = "Etude_IA_2026";
+const JSON_HEADERS = { "content-type": "application/json" };
 
 function rateLimit(ip: string) {
   const now = Date.now();
@@ -28,6 +29,18 @@ function rateLimit(ip: string) {
   return true;
 }
 
+function json(data: unknown, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: JSON_HEADERS,
+  });
+}
+
+function sanitizeAirtableDetail(value: unknown) {
+  const text = typeof value === "string" ? value : JSON.stringify(value);
+  return text.slice(0, 1200);
+}
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const ip =
@@ -36,61 +49,51 @@ export const POST: APIRoute = async ({ request }) => {
       "unknown";
 
     if (!rateLimit(ip)) {
-      return new Response(JSON.stringify({ ok: false, error: "rate_limited" }), {
-        status: 429,
-        headers: { "content-type": "application/json" },
-      });
+      return json({ ok: false, error: "rate_limited" }, 429);
     }
 
     if (!(request.headers.get("content-type") || "").includes("application/json")) {
-      return new Response(JSON.stringify({ ok: false, error: "bad_request" }), {
-        status: 400,
-        headers: { "content-type": "application/json" },
-      });
+      return json({ ok: false, error: "bad_request" }, 400);
     }
 
     const body = await request.json();
     const validation = validateFormationSurveyPayload(body);
 
     if (!validation.ok) {
-      return new Response(JSON.stringify({ ok: false, error: validation.error }), {
-        status: validation.status,
-        headers: { "content-type": "application/json" },
-      });
+      return json({ ok: false, error: validation.error }, validation.status);
     }
 
     const data = validation.data;
 
     if (!data) {
-      return new Response(JSON.stringify({ ok: false, error: "server_error" }), {
-        status: 500,
-        headers: { "content-type": "application/json" },
-      });
+      return json({ ok: false, error: "server_error" }, 500);
     }
 
     if (data.honeypot) {
-      return new Response(JSON.stringify({ ok: true }), {
-        status: 200,
-        headers: { "content-type": "application/json" },
-      });
+      return json({ ok: true });
     }
 
-    const apiKey = import.meta.env.AIRTABLE_API_KEY;
-    const baseId = import.meta.env.AIRTABLE_BASE_ID;
-    const tableName = import.meta.env.AIRTABLE_TABLE_NAME;
+    const apiKey = String(import.meta.env.AIRTABLE_API_KEY || "").trim();
+    const baseId = String(import.meta.env.AIRTABLE_BASE_ID || "").trim();
+    const tableName = String(import.meta.env.AIRTABLE_TABLE_NAME || "").trim();
+
+    console.info("FORMATION_SURVEY_AIRTABLE_CONFIG", {
+      hasApiKey: Boolean(apiKey),
+      hasBaseId: Boolean(baseId),
+      hasTableName: Boolean(tableName),
+      tableName,
+    });
 
     if (!apiKey || !baseId || !tableName || tableName !== EXPECTED_AIRTABLE_TABLE_NAME) {
       console.error("FORMATION_SURVEY_AIRTABLE_CONFIG_ERROR", {
         hasApiKey: Boolean(apiKey),
         hasBaseId: Boolean(baseId),
         hasTableName: Boolean(tableName),
+        tableName,
         tableNameMatchesExpected: tableName === EXPECTED_AIRTABLE_TABLE_NAME,
       });
 
-      return new Response(JSON.stringify({ ok: false, error: "server_misconfigured" }), {
-        status: 500,
-        headers: { "content-type": "application/json" },
-      });
+      return json({ ok: false, error: "server_misconfigured" }, 500);
     }
 
     const fields = buildFormationSurveyAirtableFields(data);
@@ -110,18 +113,15 @@ export const POST: APIRoute = async ({ request }) => {
     );
 
     if (!airtableResponse.ok) {
-      const airtableError = await airtableResponse.json().catch(() => null);
+      const airtableBody = await airtableResponse.text().catch(() => "");
+      const detail = sanitizeAirtableDetail(airtableBody || "Airtable request failed");
 
       console.error("FORMATION_SURVEY_AIRTABLE_ERROR", {
         status: airtableResponse.status,
-        type: airtableError?.error?.type,
-        message: airtableError?.error?.message,
+        body: detail,
       });
 
-      return new Response(JSON.stringify({ ok: false, error: "capture_failed" }), {
-        status: 502,
-        headers: { "content-type": "application/json" },
-      });
+      return json({ ok: false, error: "airtable_error", detail }, 502);
     }
 
     try {
@@ -145,17 +145,13 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
-    return new Response(JSON.stringify({ ok: true }), {
-      status: 200,
-      headers: { "content-type": "application/json" },
-    });
+    return json({ ok: true });
   } catch (error) {
-    console.error("FORMATION_SURVEY_API_ERROR", error);
-
-    return new Response(JSON.stringify({ ok: false, error: "server_error" }), {
-      status: 500,
-      headers: { "content-type": "application/json" },
+    console.error("FORMATION_SURVEY_API_ERROR", {
+      message: error instanceof Error ? error.message : "unknown server error",
     });
+
+    return json({ ok: false, error: "server_error" }, 500);
   }
 };
 
