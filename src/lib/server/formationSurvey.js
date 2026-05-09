@@ -97,14 +97,6 @@ export function validateFormationSurveyPayload(body) {
     return { ok: false, status: 400, error: "missing_barrier_other" };
   }
 
-  if (selectedMba && rankedCourses.length !== 5) {
-    return { ok: false, status: 400, error: "invalid_ranking" };
-  }
-
-  if (!selectedMba && rankedCourses.length > 0) {
-    return { ok: false, status: 400, error: "missing_selected_mba" };
-  }
-
   return {
     ok: true,
     data: {

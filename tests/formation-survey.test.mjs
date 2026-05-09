@@ -154,6 +154,49 @@ test("validateFormationSurveyPayload accepts the current ia2026 survey payload w
   assert.equal(result.data.interestGlobal, "Élevé");
 });
 
+test("validateFormationSurveyPayload accepts the exact ia2026 payload shape with optional identity and ranking", () => {
+  const currentFrontendPayload = {
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone: "",
+    country: "",
+    interest_global: "Élevé",
+    opening_intent: "Intéressé(e) mais hésitant(e)",
+    offer_interest: "MBA international (diplôme universitaire)",
+    single_option: "MBA uniquement",
+    mba_recognition: "Oui, si la reconnaissance internationale est claire",
+    international_factor: "Très important",
+    stage_attractiveness: "5",
+    stage_interest: "MBA + stage international",
+    mba_price_reaction: "J'hésiterais, mais je considérerais sérieusement",
+    academy_price_reaction: "Je m'inscrirais sans hésiter",
+    financing_need: "Oui, important",
+    financing_duration: "6 à 12 mois",
+    financed_mba_reaction: "J'hésiterais, mais je considérerais sérieusement",
+    preferred_format: "3 900 CAD - paiement en 12 mois",
+    enrollment_interest: "8",
+    program_interests: [],
+    selected_mba: "MBA Ingénierie des données & IA",
+    ranked_courses: [],
+    registration_barrier: "Temps / charge de travail",
+    registration_barrier_other: "",
+    comments: "",
+    website: "",
+  };
+
+  const result = validateFormationSurveyPayload(currentFrontendPayload);
+
+  assert.equal(result.ok, true);
+  assert.equal(result.data.firstName, "Anonyme");
+  assert.equal(result.data.lastName, "");
+  assert.equal(result.data.email, "");
+  assert.equal(result.data.phone, "");
+  assert.equal(result.data.country, "");
+  assert.equal(result.data.selectedMba, "MBA Ingénierie des données & IA");
+  assert.deepEqual(result.data.rankedCourses, []);
+});
+
 test("formation survey helpers do not throw on malformed payloads", () => {
   assert.doesNotThrow(() => validateFormationSurveyPayload(null));
   assert.doesNotThrow(() => validateFormationSurveyPayload({ program_interests: "MBA", ranked_courses: "IA" }));
