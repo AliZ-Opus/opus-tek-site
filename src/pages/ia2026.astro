@@ -86,6 +86,12 @@ const barrierOptions = [
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
     <meta name="twitter:image" content={resolvedOgImage} />
+    <style>
+      .survey-question-error {
+        border-color: rgba(220, 38, 38, 0.65) !important;
+        background: rgba(254, 242, 242, 0.72) !important;
+      }
+    </style>
   </head>
 
   <body class="min-h-full bg-white font-[Inter,sans-serif] text-opus-dark antialiased">
@@ -172,6 +178,7 @@ const barrierOptions = [
 
           <form id="formation-survey" class="mt-9 w-full space-y-5" novalidate>
             <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <p id="survey-validation-summary" role="alert" aria-live="assertive" class="hidden border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"></p>
 
             <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
               <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">RÃ‰PONDANT</p>
@@ -371,7 +378,75 @@ const barrierOptions = [
       (() => {
         const form = document.getElementById("formation-survey");
         const feedback = document.getElementById("survey-feedback");
+        const validationSummary = document.getElementById("survey-validation-summary");
         if (!(form instanceof HTMLFormElement) || !(feedback instanceof HTMLElement)) return;
+        if (!(validationSummary instanceof HTMLElement)) return;
+        const requiredSurveyFields = [
+          "interest_global",
+          "opening_intent",
+          "offer_interest",
+          "single_option",
+          "mba_recognition",
+          "international_factor",
+          "stage_attractiveness",
+          "stage_interest",
+          "mba_price_reaction",
+          "academy_price_reaction",
+          "financing_need",
+          "financing_duration",
+          "financed_mba_reaction",
+          "preferred_format",
+          "enrollment_interest",
+          "registration_barrier",
+        ];
+
+        const namedControls = (name) => Array.from(form.querySelectorAll(`[name="${name}"]`));
+        const fieldIsAnswered = (name) => {
+          const controls = namedControls(name);
+          if (controls.length === 0) return false;
+          const first = controls[0];
+          if (first instanceof HTMLInputElement && (first.type === "radio" || first.type === "checkbox")) {
+            return controls.some((control) => control instanceof HTMLInputElement && control.checked);
+          }
+          return controls.some((control) => "value" in control && String(control.value || "").trim());
+        };
+        const setSectionError = (section, hasError) => {
+          section.classList.toggle("survey-question-error", hasError);
+          section.setAttribute("aria-invalid", hasError ? "true" : "false");
+        };
+        const sectionRequiredNames = (section) =>
+          [...new Set(Array.from(section.querySelectorAll("input, select, textarea")).map((control) => control.name).filter((name) => requiredSurveyFields.includes(name)))];
+        const refreshSectionError = (section) => {
+          const names = sectionRequiredNames(section);
+          if (names.length > 0) setSectionError(section, names.some((name) => !fieldIsAnswered(name)));
+        };
+        const clearValidationSummary = () => {
+          validationSummary.textContent = "";
+          validationSummary.classList.add("hidden");
+        };
+        const validateRequiredSurveyFields = () => {
+          const missing = requiredSurveyFields.filter((name) => !fieldIsAnswered(name));
+          form.querySelectorAll(".survey-question-error").forEach((section) => {
+            if (section instanceof HTMLElement) setSectionError(section, false);
+          });
+          missing.forEach((name) => {
+            const section = form.querySelector(`[name="${name}"]`)?.closest("section");
+            if (section instanceof HTMLElement) setSectionError(section, true);
+          });
+          return missing;
+        };
+
+        requiredSurveyFields.forEach((name) => {
+          namedControls(name).forEach((control) => {
+            const update = () => {
+              const section = control.closest("section");
+              if (section instanceof HTMLElement) refreshSectionError(section);
+              if (requiredSurveyFields.every(fieldIsAnswered)) clearValidationSummary();
+            };
+            control.addEventListener("change", update);
+            control.addEventListener("input", update);
+          });
+        });
 
         form.addEventListener("submit", async (event) => {
           event.preventDefault();
@@ -406,19 +481,23 @@ const barrierOptions = [
             website: String(data.get("website") || ""),
           };
 
+          const missingRequiredFields = validateRequiredSurveyFields();
+          if (missingRequiredFields.length > 0) {
+            validationSummary.textContent = "Merci de rÃ©pondre aux questions obligatoires signalÃ©es avant d'envoyer le sondage.";
+            validationSummary.classList.remove("hidden");
+            feedback.textContent = "Le sondage n'a pas encore Ã©tÃ© envoyÃ©.";
+            const firstMissingSection = form.querySelector(`[name="${missingRequiredFields[0]}"]`)?.closest("section");
+            if (firstMissingSection instanceof HTMLElement) {
+              firstMissingSection.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            return;
+          }
+
+          clearValidationSummary();
+
           if (!form.checkValidity()) {
             feedback.textContent = "Merci de compléter les questions obligatoires.";
             form.reportValidity();
-            return;
-          }
-
-          if (payload.selected_mba && payload.ranked_courses.length !== 5) {
-            feedback.textContent = "Merci de renseigner les cinq priorités si un MBA est sélectionné.";
-            return;
-          }
-
-          if (!payload.selected_mba && payload.ranked_courses.length > 0) {
-            feedback.textContent = "Merci de choisir un MBA avant de classer les cours.";
             return;
           }
 

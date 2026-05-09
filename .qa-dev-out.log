@@ -1,0 +1,22 @@
+
+> opus-tek-poc@0.0.1 dev
+> astro dev --host 127.0.0.1 --port 4336
+
+[2m21 h 08 min 11 s[22m [34m[types][39m Generated [2m1ms[22m
+[2m21 h 08 min 11 s[22m [34m[content][39m Syncing content
+[2m21 h 08 min 11 s[22m [34m[content][39m Synced content
+[2m21 h 08 min 11 s[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+
+[42m[1m astro [22m[49m [32mv5.18.1[39m [2mready in[22m 558 [2mms[22m
+
+[2m┃[22m Local    [36mhttp://127.0.0.1:4336/[39m
+
+[2m21 h 08 min 12 s[22m [32mwatching for file changes...[39m
+[2m21 h 08 min 45 s[22m [34m[200][39m /ia2026 [2m237ms[22m
+[2m21 h 09 min 18 s[22m [34m[watch][39m .vercel/output/static/offres/acceleration-ia-automatisation/index.html
+[2m21 h 09 min 18 s[22m [34m[watch][39m .vercel/output/static/offres/delivery-ti-integration/index.html
+[2m21 h 09 min 18 s[22m [34m[watch][39m .vercel/output/static/offres/renfort-strategique-equipes-flexibles/index.html
+[2m21 h 09 min 23 s[22m [34m[watch][39m .vercel/output/static/offres/acceleration-ia-automatisation/index.html
+[2m21 h 09 min 23 s[22m [34m[watch][39m .vercel/output/static/offres/renfort-strategique-equipes-flexibles/index.html
+[2m21 h 09 min 23 s[22m [34m[watch][39m .vercel/output/static/offres/delivery-ti-integration/index.html
+[2m21 h 09 min 29 s[22m [34m[200][39m /ia2026 [2m69ms[22m
