@@ -63,11 +63,33 @@ test("validateFormationSurveyPayload accepts payload with respondent profile fie
   assert.equal(result.data.discoverySource, "Université / école");
 });
 
+test("validateFormationSurveyPayload accepts discovery_source LinkedIn", () => {
+  const result = validateFormationSurveyPayload({ ...nominalPayload, discovery_source: "LinkedIn" });
+
+  assert.equal(result.ok, true);
+  assert.equal(result.data.discoverySource, "LinkedIn");
+});
+
+test("validateFormationSurveyPayload accepts discovery_source Université / école", () => {
+  const result = validateFormationSurveyPayload({ ...nominalPayload, discovery_source: "Université / école" });
+
+  assert.equal(result.ok, true);
+  assert.equal(result.data.discoverySource, "Université / école");
+});
+
 test("validateFormationSurveyPayload requires discovery_source", () => {
   const result = validateFormationSurveyPayload({ ...nominalPayload, discovery_source: "" });
 
   assert.equal(result.ok, false);
   assert.equal(result.error, "missing_fields");
+  assert.equal(result.status, 400);
+});
+
+test("validateFormationSurveyPayload rejects discovery_source outside Airtable single select options", () => {
+  const result = validateFormationSurveyPayload({ ...nominalPayload, discovery_source: "Facebook / Instagram" });
+
+  assert.equal(result.ok, false);
+  assert.equal(result.error, "invalid_discovery_source");
   assert.equal(result.status, 400);
 });
 
@@ -86,6 +108,13 @@ test("validateFormationSurveyPayload keeps other respondent profile fields optio
   assert.equal(result.data.discipline, "");
   assert.equal(result.data.studyYear, "");
   assert.equal(result.data.discoverySource, "Université / école");
+
+  const fields = buildFormationSurveyAirtableFields(result.data);
+  assert.equal(fields.City, "");
+  assert.equal(fields.University, "");
+  assert.equal(fields.Discipline, "");
+  assert.equal(fields["Study Year"], "");
+  assert.equal(fields["Discovery Source"], "Université / école");
 });
 
 test("validateFormationSurveyPayload accepts payload without personal identity when discovery_source is present", () => {
@@ -149,6 +178,8 @@ test("buildFormationSurveyAirtableFields maps profile fields to exact Airtable c
   assert.equal(fields.Discipline, "Intelligence artificielle / Data");
   assert.equal(fields["Study Year"], "Master / MBA");
   assert.equal(fields["Discovery Source"], "Université / école");
+  assert.equal(typeof fields["Discovery Source"], "string");
+  assert.equal(fields.discovery_source, undefined);
   assert.equal(fields["Opening Intent"], "Intéressé(e) mais hésitant(e)");
   assert.equal(fields["Program Types"], "MBA international | Stage international (Canada)");
   assert.match(fields.Comments, /Université \/ établissement: Université de Sousse/);

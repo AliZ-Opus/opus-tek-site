@@ -17,6 +17,18 @@ function normalizeRanking(value) {
   return normalizeChoiceList(value, 5, 200);
 }
 
+const DISCOVERY_SOURCE_OPTIONS = new Set([
+  "Ami / collègue",
+  "Université / école",
+  "Réseaux sociaux",
+  "LinkedIn",
+  "WhatsApp",
+  "Email",
+  "Événement / présentation",
+  "Recherche Google",
+  "Autre",
+]);
+
 export function joinValues(value) {
   if (!Array.isArray(value)) return typeof value === "string" ? value : "";
   return value
@@ -87,6 +99,10 @@ export function validateFormationSurveyPayload(body) {
     return { ok: false, status: 400, error: "missing_fields" };
   }
 
+  if (!DISCOVERY_SOURCE_OPTIONS.has(discoverySource)) {
+    return { ok: false, status: 400, error: "invalid_discovery_source" };
+  }
+
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { ok: false, status: 400, error: "invalid_email" };
   }
@@ -148,7 +164,6 @@ export function buildFormationSurveyAirtableFields(data, createdAt = new Date().
     `Répondant: ${data.firstName} ${data.lastName}`,
     `Email: ${data.email}`,
     `Téléphone: ${data.phone}`,
-    `Pays: ${data.country}`,
     `Ville: ${data.city}`,
     `Université / établissement: ${data.university}`,
     `Niveau d'études: ${data.studyYear}`,
@@ -183,12 +198,11 @@ export function buildFormationSurveyAirtableFields(data, createdAt = new Date().
     "Last Name": data.lastName,
     Email: data.email,
     Phone: data.phone,
-    Country: data.country,
-    City: data.city,
-    University: data.university,
-    "Study Year": data.studyYear,
-    Discipline: data.discipline,
-    "Discovery Source": data.discoverySource,
+    City: data.city || "",
+    University: data.university || "",
+    "Study Year": data.studyYear || "",
+    Discipline: data.discipline || "",
+    "Discovery Source": data.discoverySource || "",
     "Interest Global": data.interestGlobal,
     "Opening Intent": data.openingIntent,
     "Offer Preference": data.offerInterest,
@@ -220,7 +234,6 @@ export function buildFormationSurveyEmail(data, meta = {}) {
     `Nom: ${data.lastName}`,
     `Email: ${data.email}`,
     `Téléphone: ${data.phone}`,
-    `Pays: ${data.country}`,
     `Ville: ${data.city}`,
     `Université / établissement: ${data.university}`,
     `Niveau d'études: ${data.studyYear}`,
