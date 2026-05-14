@@ -59,6 +59,33 @@ const barrierOptions = [
   "Niveau technique requis",
   "Autre (préciser)",
 ];
+const studyYearOptions = ["Secondaire / Lycée", "Collégial / Pré-universitaire", "Licence / Bachelor", "Master / MBA", "Doctorat", "Formation professionnelle", "Autre"];
+const disciplineOptions = [
+  "Informatique / TI",
+  "Intelligence artificielle / Data",
+  "Génie / Ingénierie",
+  "Gestion / Administration",
+  "Finance / Comptabilité",
+  "Marketing / Communication",
+  "Santé",
+  "Droit",
+  "Éducation",
+  "Sciences humaines",
+  "Autre",
+];
+const discoverySourceOptions = [
+  "Ami / collègue",
+  "Université / école",
+  "Professeur / responsable académique",
+  "LinkedIn",
+  "Facebook / Instagram",
+  "WhatsApp",
+  "Email",
+  "Événement / présentation",
+  "Recherche Google",
+  "Site web OPUS / Phoenixx",
+  "Autre",
+];
 ---
 
 <!doctype html>
@@ -90,6 +117,10 @@ const barrierOptions = [
       .survey-question-error {
         border-color: rgba(220, 38, 38, 0.65) !important;
         background: rgba(254, 242, 242, 0.72) !important;
+      }
+      .survey-field-error {
+        border-color: rgba(220, 38, 38, 0.8) !important;
+        background: rgba(254, 242, 242, 0.88) !important;
       }
     </style>
   </head>
@@ -199,9 +230,40 @@ const barrierOptions = [
                   Téléphone
                   <input name="phone" type="tel" autocomplete="tel" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
                 </label>
-                <label class="block text-sm font-semibold text-opus-dark md:col-span-2">
-                  Pays
-                  <input name="country" type="text" autocomplete="country-name" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
+              </div>
+            </section>
+
+            <section class="border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03)]">
+              <p class="text-[0.68rem] font-semibold uppercase tracking-[0.24em] text-neutral-500">PROFIL DU RÉPONDANT</p>
+              <div class="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2">
+                <label class="block text-sm font-semibold text-opus-dark">
+                  Ville
+                  <input name="city" type="text" autocomplete="address-level2" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
+                </label>
+                <label class="block text-sm font-semibold text-opus-dark">
+                  Université / établissement
+                  <input name="university" type="text" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark" />
+                </label>
+                <label class="block text-sm font-semibold text-opus-dark">
+                  Niveau d’études actuel ou dernier niveau atteint
+                  <select name="study_year" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark">
+                    <option value="">Sélectionner</option>
+                    {studyYearOptions.map((option) => <option value={option}>{option}</option>)}
+                  </select>
+                </label>
+                <label class="block text-sm font-semibold text-opus-dark">
+                  Discipline / domaine d’études ou d’expertise
+                  <select name="discipline" class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark">
+                    <option value="">Sélectionner</option>
+                    {disciplineOptions.map((option) => <option value={option}>{option}</option>)}
+                  </select>
+                </label>
+                <label class="block text-sm font-semibold text-opus-dark">
+                  Comment avez-vous connu ce sondage ?
+                  <select name="discovery_source" required class="mt-3 min-h-12 w-full border border-neutral-200 bg-neutral-50 px-4 text-sm font-normal text-opus-dark">
+                    <option value="">Sélectionner</option>
+                    {discoverySourceOptions.map((option) => <option value={option}>{option}</option>)}
+                  </select>
                 </label>
               </div>
             </section>
@@ -382,6 +444,7 @@ const barrierOptions = [
         if (!(form instanceof HTMLFormElement) || !(feedback instanceof HTMLElement)) return;
         if (!(validationSummary instanceof HTMLElement)) return;
         const requiredSurveyFields = [
+          "discovery_source",
           "interest_global",
           "opening_intent",
           "offer_interest",
@@ -414,6 +477,12 @@ const barrierOptions = [
           section.classList.toggle("survey-question-error", hasError);
           section.setAttribute("aria-invalid", hasError ? "true" : "false");
         };
+        const setFieldError = (name, hasError) => {
+          namedControls(name).forEach((control) => {
+            control.classList.toggle("survey-field-error", hasError);
+            control.setAttribute("aria-invalid", hasError ? "true" : "false");
+          });
+        };
         const sectionRequiredNames = (section) =>
           [...new Set(Array.from(section.querySelectorAll("input, select, textarea")).map((control) => control.name).filter((name) => requiredSurveyFields.includes(name)))];
         const refreshSectionError = (section) => {
@@ -429,9 +498,14 @@ const barrierOptions = [
           form.querySelectorAll(".survey-question-error").forEach((section) => {
             if (section instanceof HTMLElement) setSectionError(section, false);
           });
+          form.querySelectorAll(".survey-field-error").forEach((control) => {
+            control.classList.remove("survey-field-error");
+            control.removeAttribute("aria-invalid");
+          });
           missing.forEach((name) => {
             const section = form.querySelector(`[name="${name}"]`)?.closest("section");
             if (section instanceof HTMLElement) setSectionError(section, true);
+            setFieldError(name, true);
           });
           return missing;
         };
@@ -440,6 +514,7 @@ const barrierOptions = [
           namedControls(name).forEach((control) => {
             const update = () => {
               const section = control.closest("section");
+              setFieldError(name, !fieldIsAnswered(name));
               if (section instanceof HTMLElement) refreshSectionError(section);
               if (requiredSurveyFields.every(fieldIsAnswered)) clearValidationSummary();
             };
@@ -457,6 +532,11 @@ const barrierOptions = [
             email: String(data.get("email") || ""),
             phone: String(data.get("phone") || ""),
             country: String(data.get("country") || ""),
+            city: String(data.get("city") || ""),
+            university: String(data.get("university") || ""),
+            study_year: String(data.get("study_year") || ""),
+            discipline: String(data.get("discipline") || ""),
+            discovery_source: String(data.get("discovery_source") || ""),
             interest_global: String(data.get("interest_global") || ""),
             opening_intent: String(data.get("opening_intent") || ""),
             offer_interest: String(data.get("offer_interest") || ""),
@@ -483,12 +563,13 @@ const barrierOptions = [
 
           const missingRequiredFields = validateRequiredSurveyFields();
           if (missingRequiredFields.length > 0) {
-            validationSummary.textContent = "Merci de répondre aux questions obligatoires signalées avant d'envoyer le sondage.";
+            validationSummary.textContent = "Merci de compléter les champs obligatoires signalés avant d'envoyer le sondage.";
             validationSummary.classList.remove("hidden");
             feedback.textContent = "Le sondage n'a pas encore été envoyé.";
-            const firstMissingSection = form.querySelector(`[name="${missingRequiredFields[0]}"]`)?.closest("section");
-            if (firstMissingSection instanceof HTMLElement) {
-              firstMissingSection.scrollIntoView({ behavior: "smooth", block: "center" });
+            const firstMissingField = form.querySelector(`[name="${missingRequiredFields[0]}"]`);
+            const firstMissingTarget = firstMissingField?.closest("label, fieldset, section");
+            if (firstMissingTarget instanceof HTMLElement) {
+              firstMissingTarget.scrollIntoView({ behavior: "smooth", block: "center" });
             }
             return;
           }

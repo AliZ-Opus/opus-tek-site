@@ -31,6 +31,11 @@ export function validateFormationSurveyPayload(body) {
   const email = normalizeText(body?.email, 180).toLowerCase();
   const phone = normalizeText(body?.phone, 80);
   const country = normalizeText(body?.country, 120);
+  const city = normalizeText(body?.city, 120);
+  const university = normalizeText(body?.university, 180);
+  const studyYear = normalizeText(body?.study_year, 180);
+  const discipline = normalizeText(body?.discipline, 180);
+  const discoverySource = normalizeText(body?.discovery_source, 180);
   const interestGlobal = normalizeText(body?.interest_global, 120);
   const openingIntent = normalizeText(body?.opening_intent, 120);
   const offerInterest = normalizeText(body?.offer_interest, 160);
@@ -59,6 +64,7 @@ export function validateFormationSurveyPayload(body) {
   }
 
   const required = [
+    discoverySource,
     interestGlobal,
     openingIntent,
     offerInterest,
@@ -105,6 +111,11 @@ export function validateFormationSurveyPayload(body) {
       email,
       phone,
       country,
+      city,
+      university,
+      studyYear,
+      discipline,
+      discoverySource,
       interestGlobal,
       openingIntent,
       offerInterest,
@@ -138,6 +149,11 @@ export function buildFormationSurveyAirtableFields(data, createdAt = new Date().
     `Email: ${data.email}`,
     `Téléphone: ${data.phone}`,
     `Pays: ${data.country}`,
+    `Ville: ${data.city}`,
+    `Université / établissement: ${data.university}`,
+    `Niveau d'études: ${data.studyYear}`,
+    `Discipline: ${data.discipline}`,
+    `Source de découverte: ${data.discoverySource}`,
     "",
     `Q1 Intérêt global: ${data.interestGlobal}`,
     `Q2 Intention si ouverture: ${data.openingIntent}`,
@@ -168,6 +184,11 @@ export function buildFormationSurveyAirtableFields(data, createdAt = new Date().
     Email: data.email,
     Phone: data.phone,
     Country: data.country,
+    City: data.city,
+    University: data.university,
+    "Study Year": data.studyYear,
+    Discipline: data.discipline,
+    "Discovery Source": data.discoverySource,
     "Interest Global": data.interestGlobal,
     "Opening Intent": data.openingIntent,
     "Offer Preference": data.offerInterest,
@@ -200,6 +221,11 @@ export function buildFormationSurveyEmail(data, meta = {}) {
     `Email: ${data.email}`,
     `Téléphone: ${data.phone}`,
     `Pays: ${data.country}`,
+    `Ville: ${data.city}`,
+    `Université / établissement: ${data.university}`,
+    `Niveau d'études: ${data.studyYear}`,
+    `Discipline: ${data.discipline}`,
+    `Source de découverte: ${data.discoverySource}`,
     "",
     `Q1 Intérêt global: ${data.interestGlobal}`,
     `Q2 Intention si ouverture: ${data.openingIntent}`,
@@ -227,7 +253,7 @@ export function buildFormationSurveyEmail(data, meta = {}) {
     data.comments || "-",
   ].join("\n");
 
-  const html = `\n    <div style="font-family:Arial,Helvetica,sans-serif;line-height:1.6;color:#111827;">\n      <h2 style="margin:0 0 18px 0;">Nouveau sondage Formation & accompagnement IA</h2>\n      <table style="border-collapse:collapse;width:100%;max-width:760px;">\n        <tr><td style="padding:8px 0;font-weight:700;width:260px;">Prénom</td><td style="padding:8px 0;">${escapeHtml(data.firstName)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Nom</td><td style="padding:8px 0;">${escapeHtml(data.lastName)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Email</td><td style="padding:8px 0;">${escapeHtml(data.email)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Téléphone</td><td style="padding:8px 0;">${escapeHtml(data.phone)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Pays</td><td style="padding:8px 0;">${escapeHtml(data.country)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q1 Intérêt global</td><td style="padding:8px 0;">${escapeHtml(data.interestGlobal)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q2 Intention si ouverture</td><td style="padding:8px 0;">${escapeHtml(data.openingIntent)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q3 Offre la plus intéressante</td><td style="padding:8px 0;">${escapeHtml(data.offerInterest)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q4 Choix unique</td><td style="padding:8px 0;">${escapeHtml(data.singleOption)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q5 Reconnaissance MBA brésilien</td><td style="padding:8px 0;">${escapeHtml(data.mbaRecognition)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q6 Importance du caractère international</td><td style="padding:8px 0;">${escapeHtml(data.internationalFactor)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q7 Attractivité du stage Canada</td><td style="padding:8px 0;">${escapeHtml(data.stageAttractiveness)}/5</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q8 Intérêt stage</td><td style="padding:8px 0;">${escapeHtml(data.stageInterest)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q9 Réaction prix MBA</td><td style="padding:8px 0;">${escapeHtml(data.mbaPriceReaction)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q10 Réaction prix académie</td><td style="padding:8px 0;">${escapeHtml(data.academyPriceReaction)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q11 Besoin de financement</td><td style="padding:8px 0;">${escapeHtml(data.financingNeed)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q12 Durée de financement acceptable</td><td style="padding:8px 0;">${escapeHtml(data.financingDuration)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q13 Réaction 3900 CAD / 12 mois</td><td style="padding:8px 0;">${escapeHtml(data.financedMbaReaction)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q14 Format acceptable</td><td style="padding:8px 0;">${escapeHtml(data.preferredFormat)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q15 Niveau d’intérêt réel</td><td style="padding:8px 0;">${escapeHtml(data.enrollmentInterest)}/10</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q16 Programmes recherchés</td><td style="padding:8px 0;">${escapeHtml(joinValues(data.programInterests) || "-")}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q17 MBA choisi</td><td style="padding:8px 0;">${escapeHtml(data.selectedMba || "-")}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q18 Classement des cours</td><td style="padding:8px 0;">${escapeHtml(joinValues(data.rankedCourses) || "-")}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q19 Principal frein</td><td style="padding:8px 0;">${escapeHtml(data.registrationBarrier)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q19 Autre</td><td style="padding:8px 0;">${escapeHtml(data.registrationBarrierOther || "-")}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">IP</td><td style="padding:8px 0;">${escapeHtml(meta.ip || "unknown")}</td></tr>\n      </table>\n      <div style="margin-top:24px;padding:16px;border:1px solid #e5e7eb;background:#fafafa;">\n        <div style="font-weight:700;margin-bottom:10px;">Q20 Commentaires</div>\n        <div style="white-space:pre-wrap;">${escapeHtml(data.comments || "-")}</div>\n      </div>\n    </div>\n  `;
+  const html = `\n    <div style="font-family:Arial,Helvetica,sans-serif;line-height:1.6;color:#111827;">\n      <h2 style="margin:0 0 18px 0;">Nouveau sondage Formation & accompagnement IA</h2>\n      <table style="border-collapse:collapse;width:100%;max-width:760px;">\n        <tr><td style="padding:8px 0;font-weight:700;width:260px;">Prénom</td><td style="padding:8px 0;">${escapeHtml(data.firstName)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Nom</td><td style="padding:8px 0;">${escapeHtml(data.lastName)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Email</td><td style="padding:8px 0;">${escapeHtml(data.email)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Téléphone</td><td style="padding:8px 0;">${escapeHtml(data.phone)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Pays</td><td style="padding:8px 0;">${escapeHtml(data.country)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Ville</td><td style="padding:8px 0;">${escapeHtml(data.city)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Université / établissement</td><td style="padding:8px 0;">${escapeHtml(data.university)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Niveau d'études</td><td style="padding:8px 0;">${escapeHtml(data.studyYear)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Discipline</td><td style="padding:8px 0;">${escapeHtml(data.discipline)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Source de découverte</td><td style="padding:8px 0;">${escapeHtml(data.discoverySource)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q1 Intérêt global</td><td style="padding:8px 0;">${escapeHtml(data.interestGlobal)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q2 Intention si ouverture</td><td style="padding:8px 0;">${escapeHtml(data.openingIntent)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q3 Offre la plus intéressante</td><td style="padding:8px 0;">${escapeHtml(data.offerInterest)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q4 Choix unique</td><td style="padding:8px 0;">${escapeHtml(data.singleOption)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q5 Reconnaissance MBA brésilien</td><td style="padding:8px 0;">${escapeHtml(data.mbaRecognition)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q6 Importance du caractère international</td><td style="padding:8px 0;">${escapeHtml(data.internationalFactor)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q7 Attractivité du stage Canada</td><td style="padding:8px 0;">${escapeHtml(data.stageAttractiveness)}/5</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q8 Intérêt stage</td><td style="padding:8px 0;">${escapeHtml(data.stageInterest)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q9 Réaction prix MBA</td><td style="padding:8px 0;">${escapeHtml(data.mbaPriceReaction)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q10 Réaction prix académie</td><td style="padding:8px 0;">${escapeHtml(data.academyPriceReaction)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q11 Besoin de financement</td><td style="padding:8px 0;">${escapeHtml(data.financingNeed)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q12 Durée de financement acceptable</td><td style="padding:8px 0;">${escapeHtml(data.financingDuration)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q13 Réaction 3900 CAD / 12 mois</td><td style="padding:8px 0;">${escapeHtml(data.financedMbaReaction)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q14 Format acceptable</td><td style="padding:8px 0;">${escapeHtml(data.preferredFormat)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q15 Niveau d’intérêt réel</td><td style="padding:8px 0;">${escapeHtml(data.enrollmentInterest)}/10</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q16 Programmes recherchés</td><td style="padding:8px 0;">${escapeHtml(joinValues(data.programInterests) || "-")}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q17 MBA choisi</td><td style="padding:8px 0;">${escapeHtml(data.selectedMba || "-")}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q18 Classement des cours</td><td style="padding:8px 0;">${escapeHtml(joinValues(data.rankedCourses) || "-")}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q19 Principal frein</td><td style="padding:8px 0;">${escapeHtml(data.registrationBarrier)}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">Q19 Autre</td><td style="padding:8px 0;">${escapeHtml(data.registrationBarrierOther || "-")}</td></tr>\n        <tr><td style="padding:8px 0;font-weight:700;">IP</td><td style="padding:8px 0;">${escapeHtml(meta.ip || "unknown")}</td></tr>\n      </table>\n      <div style="margin-top:24px;padding:16px;border:1px solid #e5e7eb;background:#fafafa;">\n        <div style="font-weight:700;margin-bottom:10px;">Q20 Commentaires</div>\n        <div style="white-space:pre-wrap;">${escapeHtml(data.comments || "-")}</div>\n      </div>\n    </div>\n  `;
 
   return { subject, text, html };
 }
